@@ -5,10 +5,7 @@ import '../node_modules/font-awesome/css/font-awesome.min.css';
 import Soccer from "./components/Soccer";
 
 ReactDOM.render(
-    <div className="wbdv-root">
-        {/*<Provider store={store}>
-            <WidgetListContainer/>
-        </Provider>*/}
+    <div className="socc-background">
         <Soccer/>
     </div>,
     document.getElementById("root")

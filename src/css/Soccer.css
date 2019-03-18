@@ -1,0 +1,13 @@
+.socc-background{
+    background-color: whitesmoke;
+    height: inherit;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+#root{
+    height: inherit;
+}
