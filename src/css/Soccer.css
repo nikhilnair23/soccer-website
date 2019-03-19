@@ -16,7 +16,17 @@ html, body {
     .grid-container {
         margin: 10px auto;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 10px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 1600px) {
+    .grid-container {
+        margin: 10px auto;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
         grid-gap: 10px;
         padding: 10px;
     }
@@ -30,4 +40,8 @@ html, body {
         grid-gap: 10px;
         padding: 10px;
     }
+}
+
+.news-image {
+    max-height: 10%;
 }

@@ -11,11 +11,14 @@ export default class MainPage extends Component {
     }
 
     componentDidMount(){
-        this.newsService.get_news().then(response => {
+        /*this.newsService.get_news().then(response => {
             this.setState(
                 { articles : response.articles}
             )
-        })
+        })*/
+        this.setState(
+            { articles : this.newsService.get_news()}
+        )
     }
 
     render(){
@@ -43,7 +46,8 @@ export default class MainPage extends Component {
 
             </div>
             </nav>
-                <div className="card-deck p-3 grid-container">
+
+                <div className="card-deck w-75 news-card p-3 grid-container">
                     {
                         this.state.articles.map(article =>
                             <NewsCard
