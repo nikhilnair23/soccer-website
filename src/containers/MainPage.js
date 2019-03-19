@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 import NewsCard from "../components/NewsCard";
 import NewsService from "../services/NewsService"
+import Card from "../components/Card";
 
 export default class MainPage extends Component {
     constructor(props) {
@@ -47,10 +48,10 @@ export default class MainPage extends Component {
             </div>
             </nav>
 
-                <div className="card-deck w-75 news-card p-3 grid-container">
+                <div align="center" className="card-deck w-75 news-card p-3 grid-container tc App">
                     {
                         this.state.articles.map(article =>
-                            <NewsCard
+                            <Card
                                 article={article}
                             />
                         )

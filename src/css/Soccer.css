@@ -6,6 +6,7 @@
 html, body {
     margin: 0;
     height: 100%;
+    align-items: center;
 }
 
 #root{
@@ -43,5 +44,20 @@ html, body {
 }
 
 .news-image {
-    max-height: 10%;
+    max-height: 5%;
 }
+
+.Soccer {
+    text-align: center;
+}
+
+h5 {
+    font-family: 'OCR A Std', monospace;
+    color: brown;
+}
+
+.App {
+    text-align: center;
+}
+
+
