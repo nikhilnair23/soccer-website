@@ -1,11 +1,12 @@
 .socc-background{
-    background-color: whitesmoke;
     height: inherit;
+    background-image: url("https://wallpapercave.com/wp/wp1830648.jpg");
 }
 
 html, body {
     margin: 0;
     height: 100%;
+    align-items: center;
 }
 
 #root{
@@ -43,5 +44,20 @@ html, body {
 }
 
 .news-image {
-    max-height: 10%;
+    max-height: 5%;
 }
+
+.Soccer {
+    text-align: center;
+}
+
+h5 {
+    font-family: 'OCR A Std', monospace;
+    color: brown;
+}
+
+.App {
+    text-align: center;
+}
+
+
