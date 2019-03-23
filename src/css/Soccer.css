@@ -22,7 +22,7 @@ html, body {
     }
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 2400px) {
     .grid-container {
         margin: 10px auto;
         display: grid;
