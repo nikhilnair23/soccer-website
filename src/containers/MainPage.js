@@ -5,12 +5,14 @@ import NewsService from "../services/NewsService"
 import Card from "../components/Card";
 import Navigation from "../components/Navigation/Navigation";
 import SignIn from "../components/SignIn/SignIn";
+import NewsCarousel from "../components/NewsCarousel";
 
 export default class MainPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             articles: [],
+            article_no : 0,
             route: 'signin',
             routeStatus: 'not_logged_in'
         };
@@ -18,14 +20,14 @@ export default class MainPage extends Component {
     }
 
     componentDidMount() {
-        /*this.newsService.get_news().then(response => {
+        this.newsService.get_news().then(response => {
             this.setState(
                 { articles : response.articles}
             )
-        })*/
-        this.setState(
+        })
+        /*this.setState(
             {articles: this.newsService.get_news()}
-        )
+        )*/
     }
 
     onRouteChange = (routeTo) => {
@@ -57,8 +59,9 @@ export default class MainPage extends Component {
             <SignIn onRouteChange={this.onRouteChange}/>
             :
             <div className={"container-fluid"}>
+                <div className={"container-fluid"}>
                 <Navigation onRouteChange={this.onRouteChange}/>
-                <div align="center" className="card-deck w-75 news-card p-3 grid-container tc App">
+                {/*<div align="center" className="card-deck w-75 news-card p-3 grid-container tc App">
                     {
                         this.state.articles.map(article =>
                                                     <Card
@@ -66,9 +69,24 @@ export default class MainPage extends Component {
                                                     />
                         )
                     }
+                </div>*/}
                 </div>
-            </div>
+                <div className={"container-fluid"}>
+                    <div className="row">
+                        <div className="col-2">
+                            <h2 className="text-white text-wrap">Placeholder</h2>
+                        </div>
+                    <NewsCarousel
+                        articles = {this.state.articles}
+                    />
 
+                        <div className="col-2">
+                            <h2 className="text-white">sample</h2>
+                        </div>
+
+                    </div>
+                </div>
+                </div>
         )
     }
 

@@ -19,6 +19,9 @@ const Navigation = ({onRouteChange}) =>
                     <li className="nav-item m-2" id="">
                         <button className={"btn text-white"}>Scores</button>
                     </li>
+                    <li className="nav-item m-2" id="">
+                        <button className={"btn text-white"}>Highlights</button>
+                    </li>
                     <li className="nav-item m-2" id="signout_button">
                         <button className={"btn text-white"}
                         onClick={() => onRouteChange('signout')}

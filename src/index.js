@@ -1,7 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import '../node_modules/bootstrap/dist/css/bootstrap.css'
-import '../node_modules/font-awesome/css/font-awesome.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'popper.js/dist/popper'
+import 'jquery/dist/jquery.min.js'
+import 'bootstrap/dist/js/bootstrap.min.js'
+import '../src/css/Soccer.css'
 import Soccer from "./components/Soccer";
 import 'tachyons';
 

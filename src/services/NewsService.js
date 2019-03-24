@@ -9,13 +9,13 @@ export default class NewsService {
     }
 
     get_news(){
-        return articles;
-        /*return(fetch(this.url,{
+        /*return articles;*/
+        return(fetch(this.url,{
             method:"get",
         }).then(function (response) {
                 return response.json();
             })
-        )*/
+        )
     }
 
 }
