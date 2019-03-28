@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Carousel from 'react-bootstrap/Carousel'
+import { Redirect } from 'react-router';
 
 export default class NewsCarousel extends React.Component {
     constructor(props, context) {
@@ -24,7 +25,7 @@ export default class NewsCarousel extends React.Component {
         const { index, direction } = this.state;
 
         return (
-            <div className="col-8 card-cont">
+            <div className="col-6 card-cont">
             <Carousel
                 activeIndex={index}
                 direction={direction}
@@ -34,9 +35,9 @@ export default class NewsCarousel extends React.Component {
                 {
                 this.props.articles.map((article) =>
                     <Carousel.Item>
-                        <img className="d-block w-100 p-2 rounded"
+                        <img className="d-block p-2 rounded"
                              src = {article.urlToImage}
-                             width="480"
+                             width="100"
                              height ="400"
 
                         />

@@ -1,5 +1,57 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
 #signout_button {
-    position: absolute;
-    right: 10px;
-    background-color: red;
+    position: relative;
+    left : 100px;
+    top: 0px;
+    background-color: #EF3B3A;
+    size: 50px;
+    border-radius: 10px;
+}
+
+#search {
+    width: 100%;
+    position: relative;
+}
+
+#searchTerm {
+    float: left;
+    width: 70%;
+    border: 3px solid #EF3B3A;
+    padding: 10px;
+    height: 30px;
+    border-radius: 5px;
+    outline: none;
+    color: #9DBFAF;
+}
+
+#searchTerm:focus{
+    color: #EF3B3A;
+    font-weight: bold;
+}
+
+.searchButton {
+    position: relative;
+    width: 40px;
+    height: 36px;
+    border: 1px solid #EF3B3A;
+    background: #EF3B3A;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#wrap{
+    width: 30%;
+    top: 25px;
+    left: 90px;
+    position: relative;
+    transform: translate(-50%, -50%);
+}
+
+#navbar-container {
+    padding-left: 0px;
+    padding-right: 0px;
 }

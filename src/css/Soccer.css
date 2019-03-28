@@ -71,4 +71,9 @@ h5 {
     min-height: 150px;
 }
 
+#navbar-container {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
 
