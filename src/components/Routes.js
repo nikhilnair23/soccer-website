@@ -10,7 +10,7 @@ const Routes = () =>{
                 <div className={"container-fluid"} id="navbar-container">
                     <Route path={"/"} exact
                            render={() => <MainPage/>}/>
-                    <Route path={"/search:text"} exact
+                    <Route path={"/search"} exact
                            render={() => <SearchResults/>}/>
                     <Route path = {"/searchitem"} exact
                            render={() => <SearchResults/>}/>
