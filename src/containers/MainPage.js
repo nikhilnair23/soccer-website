@@ -7,14 +7,15 @@ import Navigation from "../components/Navigation/Navigation";
 import SignIn from "../components/SignIn/SignIn";
 import NewsCarousel from "../components/NewsCarousel";
 import SearchService from "../services/SearchService";
-import { Redirect } from 'react-router';
+import {Redirect} from 'react-router';
+import FavoriteTeam from "../components/FavoriteTeam/FavoriteTeam";
 
 export default class MainPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             articles: [],
-            article_no : 0,
+            article_no: 0,
             route: 'signin',
             routeStatus: 'not_logged_in'
         };
@@ -54,33 +55,34 @@ export default class MainPage extends Component {
         )
     };
 
-
-
     render() {
         return (
             /*this.state.route === 'signin' || this.state.route === 'signout'
             ?
             <SignIn onRouteChange={this.onRouteChange}/>
             :*/
-            <div className={"container-fluid"} id="navbar-container">
-                <div className={"container-fluid"} id="navbar-container">
-                    <Navigation/>
-                </div>
-                <div className={"container-fluid"}>
-                    <div className="row">
-                        <div className="col-3">
-                            <h2 className="text-white text-wrap">Placeholder</h2>
-                        </div>
-                    <NewsCarousel
-                        articles = {this.state.articles}
-                    />
-                        <div className="col-3">
-                            <h2 className="text-white">sample</h2>
-                        </div>
 
-                    </div>
-                </div>
-                </div>
+
+            <div className={"container-fluid"} id="navbar-container">
+                {/*<div className={"container-fluid"} id="navbar-container">*/}
+                    {/*<Navigation/>*/}
+                {/*</div>*/}
+                {/*<div className={"container-fluid"}>*/}
+                    {/*<div className="row">*/}
+                        {/*<div className="col-3">*/}
+                            {/*<h2 className="text-white text-wrap">Placeholder</h2>*/}
+                        {/*</div>*/}
+                        {/*<NewsCarousel*/}
+                            {/*articles={this.state.articles}*/}
+                        {/*/>*/}
+                        {/*<div className="col-3">*/}
+                            {/*<h2 className="text-white">sample</h2>*/}
+                        {/*</div>*/}
+
+                    {/*</div>*/}
+                {/*</div>*/}
+                <FavoriteTeam/>
+            </div>
         )
     }
 
