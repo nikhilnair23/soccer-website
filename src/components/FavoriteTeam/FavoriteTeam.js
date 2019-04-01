@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import TeamService from "../../services/TeamService";
 import TeamList from "./TeamList";
+import './TeamCard.css';
 
 export {Component} from 'react';
 
@@ -11,7 +12,7 @@ class FavoriteTeam extends Component {
         this.teamService = new TeamService();
         this.state = {
             teams: [],
-            search_team: ''
+            search_team: '1234ABC'
         }
     }
 
@@ -26,11 +27,20 @@ class FavoriteTeam extends Component {
 
     onSearchChange = (event) => {
 
-        this.setState(
-            {
-                search_team: event.target.value
-            }
-        )
+        if (event.target.value.length < 2) {
+            this.setState(
+                {
+                    search_team: '1234ABC'
+                }
+            )
+        }
+        else {
+            this.setState(
+                {
+                    search_team: event.target.value
+                }
+            )
+        }
     };
 
     render() {
@@ -38,9 +48,9 @@ class FavoriteTeam extends Component {
             <div className='tc'>
                 <h1 className='f1 bg-washed-yellow'>Select your favorite team</h1>
                 <input
-                    className = 'pa3 ma4 ba b--green hover-bg-lightest-blue bg-light-yellow f3 tc'
+                    className = 'pa3 ma4 b--green hover-bg-lightest-blue bg-light-yellow tc inputfav'
                     type='search'
-                    placeholder = 'Search for your team'
+                    placeholder = 'Search for your team(type 2 letters)'
                     onChange={this.onSearchChange}/>
                 <TeamList Teams={
                     this.state.teams.filter(
