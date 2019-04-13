@@ -7,6 +7,7 @@ import SearchResults from "./SearchResults";
 import {withRouter, Redirect} from 'react-router-dom';
 import SearchService from "../services/SearchService";
 import {Switch} from "react-router";
+import Routes from './Routes'
 
 let self
 
@@ -18,19 +19,22 @@ class Soccer extends Component {
 
 
     render() {
-        return (
+        /*return (
             <div className={"socc-background"}>
                 <Router>
-                    {/*<div className={"container-fluid"} id="navbar-container">
+                    {/!*<div className={"container-fluid"} id="navbar-container">
                         <Navigation
                             onRouteChange={this.onRouteChange}/>
-                    </div>*/}
-                    <div className={"container-fluid"} id="navbar-container">
+                    </div>*!/}
+                    <div className={"container-fluid socc-height-inherit"} id="navbar-container">
                         <Route path={"/"} exact render={() => <MainPage/>}/>
-                        <Route path={"/search"} exact render={() => <SearchResults/>}/>
+                        <Route path={"/search/:id"} exact render={() => <SearchResults/>}/>
                     </div>
                 </Router>
             </div>
+        )*/
+        return(
+            <Routes/>
         )
     }
 }

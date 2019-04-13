@@ -26,18 +26,9 @@ class Navigation extends React.Component {
     };
 
     search = () => {
-        this.searchService.search_news(this.state.searchText).then((response) => {
-            debugger;
-            self.setState({
-                navigate: true,
-                articles: response.articles
-            })
+        self.setState({
+            navigate: true
         })
-
-        /*this.setState({
-            navigate : true,
-            articles : this.searchService.search_news(this.state.searchText)
-        })*/
     }
 
     render() {
@@ -45,8 +36,8 @@ class Navigation extends React.Component {
             debugger;
             return (
                 <Redirect to={{
-                    pathname: '/search',
-                    state: {articles: this.state.articles}
+                    pathname: '/search/'+this.state.searchText,
+                    /*state: {articles: this.state.articles}*/
                 }}/>)
 
 

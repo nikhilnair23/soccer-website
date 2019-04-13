@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Carousel from 'react-bootstrap/Carousel'
-import { Redirect } from 'react-router';
+import {Redirect} from 'react-router';
 
 export default class NewsCarousel extends React.Component {
     constructor(props, context) {
@@ -22,34 +22,31 @@ export default class NewsCarousel extends React.Component {
     }
 
     render() {
-        const { index, direction } = this.state;
+        const {index, direction} = this.state;
 
         return (
-            <div className="col-6 card-cont">
-            <Carousel
-                activeIndex={index}
-                direction={direction}
-                onSelect={this.handleSelect}
-                fade = {true}
-            >
-                {
-                this.props.articles.map((article) =>
-                    <Carousel.Item>
-                        <img className="d-block p-2 rounded"
-                             src = {article.urlToImage}
-                             width="100"
-                             height ="400"
-
-                        />
-                        <Carousel.Caption>
-                            <a href={article.url} target="_blank">
-                            <p className="font-weight-bolder text-white">{article.title}</p>
-                            </a>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                )
-            }
-            </Carousel>
+            <div className="card-cont">
+                <Carousel
+                    activeIndex={index}
+                    direction={direction}
+                    onSelect={this.handleSelect}
+                    fade={true}
+                >
+                        {
+                            this.props.articles.map((article) =>
+                                <Carousel.Item>
+                                    <img className="d-block p-2 rounded socc-news-img"
+                                         src={article.urlToImage}
+                                    />
+                                    <Carousel.Caption>
+                                        <a href={article.url} target="_blank">
+                                            <p className="font-weight-bolder text-white">{article.title}</p>
+                                        </a>
+                                    </Carousel.Caption>
+                                </Carousel.Item>
+                            )
+                        }
+                </Carousel>
             </div>
         );
     }
@@ -95,31 +92,6 @@ alt="Third slide"
 </Carousel.Caption>
 </Carousel.Item>
 </Carousel.Item>*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*
