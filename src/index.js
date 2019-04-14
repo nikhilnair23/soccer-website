@@ -9,11 +9,12 @@ import '../src/css/Soccer.css'
 import Soccer from "./components/Soccer";
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 import 'tachyons';
+import Routes from "./components/Routes";
 
 ReactDOM.render(
     <div className="socc-background">
         <Router>
-        <Soccer/>
+        <Routes/>
         </Router>
     </div>,
     document.getElementById("root")
