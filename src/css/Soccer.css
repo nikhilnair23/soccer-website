@@ -96,6 +96,24 @@ h5 {
     flex-direction: row;
 }
 
+.socc-card-header{
+    width:100%;
+    text-align:center
+}
+
+.socc-card-img {
+    padding: 0.05rem;
+    background-color: #000000;
+    border: 1px solid rgba(230, 2, 0, 0.02);
+    border-radius: 0.30rem;
+    width: 100%;
+    height: auto;
+}
+
+.socc-link:hover{
+    cursor: pointer;
+}
+
 /*.socc-car-item-div{
     height: 100px;
     width: 400px;

@@ -1,6 +1,7 @@
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import MainPage from "../containers/MainPage";
 import SearchResults from "./SearchResults";
+import SearchResultItem from "./SearchResultItem"
 import React from "react";
 
 const Routes = () => {
@@ -12,6 +13,7 @@ const Routes = () => {
                            render={() => <MainPage/>}/>
                     <Route path={"/search/:searchTerm"} exact
                            component={SearchResults}/>
+                    <Route path={"/searchItem"} exact component={SearchResultItem}/>
                 </div>
             </Router>
         </div>

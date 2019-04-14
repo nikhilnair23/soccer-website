@@ -17,7 +17,6 @@ export default class SearchResults extends Component {
 
     search = () => {
         this.searchService.search_news(this.props.match.params.searchTerm).then((response) => {
-            debugger;
             self.setState({
                 articles: response.articles
             })
@@ -28,7 +27,22 @@ export default class SearchResults extends Component {
         self.search();
     }
 
+    navigate = (title, description, content, url, urlToImage, date, author ) =>
+        this.props.history.push({
+            pathname:'/searchItem',
+            state: {
+                title: title,
+                description: description,
+                content: content,
+                url: url,
+                urlToImage: urlToImage,
+                date: date,
+                author: author
+            }
+        })
+
     render() {
+        console.log(this.props)
         return (
             <div className="socc-height-inherit socc-background">
                 <div className={"container-fluid"} id="navbar-container">
@@ -48,7 +62,12 @@ export default class SearchResults extends Component {
                                                  height="200px"
                                                  width="200px"
                                                  src={article.urlToImage}/>
-                                            <a><h4>{article.title}</h4></a>
+                                            <a  className="socc-link"
+                                                onClick={() => this.navigate(article.title,article.description,article.content,
+                                                    article.url, article.urlToImage, article.publishedAt, article.author
+                                                )}>
+                                                <p className="font-weight-bold text-left text-dark">{article.title}</p>
+                                            </a>
                                         </div>
                                     </li>
                                 )
