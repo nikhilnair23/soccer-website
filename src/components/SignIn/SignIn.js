@@ -8,7 +8,7 @@ class SignIn extends Component{
         this.state = {
             username: '',
             password: '',
-            user_type: ''
+            isAdmin: ''
         };
     }
 
@@ -29,7 +29,27 @@ class SignIn extends Component{
     };
 
     onSignIn = () => {
-        this.props.onRouteChange('home');
+        //this.props.onRouteChange('home');
+        fetch('http://localhost:5000/login', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                                     username: this.state.username,
+                                     password: this.state.password
+                                 })
+        })
+            //.then(response => response.json())
+            .then(res => {
+                if (res.status === 400) {
+                    document.getElementById("username_input_login").value = '';
+                    document.getElementById("password_input_login").value = '';
+                    alert('Invalid credentials, try again');
+
+                }
+                else {
+                    this.props.onRouteChange('home');
+                }
+            });
     };
 
     onAdminChange = () => {
@@ -61,10 +81,12 @@ class SignIn extends Component{
                         <p className="message">Already registered? <a href="#">Sign In</a></p>
                     </form>
                     <form className="login-form">
-                        <input type="text"
+                        <input id="username_input_login"
+                               type="text"
                                placeholder="username"
                                onChange={this.onUsernameChange}/>
-                        <input type="password"
+                        <input id="password_input_login"
+                               type="password"
                                placeholder="password"
                                onChange={this.onPasswordChange}
                         />
@@ -74,11 +96,11 @@ class SignIn extends Component{
                                value="#"
                                onClick={this.onAdminChange}
                         />Admin
-                        <button onClick={this.onSignIn}>
+                        <button type="button" onClick={this.onSignIn}>
                             login
                         </button>
                         <p className="message">Not registered?
-                            <a href="#">Create an account</a>
+                            <button onClick={() => this.props.onRouteChange('register')}>Register</button>
                         </p>
                     </form>
                 </div>

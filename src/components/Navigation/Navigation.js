@@ -84,12 +84,24 @@ class Navigation extends React.Component {
                                     </button>
                                 </div>
                             </li>
-                            <li className="nav-item" id="signout_button">
-                                <button className="btn text-white"
-                                        onClick={() => this.props.onRouteChange('signout')}
-                                >Sign out
-                                </button>
-                            </li>
+                            {
+                                this.props.routeStatus === 'logged_in'
+                                ?
+                                <li className="nav-item" id="signout_button">
+                                    <button className="btn text-white"
+                                            onClick={() => this.props.onRouteChange('signout')}
+                                    >Sign out
+                                    </button>
+                                </li>
+                                :
+                                <li className="nav-item" id="signout_button">
+                                    <button className="btn text-white"
+                                            onClick={() => this.props.onRouteChange('signin')}
+                                    >Sign in
+                                    </button>
+                                </li>
+                            }
+
                         </ul>
                     </div>
 
