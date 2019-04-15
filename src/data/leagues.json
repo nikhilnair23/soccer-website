@@ -1,0 +1,57 @@
+{
+  "1": {
+    "league_id": "1",
+    "name": "2018 Russia World Cup",
+    "country": "World",
+    "country_code": "",
+    "season": "2018",
+    "season_start": "2018-06-14",
+    "season_end": "2018-07-15",
+    "logo": "https://www.api-football.com/public/leagues/1.png",
+    "standings": false
+  },
+  "2": {
+    "league_id": "2",
+    "name": "Premier League",
+    "country": "England",
+    "country_code": "GB",
+    "season": "2018",
+    "season_start": "2018-08-10",
+    "season_end": "2019-05-12",
+    "logo": "https://www.api-football.com/public/leagues/2.png",
+    "standings": true
+  },
+  "6": {
+    "league_id": "6",
+    "name": "Serie A",
+    "country": "Brazil",
+    "country_code": "BR",
+    "season": "2018",
+    "season_start": "2018-04-14",
+    "season_end": "2018-12-02",
+    "logo": "https://www.api-football.com/public/leagues/6.png",
+    "standings": true
+  },
+  "10": {
+    "league_id": "10",
+    "name": "Eredivisie",
+    "country": "Netherlands",
+    "country_code": "NL",
+    "season": "2018",
+    "season_start": "2018-08-10",
+    "season_end": "2019-05-12",
+    "logo": "https://www.api-football.com/public/leagues/10.png",
+    "standings": true
+  },
+  "132": {
+    "league_id": "132",
+    "name": "Champions League",
+    "country": "World",
+    "country_code": "",
+    "season": "2018",
+    "season_start": "2018-09-18",
+    "season_end": "2019-03-13",
+    "logo": "https://www.api-football.com/public/leagues/132.png",
+    "standings": false
+  }
+}

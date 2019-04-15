@@ -4,6 +4,7 @@ import SearchResults from "./Search/SearchResults";
 import SearchResultItem from "./Search/SearchResultItem"
 import React from "react";
 import Highlights from "./Highlights";
+import Teams from "./Teams";
 
 const Routes = () => {
     return (
@@ -16,6 +17,7 @@ const Routes = () => {
                            component={SearchResults}/>
                     <Route path={"/searchItem"} exact component={SearchResultItem}/>
                     <Route path={"/highlights"} exact component={Highlights}/>
+                    <Route path={"/teams"} exact component={Teams}/>
                 </div>
             </Router>
         </div>
