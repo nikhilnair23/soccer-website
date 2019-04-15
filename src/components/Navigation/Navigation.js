@@ -44,9 +44,11 @@ class Navigation extends React.Component {
         }
         return (
             <nav className="navbar navbar-expand bg-black-90">
-                <div className="container-fluid">
-                    <div className="navbar-header bg-black">
+                <div className="row container-fluid">
+                    <div className="col-2">
                         <h3 className="float-left pt-2 mr-1 mt-2 font-italic font-weight-bolder text-danger">FOOTBALL</h3>
+                    </div>
+                    <div className="col-9 nav-container">
                         <ul className="nav nav-pills bg-black p-2">
                             <li className="nav-item" id="">
                                 <button className={"btn text-white"}>Teams</button>
@@ -63,26 +65,25 @@ class Navigation extends React.Component {
                             <li className="nav-item mr-2" id="">
                                 <button className={"btn text-white"}>Highlights</button>
                             </li>
-                            <li className="nav-item ml-2" id="wrap">
-                                <div className="search">
-                                    <input onChange={this.titleChanged}
-                                           type="text" id="searchTerm" className="form-control-sm mr-2"
-                                           placeholder="What are you looking for?"/>
-                                    <button
-                                        onClick={()=> this.search()}
-                                        className="searchButton">
-                                        <i className="fa fa-search"></i>
-                                    </button>
-                                </div>
-                            </li>
-                            <li className="nav-item" id="signout_button">
-                                <button className="btn text-white"
-                                        onClick={() => this.props.onRouteChange('signout')}
-                                >Sign out
-                                </button>
-                            </li>
                         </ul>
+                        <div className="search">
+                            <input onChange={this.titleChanged}
+                                   type="text" id="searchTerm" className="form-control-sm mr-2"
+                                   placeholder="What are you looking for?"/>
+                            <button
+                                onClick={()=> this.search()}
+                                className="searchButton">
+                                <i className="fa fa-search"></i>
+                            </button>
+                        </div>
                     </div>
+                    <div className="col-1 ">
+                        <button id="signout_button" className="btn text-white"
+                                onClick={() => this.props.onRouteChange('signout')}
+                        >Sign out
+                        </button>
+                    </div>
+
 
                 </div>
             </nav>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {withRouter, Redirect} from 'react-router-dom';
-import Navigation from "./Navigation/Navigation";
+import Navigation from "../Navigation/Navigation";
 const SearchResultItem = (props) =>{
     console.log(props)
     return(

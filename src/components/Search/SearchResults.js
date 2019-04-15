@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import Navigation from "./Navigation/Navigation";
-import SearchService from "../services/SearchService";
-import NewsCarousel from "./NewsCarousel";
+import Navigation from "../Navigation/Navigation";
+import SearchService from "../../services/SearchService";
+import NewsCarousel from "../News/NewsCarousel";
 
 let self
 export default class SearchResults extends Component {

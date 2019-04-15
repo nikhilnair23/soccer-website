@@ -23,7 +23,6 @@ export default class NewsCarousel extends React.Component {
 
     render() {
         const {index, direction} = this.state;
-
         return (
             <div className="card-cont">
                 <Carousel

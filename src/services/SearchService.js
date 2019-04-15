@@ -11,6 +11,4 @@ export default class SearchService {
            }).then(response => response.json())
        )
     }
-
-
 }

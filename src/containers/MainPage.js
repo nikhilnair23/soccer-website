@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
-import NewsCard from "../components/NewsCard";
+import NewsCard from "../components/News/NewsCard";
 import NewsService from "../services/NewsService"
 import Card from "../components/Card";
 import Navigation from "../components/Navigation/Navigation";
 import SignIn from "../components/SignIn/SignIn";
-import NewsCarousel from "../components/NewsCarousel";
+import NewsCarousel from "../components/News/NewsCarousel";
 import SearchService from "../services/SearchService";
 import {Redirect} from 'react-router';
 
