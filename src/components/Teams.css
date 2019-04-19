@@ -20,9 +20,33 @@
 
 }
 
+.club-logo-container{
+    display: flex;
+    justify-content: center;
+}
+
+.club-logo{
+    height: 120px;
+    width: auto;
+}
+
+.team-card-name{
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: large;
+}
+
+.team-card-header{
+    height: 100px;
+}
+
 h5{
     font-family: 'Helvetica Neue';
     font-weight: normal;
     font-size: 1.25vw;
     color: black;
+}
+
+.team-div:hover{
+    cursor: pointer;
 }

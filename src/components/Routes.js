@@ -5,6 +5,7 @@ import SearchResultItem from "./Search/SearchResultItem"
 import React from "react";
 import Highlights from "./Highlights";
 import Teams from "./Teams";
+import TeamCard from "./TeamCard";
 
 const Routes = () => {
     return (
@@ -18,6 +19,7 @@ const Routes = () => {
                     <Route path={"/searchItem"} exact component={SearchResultItem}/>
                     <Route path={"/highlights"} exact component={Highlights}/>
                     <Route path={"/teams"} exact component={Teams}/>
+                    <Route path={"/teams/:teamId"} exact component={TeamCard}/>
                 </div>
             </Router>
         </div>

@@ -6,6 +6,7 @@ import './Teams.css'
 import Dropdown from "react-bootstrap/Dropdown";
 import {DropdownButton} from "react-bootstrap";
 import TeamService from '../services/TeamService';
+
 let self;
 export default class Teams extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ export default class Teams extends Component {
             league: 'Premier League',
             teams: []
         }
-        self=this;
+        self = this;
         this.teamService = new TeamService();
     }
 
@@ -46,14 +47,24 @@ export default class Teams extends Component {
     }
 
     changeLeague = (league) => {
-        this.teamService.findTeams(league.league_id).then((api)=> {
+        this.teamService.findTeams(league.league_id).then((api) => {
                 self.setState({
                     teams: api.api.teams,
-                    league: league.name
+                    league: league.name,
+                    league_id: league.league_id
                 })
             }
         )
     }
+
+    selectTeam = (team) =>
+        this.props.history.push({
+            pathname:'/teams/'+team.team_id,
+            state : {
+                team:team,
+                league_id: this.state.league_id
+            }
+        })
 
 
     render() {
@@ -68,17 +79,17 @@ export default class Teams extends Component {
                     </div>
                     <div className="col-6">
                         <div className="card mt-3">
-                            <div >
+                            <div>
                                 <DropdownButton
                                     id="dropdown-basic-button"
-                                    className = "pull-right p-2"
+                                    className="pull-right p-2"
                                     title={this.state.league}>
                                     {
                                         Object.values(this.state.leagues)
-                                            .map((league)=>{
-                                                return(
+                                            .map((league) => {
+                                                return (
                                                     <Dropdown.Item
-                                                        onClick = {()=>this.changeLeague(league)}
+                                                        onClick={() => this.changeLeague(league)}
                                                         id={league.league_id}>
                                                         {league.name}
                                                     </Dropdown.Item>
@@ -94,19 +105,21 @@ export default class Teams extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <ul id="double" className="list-group-flush pr-5"><span className="code-comment"></span>
+                                    <ul id="double" className="list-group-flush pr-5"><span
+                                        className="code-comment"></span>
                                         {
                                             Object.values(this.state.teams)
                                                 .slice(0, 10)
                                                 .map((team) => {
                                                     return (
                                                         <li className="list-group-item">
-                                                            <div className="team-container">
-                                                            <img className="img mr-3"
-                                                                 height="45px"
-                                                                 width="40px"
-                                                                 src={team.logo}/>
-                                                            <h5 className="text-center">{team.name}</h5>
+                                                            <div onClick={()=>this.selectTeam(team)}
+                                                                className="team-container team-div">
+                                                                    <img className="img mr-3"
+                                                                         height="45px"
+                                                                         width="40px"
+                                                                         src={team.logo}/>
+                                                                    <h5 className="text-center">{team.name}</h5>
                                                             </div>
                                                         </li>
                                                     )
@@ -115,14 +128,16 @@ export default class Teams extends Component {
                                     </ul>
                                 </div>
                                 <div className="col-6">
-                                    <ul id="double" className="list-group-flush pr-5"><span className="code-comment"></span>
+                                    <ul id="double" className="list-group-flush pr-5"><span
+                                        className="code-comment"></span>
                                         {
                                             Object.values(this.state.teams)
                                                 .slice(10, (Object.keys(this.state.teams).length))
                                                 .map((team) => {
                                                     return (
                                                         <li className="list-group-item">
-                                                            <div className="team-container">
+                                                            <div onClick={()=>this.selectTeam(team)}
+                                                                className="team-container team-div">
                                                                 <img className="img mr-3"
                                                                      height="45px"
                                                                      width="40px"

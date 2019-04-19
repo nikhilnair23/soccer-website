@@ -48,6 +48,7 @@ export default class SearchResults extends Component {
                 <div className={"container-fluid"} id="navbar-container">
                     <Navigation/>
                 </div>
+                <div className="row">
                     <div className="col-3">
                         <h2 className="text-white text-wrap">Placeholder</h2>
                     </div>
@@ -76,6 +77,7 @@ export default class SearchResults extends Component {
                     <div className="col-3">
                         <h2 className="text-white">sample</h2>
                     </div>
+                </div>
                 </div>
 
         );
