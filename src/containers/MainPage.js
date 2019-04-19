@@ -10,6 +10,8 @@ import SearchService from "../services/SearchService";
 import {Redirect} from 'react-router';
 import FavoriteTeam from "../components/FavoriteTeam/FavoriteTeam";
 import Register from "../components/Register/Register";
+import Standings from "../components/standings/Standings";
+import Fixtures from "../components/Fixtures/Fixtures";
 
 export default class MainPage extends Component {
     constructor(props) {
@@ -65,6 +67,14 @@ export default class MainPage extends Component {
             this.state.route === 'register'
             ?
             <Register onRouteChange={this.onRouteChange}/>
+            :
+            this.state.route === 'standings'
+            ?
+            <Standings onRouteChange={this.onRouteChange}/>
+            :
+            this.state.route === 'fixtures'
+            ?
+            <Fixtures onRouteChange={this.onRouteChange}/>
             :
             <div className={"container-fluid"} id="navbar-container">
                 <div className={"container-fluid"} id="navbar-container">

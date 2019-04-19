@@ -13,6 +13,7 @@ class Register extends Component{
             favorite_team: '',
             isAdmin: 0
         };
+        //
     }
 
     onUsernameChange = (event) => {
@@ -74,7 +75,6 @@ class Register extends Component{
             .then(
 
                 res => {
-                    console.log(res.status);
                     if (res.status === 400) {
                         document.getElementById("username_input_register").value = '';
                         document.getElementById("password_input_register").value = '';

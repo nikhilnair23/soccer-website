@@ -61,10 +61,18 @@ class Navigation extends React.Component {
                                 <button className={"btn text-white"}>Teams</button>
                             </li>
                             <li className="nav-item" id="">
-                                <button className={"btn text-white"}>Fixtures</button>
+                                <button
+                                    className={"btn text-white"}
+                                    onClick={() => this.props.onRouteChange('fixtures')}>
+                                    Fixtures
+                                </button>
                             </li>
                             <li className="nav-item" id="">
-                                <button className={"btn text-white"}>Leagues</button>
+                                <button
+                                    className={"btn text-white"}
+                                    onClick={() => this.props.onRouteChange('standings')}>
+                                    Leagues
+                                </button>
                             </li>
                             <li className="nav-item" id="">
                                 <button className={"btn text-white"}>Scores</button>
