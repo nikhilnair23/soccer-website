@@ -48,7 +48,6 @@ export default class SearchResults extends Component {
                 <div className={"container-fluid"} id="navbar-container">
                     <Navigation/>
                 </div>
-                <div className="row socc-height-inherit">
                     <div className="col-3">
                         <h2 className="text-white text-wrap">Placeholder</h2>
                     </div>
@@ -78,8 +77,7 @@ export default class SearchResults extends Component {
                         <h2 className="text-white">sample</h2>
                     </div>
                 </div>
-                {/*<h1 className="text-white">{this.props.location.state.articles.length}</h1>*/}
-            </div>
+
         );
     }
 

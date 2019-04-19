@@ -29,7 +29,8 @@ export default class NewsCarousel extends React.Component {
                     activeIndex={index}
                     direction={direction}
                     onSelect={this.handleSelect}
-                    fade={true}
+                    interval = {2000}
+                    fade={false}
                 >
                         {
                             this.props.articles.map((article) =>

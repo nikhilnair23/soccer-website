@@ -1,15 +1,4 @@
 {
-  "1": {
-    "league_id": "1",
-    "name": "2018 Russia World Cup",
-    "country": "World",
-    "country_code": "",
-    "season": "2018",
-    "season_start": "2018-06-14",
-    "season_end": "2018-07-15",
-    "logo": "https://www.api-football.com/public/leagues/1.png",
-    "standings": false
-  },
   "2": {
     "league_id": "2",
     "name": "Premier League",
@@ -19,17 +8,31 @@
     "season_start": "2018-08-10",
     "season_end": "2019-05-12",
     "logo": "https://www.api-football.com/public/leagues/2.png",
+    "flag": "https://www.api-football.com/public/flags/gb.svg",
     "standings": true
   },
-  "6": {
-    "league_id": "6",
-    "name": "Serie A",
-    "country": "Brazil",
-    "country_code": "BR",
+  "4": {
+    "league_id": "4",
+    "name": "Ligue 1",
+    "country": "France",
+    "country_code": "FR",
     "season": "2018",
-    "season_start": "2018-04-14",
-    "season_end": "2018-12-02",
-    "logo": "https://www.api-football.com/public/leagues/6.png",
+    "season_start": "2018-08-10",
+    "season_end": "2019-05-25",
+    "logo": "https://www.api-football.com/public/leagues/4.svg",
+    "flag": "https://www.api-football.com/public/flags/fr.svg",
+    "standings": true
+  },
+  "8": {
+    "league_id": "8",
+    "name": "Bundesliga 1",
+    "country": "Germany",
+    "country_code": "DE",
+    "season": "2018",
+    "season_start": "2018-08-24",
+    "season_end": "2019-05-18",
+    "logo": "https://www.api-football.com/public/leagues/8.png",
+    "flag": "https://www.api-football.com/public/flags/de.svg",
     "standings": true
   },
   "10": {
@@ -41,17 +44,32 @@
     "season_start": "2018-08-10",
     "season_end": "2019-05-12",
     "logo": "https://www.api-football.com/public/leagues/10.png",
+    "flag": "https://www.api-football.com/public/flags/nl.svg",
     "standings": true
   },
-  "132": {
-    "league_id": "132",
-    "name": "Champions League",
-    "country": "World",
-    "country_code": "",
+  "87": {
+    "league_id": "87",
+    "name": "Primera Division",
+    "country": "Spain",
+    "country_code": "ES",
     "season": "2018",
-    "season_start": "2018-09-18",
-    "season_end": "2019-03-13",
-    "logo": "https://www.api-football.com/public/leagues/132.png",
-    "standings": false
+    "season_start": "2018-08-17",
+    "season_end": "2019-05-19",
+    "logo": "https://www.api-football.com/public/leagues/87.png",
+    "flag": "https://www.api-football.com/public/flags/es.svg",
+    "standings": true
+  },
+  "94": {
+    "league_id": "94",
+    "name": "Serie A",
+    "country": "Italy",
+    "country_code": "IT",
+    "season": "2018",
+    "season_start": "2018-08-18",
+    "season_end": "2019-05-26",
+    "logo": "https://www.api-football.com/public/leagues/94.png",
+    "flag": "https://www.api-football.com/public/flags/it.svg",
+    "standings": true
   }
+
 }
