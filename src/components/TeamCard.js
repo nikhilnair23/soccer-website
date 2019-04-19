@@ -13,6 +13,7 @@ export default class TeamCard extends Component {
             news: news
         }
         this.newsService= new NewsService();
+
     }
 
     /*componentDidMount() {
