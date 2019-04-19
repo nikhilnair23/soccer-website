@@ -5,7 +5,8 @@ import leagues from '../data/leagues'
 import './Teams.css'
 import Dropdown from "react-bootstrap/Dropdown";
 import {DropdownButton} from "react-bootstrap";
-
+import TeamService from '../services/TeamService';
+let self;
 export default class Teams extends Component {
     constructor(props) {
         super(props);
@@ -15,6 +16,8 @@ export default class Teams extends Component {
             league: 'Premier League',
             teams: []
         }
+        self=this;
+        this.teamService = new TeamService();
     }
 
     componentDidMount() {
@@ -43,9 +46,14 @@ export default class Teams extends Component {
     }
 
     changeLeague = (league) => {
-        console.log(league);
+        this.teamService.findTeams(league.league_id).then((api)=> {
+                self.setState({
+                    teams: api.api.teams,
+                    league: league.name
+                })
+            }
+        )
     }
-
 
 
     render() {
