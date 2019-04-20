@@ -40,6 +40,16 @@
     height: 100px;
 }
 
+.team-table{
+    font-size: 12.5px;
+}
+
+.table td, .table th{
+    padding-left: 0.35rem;
+    padding-right: 0.35rem;
+    border-top:0px;
+}
+
 h5{
     font-family: 'Helvetica Neue';
     font-weight: normal;

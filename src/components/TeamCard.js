@@ -2,33 +2,58 @@ import React, {Component} from 'react'
 import Navigation from "./Navigation/Navigation";
 import './Teams.css'
 import NewsService from "../services/NewsService"
+import TeamService from "../services/TeamService"
 import news from '../services/news'
+import PlTable from '../data/PL_Table'
+import players from '../data/players'
+import TeamTable from "./TeamTable";
+import Roster from "./Roster";
 
 
 export default class TeamCard extends Component {
     constructor(props) {
         super(props);
+        console.log(players)
         this.state = {
             team: props.location.state.team,
-            news: news
+            news: news,
+            standings:PlTable,
+            coach:players.coachs[0],
+            players:players.players,
         }
+        console.log(this.state.coach)
+        console.log(this.state.players)
         this.newsService= new NewsService();
+        this.teamService = new TeamService();
 
     }
 
-    /*componentDidMount() {
+    componentDidMount() {
+        this.teamService.getTeamPlayers(this.state.team.team_id).then(
+            api => {
+                debugger;
+                this.setState({
+                    coach:api.api.coachs[0],
+                    players:api.api.players
+                })
+            }
+        )
+
+        this.teamService.getLeagueStanding(this.props.location.state.league_id).then((api)=>
+            this.setState({
+                standings: api.api.standings[0]
+            })
+        )
         this.newsService.get_news_for_team(this.state.team.name).then(
             (news => {
-                debugger;
                     this.setState({
                         news: news.articles
                     })
                 }
             ))
-    }*/
+    }
 
     render() {
-        console.log(this.state.news);
         return (
             <div className="socc-height-inherit socc-background">
                 <div className={"container-fluid"} id="navbar-container">
@@ -50,14 +75,19 @@ export default class TeamCard extends Component {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-2 p-2">
+                    <div className="col-2 mt-2 pl-4 pr-0">
                         <div className="card">
                             <div className="card-header">
-                                <h5 className="text-center">League Table</h5>
+                                <h5 className="text-center">Roster</h5>
+                            </div>
+                            <div className="card-body">
+                                <Roster
+                                    players={this.state.players}
+                                />
                             </div>
                         </div>
                     </div>
-                    <div className="col-8">
+                    <div className="col-7">
                         <ul className="list-group">
                             {this.state.news.map((article =>
                                     <li className="list-group-item mt-2">
@@ -75,22 +105,15 @@ export default class TeamCard extends Component {
                             ))}
                         </ul>
                     </div>
-                    <div className="col-2 pr-4 pt-2 pl-0">
+                    <div className="col-3 pr-4 pt-2 pl-0">
                         <div className="card">
+                            <div className="card-header">
+                                <h5 className="text-center">League Table</h5>
+                            </div>
                             <div className="card-body">
-                                <table className="table table-dark">
-                                    <thead className='thead-dark'>
-                                    <tr className="text-center">League table</tr>
-                                    </thead>
-                                    <tbody className="text-center">
-                                    <tr>abc</tr>
-                                    <tr>abc</tr>
-                                    <tr>abc</tr>
-                                    <tr>abc</tr>
-                                    <tr>abc</tr>
-                                    <tr>abc</tr>
-                                    </tbody>
-                                </table>
+                                <TeamTable standings={this.state.standings}
+                                           teamId={this.state.team.team_id}
+                                />
                             </div>
                         </div>
                     </div>
