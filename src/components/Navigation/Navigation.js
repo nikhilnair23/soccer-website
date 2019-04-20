@@ -14,6 +14,7 @@ class Navigation extends React.Component {
             navigate: false,
             articles: []
         };
+        console.log(this.props);
         this.searchService = new SearchService();
     }
 
@@ -63,7 +64,7 @@ class Navigation extends React.Component {
                             <li className="nav-item" id="">
                                 <button
                                     className={"btn text-white"}
-                                    onClick={() => this.props.onRouteChange('standings')}>
+                                    onClick={() => self.props.onRouteChange('standings')}>
                                     Leagues
                                 </button>
                             </li>

@@ -37,7 +37,7 @@ class Standings extends Component {
                 }
             ));
 
-        fetch('http://localhost:5000/standings/11')
+        fetch('http://localhost:5000/standings/87')
             .then(response => response.json())
             .then(x => this.setState(
                 {
@@ -45,7 +45,7 @@ class Standings extends Component {
                 }
             ));
 
-        fetch('http://localhost:5000/standings/87')
+        fetch('http://localhost:5000/standings/8')
             .then(response => response.json())
             .then(x => this.setState(
                 {

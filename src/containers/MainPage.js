@@ -12,7 +12,6 @@ import FavoriteTeam from "../components/FavoriteTeam/FavoriteTeam";
 import Register from "../components/Register/Register";
 import Standings from "../components/standings/Standings";
 import Fixtures from "../components/Fixtures/Fixtures";
-import {Redirect} from 'react-router';
 
 export default class MainPage extends Component {
     constructor(props) {
