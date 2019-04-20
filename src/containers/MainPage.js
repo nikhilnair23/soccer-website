@@ -78,7 +78,6 @@ export default class MainPage extends Component {
             <Fixtures onRouteChange={this.onRouteChange}/>
             :
             <div className={"container-fluid"} id="navbar-container">
-            :*/
             <div className="socc-height-inherit">
                 <div className={"container-fluid"} id="navbar-container">
                     <Navigation routeStatus={this.state.routeStatus}

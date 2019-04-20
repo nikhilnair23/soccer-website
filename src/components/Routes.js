@@ -12,10 +12,8 @@ const Routes = () => {
         <div className={"socc-background"}>
             <Router>
                 <div className={"container-fluid"} id="navbar-container">
-                    <Route path={"/"} exact
-                           render={() => <MainPage/>}/>
-                    <Route path={"/search/:searchTerm"} exact
-                           component={SearchResults}/>
+                    <Route path={"/"} exact render={() => <MainPage/>}/>
+                    <Route path={"/search/:searchTerm"} exact component={SearchResults}/>
                     <Route path={"/searchItem"} exact component={SearchResultItem}/>
                     <Route path={"/highlights"} exact component={Highlights}/>
                     <Route path={"/teams"} exact component={Teams}/>

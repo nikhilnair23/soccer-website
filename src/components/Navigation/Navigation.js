@@ -26,6 +26,17 @@ class Navigation extends React.Component {
         )
     };
 
+    goHome = () =>
+        this.props.history.push('/')
+
+    goToTeams = () => {
+        debugger;
+        return(
+        this.props.history.push('/teams')
+        )
+    }
+
+
     search = () => {
         self.setState({
             navigate: true
@@ -40,19 +51,21 @@ class Navigation extends React.Component {
                     pathname: '/search/'+this.state.searchText,
                     /*state: {articles: this.state.articles}*/
                 }}/>)
-
-
         }
         return (
             <nav className="navbar navbar-expand bg-black-90">
                 <div className="row container-fluid">
                     <div className="col-2">
+                        <button onClick={this.goHome}
+                            className="btn">
                         <h3 className="float-left pt-2 mr-1 mt-2 font-italic font-weight-bolder text-danger">FOOTBALL</h3>
+                        </button>
                     </div>
                     <div className="col-9 nav-container">
                         <ul className="nav nav-pills bg-black p-2">
                             <li className="nav-item" id="">
-                                <button className={"btn text-white"}>Teams</button>
+                                <button onClick={()=> this.goToTeams()}
+                                    className={"btn text-white"}>Teams</button>
                             </li>
                             <li className="nav-item" id="">
                                 <button
