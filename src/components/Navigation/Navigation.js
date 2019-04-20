@@ -54,10 +54,18 @@ class Navigation extends React.Component {
                                 <button className={"btn text-white"}>Teams</button>
                             </li>
                             <li className="nav-item" id="">
-                                <button className={"btn text-white"}>Fixtures</button>
+                                <button
+                                    className={"btn text-white"}
+                                    onClick={() => this.props.onRouteChange('fixtures')}>
+                                    Fixtures
+                                </button>
                             </li>
                             <li className="nav-item" id="">
-                                <button className={"btn text-white"}>Leagues</button>
+                                <button
+                                    className={"btn text-white"}
+                                    onClick={() => this.props.onRouteChange('standings')}>
+                                    Leagues
+                                </button>
                             </li>
                             <li className="nav-item" id="">
                                 <button className={"btn text-white"}>Scores</button>
@@ -65,23 +73,37 @@ class Navigation extends React.Component {
                             <li className="nav-item mr-2" id="">
                                 <button className={"btn text-white"}>Highlights</button>
                             </li>
+                            <li className="nav-item ml-2" id="wrap">
+                                <div className="search">
+                                    <input onChange={this.titleChanged}
+                                           type="text" id="searchTerm" className="form-control-sm mr-2"
+                                           placeholder="What are you looking for?"/>
+                                    <button
+                                        onClick={()=> this.search()}
+                                        className="searchButton">
+                                        <i className="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </li>
+                            {
+                                this.props.routeStatus === 'logged_in'
+                                ?
+                                <li className="nav-item" id="signout_button">
+                                    <button className="btn text-white"
+                                            onClick={() => this.props.onRouteChange('signout')}
+                                    >Sign out
+                                    </button>
+                                </li>
+                                :
+                                <li className="nav-item" id="signout_button">
+                                    <button className="btn text-white"
+                                            onClick={() => this.props.onRouteChange('signin')}
+                                    >Sign in
+                                    </button>
+                                </li>
+                            }
+
                         </ul>
-                        <div className="search">
-                            <input onChange={this.titleChanged}
-                                   type="text" id="searchTerm" className="form-control-sm mr-2"
-                                   placeholder="What are you looking for?"/>
-                            <button
-                                onClick={()=> this.search()}
-                                className="searchButton">
-                                <i className="fa fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div className="col-1 ">
-                        <button id="signout_button" className="btn text-white"
-                                onClick={() => this.props.onRouteChange('signout')}
-                        >Sign out
-                        </button>
                     </div>
 
 

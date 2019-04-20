@@ -1,0 +1,15 @@
+.team {
+    height: 300px;
+    width: 300px;
+}
+
+h3 {
+    margin-top: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.inputfav {
+    width: 300px;
+}

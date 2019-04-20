@@ -8,6 +8,11 @@ import SignIn from "../components/SignIn/SignIn";
 import NewsCarousel from "../components/News/NewsCarousel";
 import SearchService from "../services/SearchService";
 import {Redirect} from 'react-router';
+import FavoriteTeam from "../components/FavoriteTeam/FavoriteTeam";
+import Register from "../components/Register/Register";
+import Standings from "../components/standings/Standings";
+import Fixtures from "../components/Fixtures/Fixtures";
+import {Redirect} from 'react-router';
 
 export default class MainPage extends Component {
     constructor(props) {
@@ -15,7 +20,7 @@ export default class MainPage extends Component {
         this.state = {
             articles: [],
             article_no: 0,
-            route: 'signin',
+            route: 'home',
             routeStatus: 'not_logged_in'
         };
         this.newsService = new NewsService();
@@ -57,19 +62,37 @@ export default class MainPage extends Component {
 
     render() {
         return (
-            /*this.state.route === 'signin' || this.state.route === 'signout'
+            this.state.route === 'signin' || this.state.route === 'signout'
             ?
             <SignIn onRouteChange={this.onRouteChange}/>
+            :
+            this.state.route === 'register'
+            ?
+            <Register onRouteChange={this.onRouteChange}/>
+            :
+            this.state.route === 'standings'
+            ?
+            <Standings onRouteChange={this.onRouteChange}/>
+            :
+            this.state.route === 'fixtures'
+            ?
+            <Fixtures onRouteChange={this.onRouteChange}/>
+            :
+            <div className={"container-fluid"} id="navbar-container">
             :*/
             <div className="socc-height-inherit">
                 <div className={"container-fluid"} id="navbar-container">
-                    <Navigation/>
+                    <Navigation routeStatus={this.state.routeStatus}
+                                onRouteChange={this.onRouteChange}/>
                 </div>
                 <div className="container-fluid socc-height-inherit">
                     <div className="row socc-height-inherit">
                         <div className="col-3">
                             <h2 className="text-white text-wrap">Placeholder</h2>
                         </div>
+                        <NewsCarousel
+                            articles={this.state.articles}
+                        />
                         <div className="col-6">
                             <NewsCarousel
                                 articles={this.state.articles}
@@ -80,6 +103,8 @@ export default class MainPage extends Component {
                         </div>
                     </div>
                 </div>
+            </div>
+                {/*<FavoriteTeam/>*/}
             </div>
         )
     }
