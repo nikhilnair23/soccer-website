@@ -89,9 +89,6 @@ export default class MainPage extends Component {
                         <div className="col-3">
                             <h2 className="text-white text-wrap">Placeholder</h2>
                         </div>
-                        <NewsCarousel
-                            articles={this.state.articles}
-                        />
                         <div className="col-6">
                             <NewsCarousel
                                 articles={this.state.articles}
