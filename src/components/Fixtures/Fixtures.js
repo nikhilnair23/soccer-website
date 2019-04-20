@@ -79,7 +79,7 @@ class Fixtures extends Component {
                 {
                     h2h: Object.values(x['api']['fixtures'])
                 }
-           ));
+            ));
 
         fetch('http://localhost:5000/fixtures/id/' + fixture_id)
             .then(response => response.json())
@@ -94,6 +94,7 @@ class Fixtures extends Component {
                 details: true
             }
         )
+
     };
 
     reset = () => {
@@ -133,11 +134,11 @@ class Fixtures extends Component {
                         </button>
                     </div>
                     <div className="col-md-8">
+                        {/*{*/}
+                        {/*console.log(this.state)*/}
+                        {/*}*/}
                         {
-                            console.log(this.state)
-                        }
-                        {
-                            this.state.details === true
+                            this.state.details === true && this.state.h2h.length > 0 && this.state.fixtureById.length > 0
                             ?
                             <Match_Details h2h={this.state.h2h}
                                            fixtureById={this.state.fixtureById}
@@ -155,17 +156,17 @@ class Fixtures extends Component {
                             :
                             this.state.league === 'laliga'
                             ?
-                            <Matches fixtures={this.state.laliga}
+                            <Future fixtures={this.state.laliga}
                                      matchDetails={this.matchDetails}/>
                             :
                             this.state.league === 'bundesliga'
                             ?
-                            <Matches fixtures={this.state.bundesliga}
+                            <Future fixtures={this.state.bundesliga}
                                      matchDetails={this.matchDetails}/>
                             :
                             this.state.league === 'seriea'
                             ?
-                            <Matches fixtures={this.state.seriea}
+                            <Future fixtures={this.state.seriea}
                                      matchDetails={this.matchDetails}/>
                             :
                             <div>

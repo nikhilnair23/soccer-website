@@ -1,34 +1,191 @@
 import React from 'react';
 import {Component} from 'react';
+import pic from './vs.png'
+import odds from './odds.png'
 
 class Match_Details extends Component {
     constructor(props) {
         super(props);
         this.state= {
-            h2h: [],
-            fixtureById: []
-        }
+            h2h: this.props.h2h,
+            fixtureById: this.props.fixtureById,
+            home_crest: 'https://upload.wikimedia.org/wikipedia/en/b/be/Flag_of_England.svg',
+            away_crest: 'https://upload.wikimedia.org/wikipedia/en/b/be/Flag_of_England.svg'
+        };
+
+        fetch('http://localhost:5000/teams/team/' + this.state.fixtureById[0]['homeTeam_id'])
+            .then(response => response.json())
+            .then(x => this.setState(
+                {
+                    home_crest: x['api']['teams'][this.state.fixtureById[0]['homeTeam_id']]['logo']
+                }
+            ));
+
+        fetch('http://localhost:5000/teams/team/' + this.state.fixtureById[0]['awayTeam_id'])
+            .then(response => response.json())
+            .then(x => this.setState(
+                {
+                    away_crest: x['api']['teams'][this.state.fixtureById[0]['awayTeam_id']]['logo']
+                }
+            ));
+
     }
 
-    componentDidMount() {
-        const {h2h} = this.props;
-        const {fixtureById} = this.props;
-        this.setState(
-            {
-                h2h: h2h,
-                fixtureById: fixtureById
-            }
-        )
-    };
+    // componentDidMount() {
+    //     const {h2h} = this.props;
+    //     const {fixtureById} = this.props;
+    //     this.setState(
+    //         {
+    //             h2h: h2h,
+    //             fixtureById: fixtureById
+    //         }
+    //     )
+    // };
 
     render() {
-        const {h2h, fixtureById} = this.props;
-        console.log(h2h, fixtureById);
+        //const {h2h, fixtureById} = this.props;
+        // console.log(h2h, fixtureById);
+        // debugger;
+        // return(
+        //     <div>
+        //
+        //     </div>
+        //  )
+        // console.log(this.state);
+        // const home_id = this.state.h2h[0]['homeTeam_id'];
+        // const away_id = this.state.h2h[0]['awayTeam_id'];
+
         return (
-            <div>
-                {
-                    //  console.log(this.state.h2h, this.state.fixtureById)
-                }
+            <div className="container-fluid">
+                <div
+                    className='tc bg-washed-green dib ma2 br3 pa1 grow shadow-5 vh-75 w-50'>
+                    <div className='row ma3'>
+                        <div className='col-md-4 tc'>
+                            <img
+                                className=''
+                                src = {this.state.home_crest}
+                                alt = 'https://upload.wikimedia.org/wikipedia/en/b/be/Flag_of_England.svg'
+                                height={120}
+                                width={120}/>
+                        </div>
+                        <div className='col-md-4 tc'>
+                            <img className=''
+                                src={pic}
+                                 height={120}
+                                 width={120}/>
+                        </div>
+                        <div className='col-md-4 tc'>
+                            <img
+                                className=''
+                                src = {this.state.away_crest}
+                                alt = 'https://upload.wikimedia.org/wikipedia/en/b/be/Flag_of_England.svg'
+                                height={120}
+                                width={120}/>
+                        </div>
+                    </div>
+
+                    <div className='row ma3'>
+                        <div className='col-md-4 tc'>
+                            <h4>{this.state.fixtureById[0].homeTeam}</h4>
+                        </div>
+                        <div className='col-md-4 tc'>
+
+                        </div>
+                        <div className='col-md-4 tc'>
+                            <h4>{this.state.fixtureById[0].awayTeam}</h4>
+                        </div>
+                    </div>
+
+                    <div className='row ma3'>
+                        <div className='col tc'>
+                            <h4>{this.state.fixtureById[0].round}</h4>
+                        </div>
+                    </div>
+
+                    <div className='row ma3'>
+                        <div className='col tc'>
+                            <h5>{this.state.fixtureById[0].event_date}</h5>
+                        </div>
+                    </div>
+
+
+                    {/*<div className='row'>*/}
+                        {/*<div className='col tc'>*/}
+                            {/*<img className='ma2'*/}
+                                 {/*src={odds}*/}
+                                 {/*height={85}*/}
+                                 {/*width={85}/>*/}
+                        {/*</div>*/}
+                    {/*</div>*/}
+
+                    <div className='row ma4'>
+                        <div className='col-md-3 tc'>
+                            <button type="button"
+                                    onClick={() => this.props.reset()}
+                                    className="btn btn-secondary">
+                                Team news
+                            </button>
+                        </div>
+                        <div className='col-md-3 tc'>
+                            <button type="button"
+                                    onClick={() => this.props.reset()}
+                                    className="btn btn-secondary">
+                                Squads
+                            </button>
+                        </div>
+                        <div className='col-md-3 tc'>
+                            <button type="button"
+                                    onClick={() => this.props.reset()}
+                                    className="btn btn-secondary">
+                                Table
+                            </button>
+                        </div>
+                        <div className='col-md-3 tc'>
+                            <button type="button"
+                                    onClick={() => this.props.reset()}
+                                    className="btn btn-secondary">
+                                Odds
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <h3>
+                            Previous meetings
+                        </h3>
+                        <h5>
+                            {
+                                this.state.h2h
+                                    .filter(
+                                        match =>
+                                            match.statusShort === "FT"
+                                    )
+                                    .map(
+                                    match =>
+                                        <div className="row ma3">
+
+                                            <div className="col-md-4 tc">
+                                                {match.homeTeam}
+                                            </div>
+                                            <div className="col-md-1 tc">
+                                                {match.goalsHomeTeam}
+                                            </div>
+                                            <div className="col-md-2 tc">
+                                                -
+                                            </div>
+                                            <div className="col-md-1 tc">
+                                                {match.goalsAwayTeam}
+                                            </div>
+                                            <div className="col-md-4 tc">
+                                                {match.awayTeam}
+                                            </div>
+                                        </div>
+                                )
+                            }
+                        </h5>
+                    </div>
+                </div>
                 <button onClick={() => this.props.reset()}>
                     Go Back
                 </button>
