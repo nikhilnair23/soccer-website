@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
-import Navigation from "./Navigation/Navigation";
+import Navigation from "../Navigation/Navigation";
 import './Teams.css'
-import NewsService from "../services/NewsService"
-import TeamService from "../services/TeamService"
-import news from '../services/news'
-import PlTable from '../data/PL_Table'
-import players from '../data/players'
+import NewsService from "../../services/NewsService"
+import TeamService from "../../services/TeamService"
+import news from '../../services/news'
+import PlTable from '../../data/PL_Table'
+import players from '../../data/players'
 import TeamTable from "./TeamTable";
 import Roster from "./Roster";
 

@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
-import Navigation from "./Navigation/Navigation";
-import defaultTeams from '../data/teams'
-import leagues from '../data/leagues'
+import Navigation from "../Navigation/Navigation";
+import defaultTeams from '../../data/teams'
+import leagues from '../../data/leagues'
 import './Teams.css'
 import Dropdown from "react-bootstrap/Dropdown";
 import {DropdownButton} from "react-bootstrap";
-import TeamService from '../services/TeamService';
+import TeamService from '../../services/TeamService';
 
 let self;
 export default class Teams extends Component {

@@ -4,8 +4,8 @@ import SearchResults from "./Search/SearchResults";
 import SearchResultItem from "./Search/SearchResultItem"
 import React from "react";
 import Highlights from "./Highlights";
-import Teams from "./Teams";
-import TeamCard from "./TeamCard";
+import Teams from "./Teams/Teams";
+import TeamCard from "./Teams/TeamCard";
 
 const Routes = () => {
     return (
