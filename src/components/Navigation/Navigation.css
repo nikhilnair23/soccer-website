@@ -9,6 +9,13 @@
     font-family: "Helvetica Neue";
 }
 
+#profile_button {
+}
+
+.buttons {
+    float: right;
+}
+
 #search {
     width: 100%;
     position: relative;

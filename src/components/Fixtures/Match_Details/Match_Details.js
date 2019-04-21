@@ -1,7 +1,8 @@
 import React from 'react';
 import {Component} from 'react';
 import pic from './vs.png'
-import odds from './odds.png'
+import odds from './odds.png';
+import './Match_Details.css';
 
 class Match_Details extends Component {
     constructor(props) {
@@ -58,7 +59,7 @@ class Match_Details extends Component {
         return (
             <div className="container-fluid">
                 <div
-                    className='tc bg-washed-green dib ma2 br3 pa1 grow shadow-5 vh-75 w-50'>
+                    className='tc bg-washed-green dib ma2 br3 pa1 grow shadow-5 vh-75 w-50 card'>
                     <div className='row ma3'>
                         <div className='col-md-4 tc'>
                             <img
@@ -127,7 +128,7 @@ class Match_Details extends Component {
                             </button>
                         </div>
                         <div className='col-md-3 tc'>
-                            <button type="button"
+                            <button type="buttclassName='col-md-3 tc'on"
                                     onClick={() => this.props.reset()}
                                     className="btn btn-secondary">
                                 Squads

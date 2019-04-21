@@ -38,15 +38,17 @@ class SignIn extends Component{
                                      password: this.state.password
                                  })
         })
-            //.then(response => response.json())
+            .then(response => response.json())
             .then(res => {
-                if (res.status === 400) {
+                if (res.length === 0) {
                     document.getElementById("username_input_login").value = '';
                     document.getElementById("password_input_login").value = '';
                     alert('Invalid credentials, try again');
 
                 }
                 else {
+                    //console.log(res[0]['username']);
+                    this.props.getUser(res[0]);
                     this.props.onRouteChange('home');
                 }
             });

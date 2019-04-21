@@ -1,7 +1,7 @@
 import React from 'react'
 import TeamCard from './TeamCard';
 
-const TeamList = ( {Teams} ) => {
+const TeamList = ({Teams, teamSelect}) => {
     return (
         <div>
             {
@@ -9,10 +9,11 @@ const TeamList = ( {Teams} ) => {
                     team => {
                         return (
                             <TeamCard
-                                key = {team.id}
-                                id = {team.id}
-                                name = {team.name}
-                                crest = {team.crestUrl}/>
+                                key={team.id}
+                                id={team.id}
+                                name={team.name}
+                                crest={team.crestUrl}
+                                teamSelect={teamSelect}/>
                         );
                     }
                 )
