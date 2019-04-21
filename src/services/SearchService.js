@@ -1,6 +1,6 @@
 export default class SearchService {
     constructor() {
-        this.url = "https://newsapi.org/v2/everything?apiKey=334c15d0c6464c22b41429935ea6f4d2&sortBy=relevancy&sources=bbc-sport,four-four-two,football-italia,talksport&q="
+        this.url = "https://newsapi.org/v2/everything?sources=four-four-two,football-italia,talksport, bleacher-report, &apiKey=334c15d0c6464c22b41429935ea6f4d2&q="
     }
 
     search_news = (searchTerm) => {

@@ -1,0 +1,87 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+
+.callout.secondary {
+    background: #222;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-header {
+    text-align: left;
+    margin-top: 10px;
+    margin-left:20px;
+}
+
+.comment-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-text{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.form-btn-container{
+    text-align: left;
+}
+
+.form-btn{
+    width: 20%;
+    margin: 10px;
+    margin-left: 20px;
+}
+
+
+
+.comment-list {
+    display: block;
+    list-style: none;
+    margin: 0 0 0px 0;
+}
+
+.comment-list li {
+    margin: 0 0 0 0;
+    background: #333;
+    padding: 20px;
+}
+
+.comment-user {
+    display: flex;
+    align-items: center;
+    margin: 0 0 10px 0;
+}
+.comment-user-avatar-wrap {
+    width: 40px;
+    margin-right: 10px;
+}
+.comment-username {
+    margin-right: 5px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.on {
+    margin-right: 5px;
+    color: white;
+}
+
+ul.comment-list{
+    padding-inline-start: 0px;
+}
+.comment-text {
+    background: white;
+    color: #222;
+    padding: 20px;
+/*:last-child {*/
+    /*margin: 0;*/
+/*}*/
+}
+
+.comment-box{
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
