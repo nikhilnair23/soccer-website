@@ -16,7 +16,7 @@ class Profile extends Component {
     }
 
     updateUser = () => {
-        console.log(this.state)
+        //console.log(this.state)
         const pw = this.state.password;
         const fn = this.state.first_name;
         const ln = this.state.last_name;
@@ -172,14 +172,27 @@ class Profile extends Component {
                             {this.state.user['favorite_team']}
                         </h4>
                     </div>
-                    <div>
-                        <h3 className="font-weight-bold">
-                            Admin status
-                        </h3>
-                        <h4>
-                            {this.state.user['isAdmin']}
-                        </h4>
-                    </div>
+                    {
+
+                        this.state.user['isAdmin'] === 1
+                        ?
+                        <button className='btn btn-primary'
+                                onClick={() => this.props.onRouteChange('users')}>
+                            User list
+                        </button>
+                        :
+                        <p>
+                            You ain't admin
+                        </p>
+                    }
+                    {/*<div>*/}
+                        {/*<h3 className="font-weight-bold">*/}
+                            {/*Admin status*/}
+                        {/*</h3>*/}
+                        {/*<h4>*/}
+                            {/*{this.state.user['isAdmin']}*/}
+                        {/*</h4>*/}
+                    {/*</div>*/}
                     {
                         this.state.edit_mode === false
                         ?

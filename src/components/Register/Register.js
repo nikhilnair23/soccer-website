@@ -2,7 +2,7 @@ import React from 'react';
 import {Component} from 'react';
 import './Register.css'
 
-class Register extends Component{
+class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -56,7 +56,8 @@ class Register extends Component{
             first_name: this.state.first_name,
             last_name: this.state.last_name,
             favorite_team: this.state.favorite_team,
-            isAdmin: this.state.isAdmin
+            isAdmin: this.state.isAdmin,
+            ban_status: 0
         };
 
         fetch('http://localhost:5000/register', {
@@ -68,12 +69,12 @@ class Register extends Component{
                                      first_name: this.state.first_name,
                                      last_name: this.state.last_name,
                                      favorite_team: 'lfc',
-                                     isAdmin: this.state.isAdmin
+                                     isAdmin: this.state.isAdmin,
+                                     ban_status: 0
                                  })
         })
             .then(response => response.json())
             .then(
-
                 res => {
                     if (res.length === 0) {
                         document.getElementById("username_input_register").value = '';

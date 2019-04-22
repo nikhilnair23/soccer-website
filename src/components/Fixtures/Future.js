@@ -2,7 +2,12 @@ import React from "react";
 
 const Future = ({fixtures, matchDetails}) =>
     <div className='tc'
-         style={{overflow: 'scroll', border: '3px solid black', width: '1400px', height: '700px', margin: '10px'}}>
+         style={{
+             overflow: 'scroll',
+             border: '3px silver',
+             height: '800px',
+             margin: '10px'
+         }}>
         {
             fixtures.filter(
                 match => match.statusShort !== "FT"
@@ -39,13 +44,19 @@ const Future = ({fixtures, matchDetails}) =>
                                 <li className="list-group-item hover-bg-light-blue bg-light-green shadow-hover ma2">
                                     <div className="row">
                                         <div className="col-md-4 tc">
-                                            {match.homeTeam}
+                                            <h3>
+                                                {match.homeTeam}
+                                            </h3>
                                         </div>
                                         <div className="col-md-4 tc">
-                                            {match.event_date}
+                                            <h3>
+                                                {match.event_date.split("T")[0]}
+                                            </h3>
                                         </div>
                                         <div className="col-md-4 tc">
-                                            {match.awayTeam}
+                                            <h3>
+                                                {match.awayTeam}
+                                            </h3>
                                         </div>
                                     </div>
                                 </li>
@@ -53,7 +64,6 @@ const Future = ({fixtures, matchDetails}) =>
 
                         </div>
                     </div>
-
             )
         }
     </div>
