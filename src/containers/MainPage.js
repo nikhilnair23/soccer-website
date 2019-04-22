@@ -47,7 +47,7 @@ export default class MainPage extends Component {
                 }
             )
         }
-        if (routeTo === 'home') {
+        if ((this.state.route ==='signin' || this.state.route ==='favorite_team') && routeTo === 'home') {
             this.setState(
                 {
                     routeStatus: 'logged_in'

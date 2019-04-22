@@ -68,7 +68,10 @@ class Fixtures extends Component {
     changeLeague = (league) => {
         this.setState(
             {
-                league: league
+                league: league,
+                h2h: [],
+                fixtureById: [],
+                details: false
             }
         )
     };
@@ -130,6 +133,11 @@ class Fixtures extends Component {
             <div className="container-fluid tc">
                 <div className="col tc bg-moon-gray">
                     <button type='button'
+                            className={"home_button league_button btn-warning ma3 active"}
+                            onClick={() => this.props.onRouteChange('home')}>
+                        Home page
+                    </button>
+                    <button type='button'
                             className={this.state.league === 'live'
                                        ? "league_button btn-primary ma3 active"
                                        : "league_button btn-secondary ma3"}
@@ -168,13 +176,13 @@ class Fixtures extends Component {
                 <div className="tc ma5">
                     {
 
-                        this.state.odds === true && this.state.details === true
-                        && this.state.h2h.length > 0
-                        && this.state.fixtureById.length > 0
-                        ?
-                        <Odds fixtureById={this.state.fixtureById}
-                              resetOdds={this.resetOdds}/>
-                        :
+                        // this.state.odds === true && this.state.details === true
+                        // && this.state.h2h.length > 0
+                        // && this.state.fixtureById.length > 0
+                        // ?
+                        // <Odds fixtureById={this.state.fixtureById}
+                        //       resetOdds={this.resetOdds}/>
+                        // :
                         this.state.details === true && this.state.h2h.length > 0
                         && this.state.fixtureById.length > 0
                         ?

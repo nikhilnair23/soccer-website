@@ -2,3 +2,19 @@
     cursor: url(http://www.rw-designer.com/icon-image/3718-32x32x32.png), pointer;
 }
 
+.left_col {
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0
+}
+
+.right_col {
+    display: flex;
+    position: fixed;
+    top: 5%;
+    left: 25%;
+}
+
+.active {
+}
