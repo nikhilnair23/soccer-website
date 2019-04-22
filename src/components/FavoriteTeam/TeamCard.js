@@ -21,6 +21,12 @@ const TeamCard = (props) => {
                     {name}
                 </h3>
             </div>
+            <div>
+                <button className='btn btn-outline-dark'
+                        onClick={() => props.teamSelect(name)}>
+                    Select
+                </button>
+            </div>
         </div>
     );
 };

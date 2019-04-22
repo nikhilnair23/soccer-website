@@ -1,7 +1,13 @@
+import teams from "../services/teams.json"
+
 export default class TeamService {
     constructor(props) {
         this.url = "https://api-football-v1.p.rapidapi.com/teams/league/"
     }
+
+    get_teams = () => {
+        return teams
+    };
 
     findTeams = (leagueId) =>
         fetch(this.url+leagueId,{

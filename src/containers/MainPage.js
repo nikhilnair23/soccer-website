@@ -12,6 +12,8 @@ import FavoriteTeam from "../components/FavoriteTeam/FavoriteTeam";
 import Register from "../components/Register/Register";
 import Standings from "../components/standings/Standings";
 import Fixtures from "../components/Fixtures/Fixtures";
+import Profile from "../components/Profile/Profile";
+import Users from "../components/Users/Users";
 
 export default class MainPage extends Component {
     constructor(props) {
@@ -20,7 +22,8 @@ export default class MainPage extends Component {
             articles: [],
             article_no: 0,
             route: 'home',
-            routeStatus: 'not_logged_in'
+            routeStatus: 'not_logged_in',
+            user: []
         };
         this.newsService = new NewsService();
     }
@@ -58,16 +61,36 @@ export default class MainPage extends Component {
         )
     };
 
+    getUser = (user) => {
+        this.setState(
+            {
+                user: user
+            }
+        );
+        //console.log(this.state.user);
+    };
+
+    setTeam = (team_name) => {
+        this.state.user['favorite_team'] = team_name;
+    };
 
     render() {
         return (
             this.state.route === 'signin' || this.state.route === 'signout'
             ?
-            <SignIn onRouteChange={this.onRouteChange}/>
+            <SignIn onRouteChange={this.onRouteChange}
+                    getUser={this.getUser}/>
             :
             this.state.route === 'register'
             ?
-            <Register onRouteChange={this.onRouteChange}/>
+            <Register onRouteChange={this.onRouteChange}
+                      getUser={this.getUser}/>
+            :
+            this.state.route === 'favorite_team'
+            ?
+            <FavoriteTeam onRouteChange={this.onRouteChange}
+                          setTeam={this.setTeam}
+                          user={this.state.user}/>
             :
             this.state.route === 'standings'
             ?
@@ -76,6 +99,15 @@ export default class MainPage extends Component {
             this.state.route === 'fixtures'
             ?
             <Fixtures onRouteChange={this.onRouteChange}/>
+            :
+            this.state.route === 'profile'
+            ?
+            <Profile user={this.state.user}
+                     onRouteChange={this.onRouteChange}/>
+            :
+            this.state.route === 'users'
+            ?
+            <Users onRouteChange={this.onRouteChange}/>
             :
             <div className={"container-fluid"} id="navbar-container">
             <div className="socc-height-inherit">

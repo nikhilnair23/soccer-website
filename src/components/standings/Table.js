@@ -1,6 +1,7 @@
 import React from "react";
 
-const UCL = ({standings}) =>
+
+const Table = ({standings}) =>
     <div className='tc'
          style={{
              overflow: 'scroll',
@@ -9,19 +10,22 @@ const UCL = ({standings}) =>
              height: '900px',
              margin: '10px'
          }}>
-        <table className="table-light table-striped table-responsive-md table-hover f6 w-100 mw8 center tc">
+        <table
+            className="table-light table-striped table-responsive-md table-hover f6 w-100 mw8 center tc">
             <thead>
             <tr>
                 <th className="fw6 bb b--black-20 tl pb3 pr3 bg-white tc" scope="col">Rank</th>
                 <th className="fw6 bb b--black-20 tl pb3 pr3 bg-white tc" scope="col">Team Name</th>
-                <th className="fw6 bb b--black-20 tl pb3 pr3 bg-white tc" scope="col">Group</th>
+                <th className="fw6 bb b--black-20 tl pb3 pr3 bg-white tc" scope="col">Matches</th>
                 <th className="fw6 bb b--black-20 tl pb3 pr3 bg-white tc" scope="col">Points</th>
                 <th className="fw6 bb b--black-20 tl pb3 pr3 bg-white tc" scope="col">Wins</th>
                 <th className="fw6 bb b--black-20 tl pb3 pr3 bg-white tc" scope="col">Loses</th>
                 <th className="fw6 bb b--black-20 tl pb3 pr3 bg-white tc" scope="col">Draws</th>
                 <th className="fw6 bb b--black-20 tl pb3 pr3 bg-white tc" scope="col">Goals for</th>
-                <th className="fw6 bb b--black-20 tl pb3 pr3 bg-white tc" scope="col">Goals against</th>
-                <th className="fw6 bb b--black-20 tl pb3 pr3 bg-white tc" scope="col">Goal Difference</th>
+                <th className="fw6 bb b--black-20 tl pb3 pr3 bg-white tc" scope="col">Goals against
+                </th>
+                <th className="fw6 bb b--black-20 tl pb3 pr3 bg-white" scope="col">Goal Difference
+                </th>
             </tr>
             </thead>
             <tbody className='lh-copy'>
@@ -31,7 +35,7 @@ const UCL = ({standings}) =>
                         <tr>
                             <th scope="row">{team.rank}</th>
                             <td className='pv3 pr3 bb b--black-20'>{team.teamName}</td>
-                            <td className='pv3 pr3 bb b--black-20'>{team.group}</td>
+                            <td className='pv3 pr3 bb b--black-20'>{team.matchsPlayed}</td>
                             <td className='pv3 pr3 bb b--black-20'>{team.points}</td>
                             <td className='pv3 pr3 bb b--black-20'>{team.win}</td>
                             <td className='pv3 pr3 bb b--black-20'>{team.lose}</td>
@@ -46,4 +50,4 @@ const UCL = ({standings}) =>
         </table>
     </div>
 
-export default UCL;
+export default Table;

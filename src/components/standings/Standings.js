@@ -3,10 +3,7 @@ import {Component} from 'react';
 import './Standings.css';
 import UCL from "./UCL";
 import Leagues from "./Leagues";
-import EPL from "./EPL";
-import LaLiga from "./LaLiga";
-import Bundesliga from "./Bundesliga";
-import SerieA from "./SerieA";
+import Table from "./Table";
 
 class Standings extends Component {
 
@@ -64,11 +61,13 @@ class Standings extends Component {
     }
 
     changeLeague = (league) => {
+        //document.getElementById(this.state.league).classList.remove('active');
         this.setState(
             {
                 league: league
             }
         );
+        //document.getElementById(this.state.league).classList.add('active');
     };
 
     render() {
@@ -77,9 +76,13 @@ class Standings extends Component {
             // ?
             <div className='container-fluid'>
                 <div className="row">
-                    <Leagues changeLeague={this.changeLeague}/>
+                    <div className='col-md-3 bg-light-green'>
+                        <Leagues changeLeague={this.changeLeague}
+                                 league={this.state.league}/>
+                    </div>
+
                     <div className="col-md-9">
-                        {console.log(this.state.ucl)}
+                        {/*{console.log(this.state.ucl)}*/}
                         {
                             this.state.league === 'ucl'
                             ?
@@ -87,19 +90,19 @@ class Standings extends Component {
                             :
                             this.state.league === 'epl'
                             ?
-                            <EPL standings={this.state.epl}/>
+                            <Table standings={this.state.epl}/>
                             :
                             this.state.league === 'laliga'
                             ?
-                            <LaLiga standings={this.state.laliga}/>
+                            <Table standings={this.state.laliga}/>
                             :
                             this.state.league === 'bundesliga'
                             ?
-                            <Bundesliga standings={this.state.bundesliga}/>
+                            <Table standings={this.state.bundesliga}/>
                             :
                             this.state.league === 'seriea'
                             ?
-                            <SerieA standings={this.state.seriea}/>
+                            <Table standings={this.state.seriea}/>
                             :
                             <div>
 

@@ -14,7 +14,7 @@ class Navigation extends React.Component {
             navigate: false,
             articles: []
         };
-        console.log(this.props);
+        //console.log(this.props);
         this.searchService = new SearchService();
     }
 
@@ -102,12 +102,27 @@ class Navigation extends React.Component {
                             {
                                 this.props.routeStatus === 'logged_in'
                                 ?
-                                <li className="nav-item" id="signout_button">
-                                    <button className="btn text-white"
-                                            onClick={() => this.props.onRouteChange('signout')}
-                                    >Sign out
-                                    </button>
-                                </li>
+                                <div>
+                                    <div className='inline-block'>
+                                        <li className="nav-item" id="signout_button">
+                                            <button className="btn text-white"
+                                                    onClick={() => this.props.onRouteChange('signout')}
+                                            >Sign out
+                                            </button>
+                                        </li>
+                                    </div>
+
+                                    <div className='inline-flex'>
+                                        <li className="nav-item" id="profile_button">
+                                            <button className="btn btn-primary text-white"
+                                                    onClick={() => this.props.onRouteChange('profile')}
+                                            >Profile
+                                            </button>
+                                        </li>
+                                    </div>
+
+                                </div>
+
                                 :
                                 <li className="nav-item" id="signout_button">
                                     <button className="btn text-white"

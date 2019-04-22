@@ -1,7 +1,8 @@
 import React from 'react';
 import {Component} from 'react';
 import pic from './vs.png'
-import odds from './odds.png'
+import odds from './odds.png';
+import './Match_Details.css';
 
 class Match_Details extends Component {
     constructor(props) {
@@ -31,34 +32,13 @@ class Match_Details extends Component {
 
     }
 
-    // componentDidMount() {
-    //     const {h2h} = this.props;
-    //     const {fixtureById} = this.props;
-    //     this.setState(
-    //         {
-    //             h2h: h2h,
-    //             fixtureById: fixtureById
-    //         }
-    //     )
-    // };
 
     render() {
-        //const {h2h, fixtureById} = this.props;
-        // console.log(h2h, fixtureById);
-        // debugger;
-        // return(
-        //     <div>
-        //
-        //     </div>
-        //  )
-        // console.log(this.state);
-        // const home_id = this.state.h2h[0]['homeTeam_id'];
-        // const away_id = this.state.h2h[0]['awayTeam_id'];
 
         return (
             <div className="container-fluid">
                 <div
-                    className='tc bg-washed-green dib ma2 br3 pa1 grow shadow-5 vh-75 w-50'>
+                    className='tc bg-washed-green dib ma2 br3 pa1 grow shadow-5 vh-75 w-50 card'>
                     <div className='row ma3'>
                         <div className='col-md-4 tc'>
                             <img
@@ -98,13 +78,17 @@ class Match_Details extends Component {
 
                     <div className='row ma3'>
                         <div className='col tc'>
-                            <h4>{this.state.fixtureById[0].round}</h4>
+                            <h3>{this.state.fixtureById[0].round}</h3>
                         </div>
                     </div>
 
                     <div className='row ma3'>
                         <div className='col tc'>
-                            <h5>{this.state.fixtureById[0].event_date}</h5>
+                            <h4>
+                                {this.state.fixtureById[0].event_date.split("T")[0] + " "}
+                                at
+                                {" " + this.state.fixtureById[0].event_date.split("T")[1].split("+")[0]}
+                            </h4>
                         </div>
                     </div>
 
@@ -127,7 +111,7 @@ class Match_Details extends Component {
                             </button>
                         </div>
                         <div className='col-md-3 tc'>
-                            <button type="button"
+                            <button type="button" className='col-md-3 tc'
                                     onClick={() => this.props.reset()}
                                     className="btn btn-secondary">
                                 Squads
@@ -142,7 +126,7 @@ class Match_Details extends Component {
                         </div>
                         <div className='col-md-3 tc'>
                             <button type="button"
-                                    onClick={() => this.props.reset()}
+                                    onClick={() => this.props.setOdds()}
                                     className="btn btn-secondary">
                                 Odds
                             </button>

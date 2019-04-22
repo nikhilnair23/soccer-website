@@ -12,12 +12,14 @@ class FavoriteTeam extends Component {
         this.teamService = new TeamService();
         this.state = {
             teams: [],
-            search_team: '1234ABC'
+            search_team: '1234ABC',
+            user: this.props.user
         }
     }
 
     componentDidMount() {
-        console.log(this.teamService.get_teams()[0].teams)
+        //console.log(this.teamService.get_teams()[0].teams)
+
         this.setState(
             {
                 teams: this.teamService.get_teams()[0].teams
@@ -43,6 +45,21 @@ class FavoriteTeam extends Component {
         }
     };
 
+    teamSelect = (team_name) => {
+        //console.log(this.props.user);
+        fetch('http://localhost:5000/favorite_team/' + this.state.user['username'], {
+                  method: 'PUT',
+                  headers: {'Content-Type': 'application/json'},
+                  body: JSON.stringify({
+                                           favorite_team: team_name
+                                       })
+              }
+        ).then(
+            this.props.setTeam(team_name)
+        );
+        this.props.onRouteChange('home');
+    };
+
     render() {
         return (
             <div className='tc'>
@@ -62,6 +79,7 @@ class FavoriteTeam extends Component {
                         }
                     )
                 }
+                          teamSelect={this.teamSelect}
                 />
             </div>
         );

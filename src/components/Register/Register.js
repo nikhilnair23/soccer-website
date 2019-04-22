@@ -2,7 +2,7 @@ import React from 'react';
 import {Component} from 'react';
 import './Register.css'
 
-class Register extends Component{
+class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -56,9 +56,10 @@ class Register extends Component{
             first_name: this.state.first_name,
             last_name: this.state.last_name,
             favorite_team: this.state.favorite_team,
-            user_type: this.state.user_type
+            isAdmin: this.state.isAdmin,
+            ban_status: 0
         };
-        console.log(u);
+
         fetch('http://localhost:5000/register', {
             method: 'POST',
             credentials : 'include',
@@ -69,21 +70,22 @@ class Register extends Component{
                                      first_name: this.state.first_name,
                                      last_name: this.state.last_name,
                                      favorite_team: 'lfc',
-                                     isAdmin: this.state.isAdmin
+                                     isAdmin: this.state.isAdmin,
+                                     ban_status: 0
                                  })
         })
-            //.then(response => response.json())
+            .then(response => response.json())
             .then(
-
                 res => {
-                    if (res.status === 400) {
+                    if (res.length === 0) {
                         document.getElementById("username_input_register").value = '';
                         document.getElementById("password_input_register").value = '';
                         alert('User already exists, sign in or try again.');
 
                     }
                     else {
-                        this.props.onRouteChange('home');
+                        this.props.getUser(u);
+                        this.props.onRouteChange('favorite_team');
                     }
                     // console.log(res);
                     // debugger;
