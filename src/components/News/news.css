@@ -7,6 +7,8 @@
     background:  url("https://image.freepik.com/free-vector/dark-blue-blurred-background_1034-589.jpg");
     -webkit-background-size: contain;
     background-size: cover;
+    border: 1px solid #000;
+    border-radius: 15px;
 
 }
 
@@ -30,7 +32,7 @@
 .socc-news-img{
     position: relative;
     width: 94%;
-    margin-left: 12px;
+    margin-left: 14px;
     height: 340px;
     object-fit: contain;
 }
