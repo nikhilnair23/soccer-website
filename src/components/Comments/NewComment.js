@@ -25,8 +25,11 @@ const NewComment = (props) => {
                 </div>
             </div>
 
+            <div className="comment-text-container">
             <div className="card comment-text">
                 <h5 className ="p-1 comment-text-display">{props.details.comment}</h5>
+            </div>
+                {props.user.isAdmin ===1 && <button className="btn btn-danger">DELETE</button>}
             </div>
         </div>
     )

@@ -6,13 +6,11 @@ export default class UserService{
 
 
     logged_in = () =>{
-        debugger;
         let url2 = this.url+"loggedIn"
         return (fetch(url2,{
             credentials : 'include',
             method:'get'
         }).then((response) => {
-            debugger;
             return response.json();
         }))
     }

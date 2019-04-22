@@ -9,7 +9,9 @@ export default class CommentBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            comments: []
+            comments: [],
+            user : '',
+            loggedIn: false
         }
         this.commentService = new CommentService();
         this.userService = new UserService();
@@ -19,16 +21,23 @@ export default class CommentBox extends Component {
                     comments: comments.body
                 })
         })
+        this.userService.logged_in().then(response => {
+            if (response.data !== "NOT_LOGGED_IN") {
+                this.setState({
+                    loggedIn:true,
+                    user:response.data
+                })
+            }
+        })
+
     }
 
     addComment = (commentData) => {
-        this.userService.logged_in().then(response => {
-            if (response.data !== "NOT_LOGGED_IN") {
-                console.log(response);
+            if (this.state.loggedIn !== false) {
                 var timeStamp = (new Date()).getTime();
                 let newComment = {
                     "comment": commentData.commentBody,
-                    "user": response.data.username,
+                    "user": this.state.user.username,
                     "date": timeStamp
                 }
                 this.commentService.add_news_comment(newComment, this.props.url).then(response => {
@@ -40,22 +49,21 @@ export default class CommentBox extends Component {
                 })
             }
             else{
-                alert('You aint logged in')
+                alert('Please log in to comment')
             }
-        })
     }
 
     renderComment = (key) => {
         return (
             <li className="">
-                <NewComment index={key.time} details={key}/>
+                <NewComment index={key.time} details={key} user={this.state.user}/>
             </li>
         )
     }
 
     render() {
 
-        console.log(this.state.comments)
+        console.log(this.state)
         return (
             <div>
                 <div className="add-comment-box">

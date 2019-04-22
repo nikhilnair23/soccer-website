@@ -78,16 +78,7 @@
 ul.comment-list{
     padding-inline-start: 0px;
 }
-.comment-text {
-    background: white;
-    color: #222;
-    padding: 1px;
-    margin-right:10px;
-    margin-left:10px;
-/*:last-child {*/
-    /*margin: 0;*/
-/*}*/
-}
+
 
 .comment-box{
     margin-bottom: 20px;
@@ -114,4 +105,21 @@ ul.comment-list{
 .add-comment-box{
     margin-top: 10px;
     text-align: left;
+}
+
+.comment-text-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.comment-text {
+    background: white;
+    color: #222;
+    padding: 1px;
+    margin-right:10px;
+    margin-left:10px;
+    width: 100%;
+    /*:last-child {*/
+    /*margin: 0;*/
+    /*}*/
 }
