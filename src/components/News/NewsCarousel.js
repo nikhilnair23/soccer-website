@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Carousel from 'react-bootstrap/Carousel'
 import {Redirect} from 'react-router';
+import './news.css'
 
 export default class NewsCarousel extends React.Component {
     constructor(props, context) {
@@ -29,18 +30,18 @@ export default class NewsCarousel extends React.Component {
                     activeIndex={index}
                     direction={direction}
                     onSelect={this.handleSelect}
-                    interval = {2000}
+                    interval = {200000}
                     fade={false}
                 >
                         {
                             this.props.articles.map((article) =>
                                 <Carousel.Item>
-                                    <img className="d-block p-2 rounded socc-news-img"
+                                    <img className="d-block rounded socc-news-img"
                                          src={article.urlToImage}
                                     />
                                     <Carousel.Caption>
                                         <a href={article.url} target="_blank">
-                                            <p className="font-weight-bolder text-white">{article.title}</p>
+                                            <p className="article-text">{article.title}</p>
                                         </a>
                                     </Carousel.Caption>
                                 </Carousel.Item>

@@ -26,14 +26,14 @@ export default class MainPage extends Component {
     }
 
     componentDidMount() {
-        /*this.newsService.get_news().then(response => {
+        this.newsService.get_news().then(response => {
             this.setState(
                 { articles : response.articles}
             )
-        })*/
-        this.setState(
+        })
+        /*this.setState(
             {articles: this.newsService.get_news()}
-        )
+        )*/
     }
 
     onRouteChange = (routeTo) => {
