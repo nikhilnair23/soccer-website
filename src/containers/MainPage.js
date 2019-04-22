@@ -23,6 +23,7 @@ export default class MainPage extends Component {
             article_no: 0,
             route: 'home',
             routeStatus: 'not_logged_in',
+            loggedIn: true,
             user: []
         };
         this.newsService = new NewsService();
