@@ -28,11 +28,13 @@ class SignIn extends Component{
         )
     };
 
-    onSignIn = () => {
+    onSignIn = () =>
+
         //this.props.onRouteChange('home');
         fetch('http://localhost:5000/login', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
+            credentials:'include',
             body: JSON.stringify({
                                      username: this.state.username,
                                      password: this.state.password
@@ -40,17 +42,16 @@ class SignIn extends Component{
         })
             //.then(response => response.json())
             .then(res => {
+                debugger;
                 if (res.status === 400) {
                     document.getElementById("username_input_login").value = '';
                     document.getElementById("password_input_login").value = '';
                     alert('Invalid credentials, try again');
-
                 }
                 else {
                     this.props.onRouteChange('home');
                 }
             });
-    };
 
     onAdminChange = () => {
         if (document.getElementById("user_type").checked) {

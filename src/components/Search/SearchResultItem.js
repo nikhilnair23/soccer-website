@@ -42,11 +42,6 @@ export default class SearchResultItem extends Component{
                     </div>
 
                     <div className="col-6">
-                        <div>
-                            <CommentBox
-                            url = {this.props.location.state.title}
-                            />
-                        </div>
                         {this.props.location.state.title !== undefined && <div className="card mt-2">
                             <div className="card-header socc-card-header">
                                 <img className="socc-card-img"
@@ -62,6 +57,11 @@ export default class SearchResultItem extends Component{
                             </div>
                         </div>
                         }
+                        <div>
+                            <CommentBox
+                                url = {this.props.location.state.url}
+                            />
+                        </div>
                     </div>
                     <div className="col-3">
                         <h2 className="text-white">sample</h2>

@@ -2,13 +2,12 @@ import React, {Component} from 'react'
 import './comment.css'
 
 const NewComment = (props) => {
-    debugger;
     return(
-        <div className="block-comment-content module text">
+        <div className="">
             <div className="comment-user">
                 <div className="comment-user-avatar-wrap">
                     <a>
-                        <img src="//s3-us-west-2.amazonaws.com/s.cdpn.io/3/profile/profile-512_29.jpg" className="comment-avatar" alt="" />
+                        <img src={"https://robohash.org/"+props.details.user} className="comment-avatar" alt="" />
                     </a>
                 </div>
                 <div className="comment-user-text">
@@ -20,14 +19,14 @@ const NewComment = (props) => {
                     <span className="on"> on </span>
                     <a href="#">
                         <span className="on">
-                            {new Date(props.details.time).toLocaleString()}
+                            {new Date(props.details.date).toLocaleString()}
                         </span>
                     </a>
                 </div>
             </div>
 
-            <div className="comment-text">
-                <p>{props.details.body}</p>
+            <div className="card comment-text">
+                <h5 className ="p-1 comment-text-display">{props.details.comment}</h5>
             </div>
         </div>
     )

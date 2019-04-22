@@ -11,7 +11,6 @@ export default class AddCommentForm extends Component{
         event.preventDefault();
         // 1. Take data from from form
         var commentData = {
-            commentName: this.refs.name.value,
             commentBody: this.refs.desc.value
         }
 
@@ -25,10 +24,9 @@ export default class AddCommentForm extends Component{
     render() {
         return (
             <div className="callout secondary">
-                <h4 className="comment-header">Add a Comment</h4>
+                {/*<h4 className="comment-header">Add a Comment</h4>*/}
                 <form className="comment-form" ref="commentForm" onSubmit={this.processComment}>
-                    <input type="text" className="form-text" ref="name" placeholder="Your Name" required/>
-                    <textarea className="form-text" ref="desc" placeholder="Add your comment here" required/>
+                    <textarea className="comment-body-input" ref="desc" placeholder="Add your comment here" required/>
                     <div className="form-btn-container">
                     <button id="submit" type="submit" className="btn btn-sm btn-primary form-btn">Add Comment</button>
                     </div>

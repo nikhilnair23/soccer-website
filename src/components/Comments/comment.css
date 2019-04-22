@@ -44,13 +44,14 @@
 .comment-list li {
     margin: 0 0 0 0;
     background: #333;
-    padding: 20px;
+    padding: 10px;
 }
 
 .comment-user {
     display: flex;
     align-items: center;
-    margin: 0 0 10px 0;
+    margin-left: 10px;
+    padding-bottom: 10px;
 }
 .comment-user-avatar-wrap {
     width: 40px;
@@ -62,7 +63,13 @@
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-size: 1.75vw;
 }
+
+.comment-text-display{
+    font-size: 1.75vw;
+}
+
 .on {
     margin-right: 5px;
     color: white;
@@ -74,14 +81,37 @@ ul.comment-list{
 .comment-text {
     background: white;
     color: #222;
-    padding: 20px;
+    padding: 1px;
+    margin-right:10px;
+    margin-left:10px;
 /*:last-child {*/
     /*margin: 0;*/
 /*}*/
 }
 
 .comment-box{
-    text-align: center;
-    padding-left: 15px;
-    padding-right: 15px;
+    margin-bottom: 20px;
+    text-align: left;
+    max-height: 200px;
+    overflow: scroll;
+    overflow-y: scroll;
+}
+
+.card.comment-box{
+    background: black;
+    border: 0;
+
+}
+
+.comment-body-input{
+    border: 1px black;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-right:17px;
+    margin-left:17px;
+}
+
+.add-comment-box{
+    margin-top: 10px;
+    text-align: left;
 }

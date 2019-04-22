@@ -21,6 +21,11 @@ html, body {
     align-items: center;
 }
 
+body::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+}
+
 body{
     position: absolute;
     min-width: 100%;
@@ -123,7 +128,8 @@ h5 {
     background-color: #000000;
     border: 1px solid rgba(230, 2, 0, 0.02);
     border-radius: 0.30rem;
-    width: 100%;
+    max-height: 350px;
+    width: auto;
     height: auto;
 }
 

@@ -61,6 +61,7 @@ class Register extends Component{
         console.log(u);
         fetch('http://localhost:5000/register', {
             method: 'POST',
+            credentials : 'include',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                                      username: this.state.username,
