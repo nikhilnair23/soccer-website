@@ -30,3 +30,6 @@ details summary::-webkit-details-marker {
     background-color: #1a1a1a;
 }
 
+.home_button {
+    float: left;
+}

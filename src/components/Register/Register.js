@@ -138,12 +138,12 @@ class Register extends Component {
                         <input type="text"
                                placeholder="last name"
                                onChange={this.onLastNameChange}/>
-                        <input id="user_type"
-                               type="checkbox"
-                               name="user_type"
-                               value="#"
-                               onClick={this.onAdminChange}
-                        />Admin
+                        {/*<input id="user_type"*/}
+                               {/*type="checkbox"*/}
+                               {/*name="user_type"*/}
+                               {/*value="#"*/}
+                               {/*onClick={this.onAdminChange}*/}
+                        {/*/>Admin*/}
                         <button
                             type="button"
                             onClick={this.onRegister}>

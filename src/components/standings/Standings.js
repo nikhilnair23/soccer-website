@@ -76,12 +76,17 @@ class Standings extends Component {
             // ?
             <div className='container-fluid'>
                 <div className="row">
-                    <div className='col-md-3 bg-light-green'>
+                    <div className='col-md-3 bg-light-green left_col'>
+                        <button
+                            className="btn btn-warning pd5 ma2"
+                            type="button"
+                            onClick={() => this.props.onRouteChange('home')}>Home Page
+                        </button>
                         <Leagues changeLeague={this.changeLeague}
                                  league={this.state.league}/>
                     </div>
 
-                    <div className="col-md-9">
+                    <div className="col-md-9 right_col">
                         {/*{console.log(this.state.ucl)}*/}
                         {
                             this.state.league === 'ucl'
@@ -111,79 +116,8 @@ class Standings extends Component {
                     </div>
                 </div>
 
-                <button
-                    type="button"
-                    onClick={() => this.props.onRouteChange('home')}>Home
-                </button>
             </div>
-            // :
-            // this.state.league === 'epl'
-            // ?
-            // <div className='container-fluid'>
-            //     <div className="row">
-            //         <Leagues/>
-            //         <div className="col-md-9">
-            //             <Matches standings={this.state.ucl}/>
-            //         </div>
-            //     </div>
-            //
-            //     <button
-            //         type="button"
-            //         onClick={() => this.props.onRouteChange('home')}>Home
-            //     </button>
-            // </div>
-            // :
-            // this.state.league === 'laliga'
-            // ?
-            // <div className='container-fluid'>
-            //     <div className="row">
-            //         <Leagues/>
-            //         <div className="col-md-9">
-            //             <Matches standings={this.state.ucl}/>
-            //         </div>
-            //     </div>
-            //
-            //     <button
-            //         type="button"
-            //         onClick={() => this.props.onRouteChange('home')}>Home
-            //     </button>
-            // </div>
-            // :
-            // this.state.league === 'bundesliga'
-            // ?
-            // <div className='container-fluid'>
-            //     <div className="row">
-            //         <Leagues/>
-            //         <div className="col-md-9">
-            //             <Matches standings={this.state.ucl}/>
-            //         </div>
-            //     </div>
-            //
-            //     <button
-            //         type="button"
-            //         onClick={() => this.props.onRouteChange('home')}>Home
-            //     </button>
-            // </div>
-            // :
-            // this.state.league === 'seriea'
-            // ?
-            // <div className='container-fluid'>
-            //     <div className="row">
-            //         <Leagues/>
-            //         <div className="col-md-9">
-            //             <Matches standings={this.state.ucl}/>
-            //         </div>
-            //     </div>
-            //
-            //     <button
-            //         type="button"
-            //         onClick={() => this.props.onRouteChange('home')}>Home
-            //     </button>
-            // </div>
-            // :
-            // <div>
-            //     Error
-            // </div>
+
         )
     }
 

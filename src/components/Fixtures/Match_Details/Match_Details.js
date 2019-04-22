@@ -126,7 +126,7 @@ class Match_Details extends Component {
                         </div>
                         <div className='col-md-3 tc'>
                             <button type="button"
-                                    onClick={() => this.props.setOdds()}
+                                    onClick={() => this.props.reset()}
                                     className="btn btn-secondary">
                                 Odds
                             </button>

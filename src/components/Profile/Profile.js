@@ -76,7 +76,12 @@ class Profile extends Component {
     };
 
     deleteUser = () => {
-        console.log(this.state.user)
+        alert("Sorry to see you go, " + this.state.user['username']);
+        fetch('http://localhost:5000/profile/' + this.state.user['username'], {
+            method: 'delete',
+            headers: {
+                'content-type': 'application/json'   }
+        }).then(this.props.onRouteChange("signin"))
     };
 
     render() {
@@ -85,12 +90,22 @@ class Profile extends Component {
             <div className='container-fluid tc'>
                 <div
                     className='tc bg-washed-yellow dib ma2 br3 pa1 shadow-5 w-33'>
-                    <img
-                        className='ma2'
-                        src={this.state.profile_pic}
-                        alt='https://upload.wikimedia.org/wikipedia/en/b/be/Flag_of_England.svg'
-                        height={180}
-                        width={180}/>
+                    <div>
+                        <button
+                            className="btn btn-warning pd5 ma2 home_button"
+                            type="button"
+                            onClick={() => this.props.onRouteChange('home')}>Home Page
+                        </button>
+                    </div>
+                    <div className='dp tc'>
+                        <img
+                            className='ma2'
+                            src={this.state.profile_pic}
+                            alt='https://upload.wikimedia.org/wikipedia/en/b/be/Flag_of_England.svg'
+                            height={180}
+                            width={180}/>
+                    </div>
+
                     <div>
                         <h3 className="font-weight-bold">
                             Username
@@ -176,23 +191,15 @@ class Profile extends Component {
 
                         this.state.user['isAdmin'] === 1
                         ?
-                        <button className='btn btn-primary'
+                        <button className='btn btn-primary ma2'
                                 onClick={() => this.props.onRouteChange('users')}>
                             User list
                         </button>
                         :
                         <p>
-                            You ain't admin
+                            You are a normal user.
                         </p>
                     }
-                    {/*<div>*/}
-                        {/*<h3 className="font-weight-bold">*/}
-                            {/*Admin status*/}
-                        {/*</h3>*/}
-                        {/*<h4>*/}
-                            {/*{this.state.user['isAdmin']}*/}
-                        {/*</h4>*/}
-                    {/*</div>*/}
                     {
                         this.state.edit_mode === false
                         ?

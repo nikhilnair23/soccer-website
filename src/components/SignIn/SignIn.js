@@ -92,12 +92,12 @@ class SignIn extends Component{
                                placeholder="password"
                                onChange={this.onPasswordChange}
                         />
-                        <input id="user_type"
-                               type="checkbox"
-                               name="user_type"
-                               value="#"
-                               onClick={this.onAdminChange}
-                        />Admin
+                        {/*<input id="user_type"*/}
+                               {/*type="checkbox"*/}
+                               {/*name="user_type"*/}
+                               {/*value="#"*/}
+                               {/*onClick={this.onAdminChange}*/}
+                        {/*/>Admin*/}
                         <button type="button" onClick={this.onSignIn}>
                             login
                         </button>
