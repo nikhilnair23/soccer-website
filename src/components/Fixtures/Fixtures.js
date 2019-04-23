@@ -72,7 +72,8 @@ class Fixtures extends Component {
                 league: league,
                 h2h: [],
                 fixtureById: [],
-                details: false
+                details: false,
+                odds: false
             }
         )
     };
@@ -180,13 +181,13 @@ class Fixtures extends Component {
                 <div className="tc ma5">
                     {
 
-                        // this.state.odds === true && this.state.details === true
-                        // && this.state.h2h.length > 0
-                        // && this.state.fixtureById.length > 0
-                        // ?
-                        // <Odds fixtureById={this.state.fixtureById}
-                        //       resetOdds={this.resetOdds}/>
-                        // :
+                        this.state.odds === true && this.state.details === true
+                        && this.state.h2h.length > 0
+                        && this.state.fixtureById.length > 0
+                        ?
+                        <Odds fixtureById={this.state.fixtureById}
+                              resetOdds={this.resetOdds}/>
+                        :
                         this.state.details === true && this.state.h2h.length > 0
                         && this.state.fixtureById.length > 0
                         ?

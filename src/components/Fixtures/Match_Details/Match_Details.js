@@ -38,7 +38,7 @@ class Match_Details extends Component {
         return (
             <div className="container-fluid">
                 <div
-                    className='tc bg-washed-green dib ma2 br3 pa1 grow shadow-5 vh-75 w-50 card'>
+                    className='tc bg-washed-green dib ma2 br3 pa1 shadow-5 vh-75 w-50 card'>
                     <div className='row ma3'>
                         <div className='col-md-4 tc'>
                             <img
@@ -126,7 +126,7 @@ class Match_Details extends Component {
                         </div>
                         <div className='col-md-3 tc'>
                             <button type="button"
-                                    onClick={() => this.props.reset()}
+                                    onClick={() => this.props.setOdds()}
                                     className="btn btn-secondary">
                                 Odds
                             </button>

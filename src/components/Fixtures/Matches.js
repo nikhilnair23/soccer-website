@@ -48,8 +48,10 @@ const Matches = ({fixtures, matchDetails}) =>
                                                 {match.goalsHomeTeam}
                                             </h3>
                                         </div>
-                                        <div className="col-md-1 tc">
-                                            -
+                                        <div className="col-md-2 bg-light-green tc live_time blue">
+                                            <h3>
+                                                {match.elapsed}'
+                                            </h3>
                                         </div>
                                         <div className="col-md-1 tc">
                                             <h3>
@@ -61,11 +63,7 @@ const Matches = ({fixtures, matchDetails}) =>
                                                 {match.awayTeam}
                                             </h3>
                                         </div>
-                                        <div className="col-md-1 bg-light-green tc live_time blue">
-                                            <h3>
-                                                {match.elapsed}'
-                                            </h3>
-                                        </div>
+
                                     </div>
                                 </li>
                             </ul>
