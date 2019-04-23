@@ -1,0 +1,22 @@
+.table {
+    width: 50%;
+}
+
+.odds_heading {
+    font-family: "avenir next";
+    font-size: xx-large;
+}
+
+p {
+    font-family: "avenir next";
+    font-size: larger;
+}
+
+span {
+    font-weight: bold;
+}
+
+.back_button {
+    float: left;
+    border-color: black;
+}
