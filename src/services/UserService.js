@@ -14,4 +14,14 @@ export default class UserService{
             return response.json();
         }))
     }
+
+    sign_out = () => {
+        let url2 = this.url + "signout"
+        return (fetch(url2,{
+            credentials:'include',
+            method:'post'
+        }).then((response) => {
+            return response;
+        }))
+    }
 }

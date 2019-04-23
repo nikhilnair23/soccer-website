@@ -81,7 +81,7 @@ class Profile extends Component {
             method: 'delete',
             headers: {
                 'content-type': 'application/json'   }
-        }).then(this.props.onRouteChange("signin"))
+        }).then(this.goHome())
     };
 
     goHome = () =>

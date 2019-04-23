@@ -1,6 +1,7 @@
 import React from "react";
 import './Navigation.css'
 import SearchService from "../../services/SearchService";
+import UserService from "../../services/UserService"
 import {Redirect} from "react-router-dom";
 import {withRouter} from 'react-router';
 
@@ -17,6 +18,7 @@ class Navigation extends React.Component {
         };
         //console.log(this.props);
         this.searchService = new SearchService();
+        this.userService = new UserService();
     }
 
     titleChanged = (event) => {
@@ -74,6 +76,18 @@ class Navigation extends React.Component {
             navigate: true
         })
     }
+
+    signOut = () =>
+        this.userService.sign_out().then((response) => {
+            debugger;
+                return(this.props.history.push({
+                    pathname:'/login',
+                    state:{
+                        signedOut:true
+                    }
+                }))
+            }
+        )
 
     render() {
         if (this.state.navigate === true) {
@@ -145,7 +159,7 @@ class Navigation extends React.Component {
                                     <div className='inline-block'>
                                         <li className="nav-item" id="signout_button">
                                             <button className="btn text-white"
-                                                    onClick={() => this.props.onRouteChange('signout')}
+                                                    onClick={() => this.signOut()}
                                             >Sign out
                                             </button>
                                         </li>

@@ -13,6 +13,7 @@ import Leagues from "./standings/Leagues";
 import Standings from "./standings/Standings";
 import Profile from "./Profile/Profile";
 import Users from "./Users/Users";
+import FavoriteTeam from "./FavoriteTeam/FavoriteTeam";
 
 const Routes = () => {
     return (
@@ -31,6 +32,7 @@ const Routes = () => {
                     <Route path={"/teams"} exact component={Teams}/>
                     <Route path={"/teams/:teamId"} exact component={TeamCard}/>
                     <Route path={"/users"} exact component={Users}/>
+                    <Route path={"/favouriteTeam"} exact component={FavoriteTeam}/>
                 </div>
             </Router>
         </div>

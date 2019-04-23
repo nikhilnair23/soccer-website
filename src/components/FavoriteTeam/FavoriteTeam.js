@@ -13,7 +13,7 @@ class FavoriteTeam extends Component {
         this.state = {
             teams: [],
             search_team: '1234ABC',
-            user: this.props.user
+            user: this.props.location.state.user
         }
     }
 
@@ -54,10 +54,12 @@ class FavoriteTeam extends Component {
                                            favorite_team: team_name
                                        })
               }
-        ).then(
-            this.props.setTeam(team_name)
+        ).then( response => {
+                // this.props.setTeam(team_name);
+                return (this.props.history.push('/'))
+            }
         );
-        this.props.onRouteChange('home');
+
     };
 
     render() {

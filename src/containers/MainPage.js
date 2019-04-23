@@ -12,8 +12,9 @@ import Standings from "../components/standings/Standings";
 import Fixtures from "../components/Fixtures/Fixtures";
 import Profile from "../components/Profile/Profile";
 import Users from "../components/Users/Users";
+import {withRouter} from 'react-router';
 
-export default class MainPage extends Component {
+class MainPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -47,6 +48,24 @@ export default class MainPage extends Component {
             {articles: this.newsService.get_news()}
         )*/
     }
+
+    /*componentDidUpdate(){
+        if (this.props.location!==undefined) {
+            debugger;
+            if(this.props.location.state!==undefined) {
+                debugger;
+                this.userService.is_logged_in().then(response => {
+                    console.log(response.data);
+                    if (response.data !== "NOT_LOGGED_IN") {
+                        this.setState({
+                            loggedIn: true,
+                            user: response.data
+                        })
+                    }
+                })
+            }
+        }
+    }*/
 
     onRouteChange = (routeTo) => {
         if (routeTo === 'signout') {
@@ -84,6 +103,7 @@ export default class MainPage extends Component {
     };
 
     render() {
+        console.log(this.state.user);
         return (
             this.state.route === 'signin' || this.state.route === 'signout'
             ?
@@ -148,3 +168,5 @@ export default class MainPage extends Component {
     }
 
 }
+
+export default withRouter(MainPage)

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Component} from 'react';
 import './Register.css'
+import {withRouter} from 'react-router';
 
 class Register extends Component {
     constructor(props) {
@@ -81,11 +82,16 @@ class Register extends Component {
                         document.getElementById("username_input_register").value = '';
                         document.getElementById("password_input_register").value = '';
                         alert('User already exists, sign in or try again.');
-
                     }
                     else {
-                        this.props.getUser(u);
-                        this.props.onRouteChange('favorite_team');
+                        // this.props.getUser(u);
+                        this.props.history.push({
+                            pathname:'/favouriteTeam',
+                            state: {
+                                user: u
+                            }
+                        })
+                        // this.props.onRouteChange('favorite_team');
                     }
                     // console.log(res);
                     // debugger;
@@ -161,4 +167,4 @@ class Register extends Component {
     }
 }
 
-export default Register;
+export default withRouter(Register);

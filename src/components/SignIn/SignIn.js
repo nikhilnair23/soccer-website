@@ -74,6 +74,9 @@ class SignIn extends Component{
         }
     };
 
+    goToRegister = () =>
+        this.props.history.push('/register')
+
     render() {
         return (
             <div className="login-page">
@@ -105,7 +108,7 @@ class SignIn extends Component{
                             login
                         </button>
                         <p className="message">Not registered?
-                            <button onClick={() => this.props.onRouteChange('register')}>Register</button>
+                            <button onClick={() => this.goToRegister()}>Register</button>
                         </p>
                     </form>
                 </div>
