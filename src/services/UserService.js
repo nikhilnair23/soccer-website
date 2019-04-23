@@ -5,7 +5,7 @@ export default class UserService{
 
 
 
-    logged_in = () =>{
+    is_logged_in = () =>{
         let url2 = this.url+"loggedIn"
         return (fetch(url2,{
             credentials : 'include',

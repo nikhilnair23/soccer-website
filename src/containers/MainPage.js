@@ -1,13 +1,11 @@
 import React, {Component} from 'react'
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
-import NewsCard from "../components/News/NewsCard";
 import NewsService from "../services/NewsService"
-import Card from "../components/Card";
 import Navigation from "../components/Navigation/Navigation";
 import SignIn from "../components/SignIn/SignIn";
 import NewsCarousel from "../components/News/NewsCarousel";
 import SearchService from "../services/SearchService";
-import {Redirect} from 'react-router';
+import UserService from '../services/UserService';
 import FavoriteTeam from "../components/FavoriteTeam/FavoriteTeam";
 import Register from "../components/Register/Register";
 import Standings from "../components/standings/Standings";
@@ -23,9 +21,20 @@ export default class MainPage extends Component {
             article_no: 0,
             route: 'home',
             routeStatus: 'not_logged_in',
-            user: []
+            loggedIn: false,
+            user: [],
+            userInfo: ''
         };
         this.newsService = new NewsService();
+        this.userService = new UserService();
+        this.userService.is_logged_in().then(response => {
+            if (response.data !== "NOT_LOGGED_IN") {
+                this.setState({
+                    loggedIn:true,
+                    userInfo:response.data
+                })
+            }
+        })
     }
 
     componentDidMount() {
@@ -50,7 +59,7 @@ export default class MainPage extends Component {
         if ((this.state.route ==='signin' || this.state.route ==='favorite_team') && routeTo === 'home') {
             this.setState(
                 {
-                    routeStatus: 'logged_in'
+                    routeStatus: 'is_logged_in'
                 }
             )
         }
@@ -113,6 +122,7 @@ export default class MainPage extends Component {
             <div className="socc-height-inherit">
                 <div className={"container-fluid"} id="navbar-container">
                     <Navigation routeStatus={this.state.routeStatus}
+                                loggedIn ={this.state.loggedIn}
                                 onRouteChange={this.onRouteChange}/>
                 </div>
                 <div className="container-fluid socc-height-inherit">
