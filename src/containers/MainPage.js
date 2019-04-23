@@ -28,6 +28,7 @@ export default class MainPage extends Component {
         this.newsService = new NewsService();
         this.userService = new UserService();
         this.userService.is_logged_in().then(response => {
+            console.log(response.data);
             if (response.data !== "NOT_LOGGED_IN") {
                 this.setState({
                     loggedIn:true,

@@ -78,7 +78,7 @@ class Navigation extends React.Component {
                         <h3 className="float-left pt-2 mr-1 mt-2 font-italic font-weight-bolder text-danger">FOOTBALL</h3>
                         </button>
                     </div>
-                    <div className="col-9 nav-container">
+                    <div className="col-8 nav-container">
                         <ul className="nav nav-pills bg-black p-2">
                             <li className="nav-item" id="">
                                 <button onClick={()=> this.goToTeams()}
@@ -119,8 +119,13 @@ class Navigation extends React.Component {
                                     </button>
                                 </div>
                             </li>
-                            {
-                                this.props.loggedIn === true
+
+
+                        </ul>
+                    </div>
+                    <div className="col-2">
+                        {
+                            this.props.loggedIn === true
                                 ?
                                 <div>
                                     <div className='inline-block'>
@@ -150,9 +155,7 @@ class Navigation extends React.Component {
                                     >Sign in
                                     </button>
                                 </li>
-                            }
-
-                        </ul>
+                        }
                     </div>
 
 
