@@ -5,10 +5,11 @@ import {Redirect} from "react-router-dom";
 import {withRouter} from 'react-router';
 
 let self
+
 class Navigation extends React.Component {
     constructor(props) {
         super(props);
-        self= this;
+        self = this;
         this.state = {
             searchText: "",
             navigate: false,
@@ -29,32 +30,43 @@ class Navigation extends React.Component {
     goHome = () =>
         this.props.history.push('/')
 
-    goToLogin =() =>
+    goToLogin = () =>
         this.props.history.push('/login')
 
     goToTeams = () => {
         debugger;
-        return(
-        this.props.history.push('/teams')
+        return (
+            this.props.history.push('/teams')
         )
     }
 
     goToFixtures = () => {
-        return(
+        return (
             this.props.history.push('/fixtures')
         )
     }
 
     goToLeagues = () => {
-        return(
+        return (
             this.props.history.push('/leagues')
         )
     }
 
     goToSearch = () =>
-        this.props.history.push('/search/'+this.state.searchText);
+        this.props.history.push('/search/' + this.state.searchText);
 
+    goToProfile = () => {
 
+        debugger;
+        return (
+            this.props.history.push({
+                pathname: '/profile',
+                state: {
+                    user: this.props.user
+                }
+            })
+        )
+    }
 
 
     search = () => {
@@ -68,7 +80,7 @@ class Navigation extends React.Component {
             debugger;
             return (
                 <Redirect to={{
-                    pathname: '/search/'+this.state.searchText,
+                    pathname: '/search/' + this.state.searchText,
                     /*state: {articles: this.state.articles}*/
                 }}/>)
         }
@@ -77,20 +89,21 @@ class Navigation extends React.Component {
                 <div className="row container-fluid">
                     <div className="col-2">
                         <button onClick={this.goHome}
-                            className="btn">
-                        <h3 className="float-left pt-2 mr-1 mt-2 font-italic font-weight-bolder text-danger">FOOTBALL</h3>
+                                className="btn">
+                            <h3 className="float-left pt-2 mr-1 mt-2 font-italic font-weight-bolder text-danger">FOOTBALL</h3>
                         </button>
                     </div>
                     <div className="col-8 nav-container">
                         <ul className="nav nav-pills bg-black p-2">
                             <li className="nav-item" id="">
-                                <button onClick={()=> this.goToTeams()}
-                                    className={"btn text-white"}>Teams</button>
+                                <button onClick={() => this.goToTeams()}
+                                        className={"btn text-white"}>Teams
+                                </button>
                             </li>
                             <li className="nav-item" id="">
                                 <button
                                     className={"btn text-white"}
-                                    onClick = {() => this.goToFixtures()}>
+                                    onClick={() => this.goToFixtures()}>
                                     {/*onClick={() => this.props.onRouteChange('fixtures')}>*/}
                                     Fixtures
                                 </button>
@@ -116,14 +129,12 @@ class Navigation extends React.Component {
                                            type="text" id="searchTerm" className="form-control-sm mr-2"
                                            placeholder="What are you looking for?"/>
                                     <button
-                                        onClick={()=> this.search()}
+                                        onClick={() => this.search()}
                                         className="searchButton">
                                         <i className="fa fa-search"></i>
                                     </button>
                                 </div>
                             </li>
-
-
                         </ul>
                     </div>
                     <div className="col-2">
@@ -143,7 +154,7 @@ class Navigation extends React.Component {
                                     <div className='inline-flex'>
                                         <li className="nav-item" id="profile_button">
                                             <button className="btn btn-primary text-white"
-                                                    onClick={() => this.props.onRouteChange('profile')}
+                                                    onClick={() => this.goToProfile()}
                                             >Profile
                                             </button>
                                         </li>
@@ -160,13 +171,10 @@ class Navigation extends React.Component {
                                 </li>
                         }
                     </div>
-
-
                 </div>
             </nav>
         );
     }
-
 }
 
 export default withRouter(Navigation)

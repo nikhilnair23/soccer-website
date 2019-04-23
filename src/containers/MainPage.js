@@ -22,8 +22,7 @@ export default class MainPage extends Component {
             route: 'home',
             routeStatus: 'not_logged_in',
             loggedIn: false,
-            user: [],
-            userInfo: ''
+            user: '',
         };
         this.newsService = new NewsService();
         this.userService = new UserService();
@@ -32,7 +31,7 @@ export default class MainPage extends Component {
             if (response.data !== "NOT_LOGGED_IN") {
                 this.setState({
                     loggedIn:true,
-                    userInfo:response.data
+                    user:response.data
                 })
             }
         })
@@ -124,6 +123,7 @@ export default class MainPage extends Component {
                 <div className={"container-fluid"} id="navbar-container">
                     <Navigation routeStatus={this.state.routeStatus}
                                 loggedIn ={this.state.loggedIn}
+                                user={this.state.user}
                                 onRouteChange={this.onRouteChange}/>
                 </div>
                 <div className="container-fluid socc-height-inherit">

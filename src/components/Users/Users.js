@@ -13,21 +13,24 @@ class Users extends Component {
     componentDidMount() {
         fetch('http://localhost:5000/users')
             .then(response => response.json())
-            .then(res => this.setState(
+            .then(res => {
+                this.setState(
                 {
-                    users: res
+                    users: res.data
                 }
-            ))
+            )})
     }
 
     componentDidUpdate() {
         fetch('http://localhost:5000/users')
             .then(response => response.json())
-            .then(res => this.setState(
-                {
-                    users: res
-                }
-            ))
+            .then(res => {
+                this.setState(
+                    {
+                        users: res.data
+                    }
+                )
+            })
     }
 
     makeAdmin = (username) => {
@@ -86,6 +89,7 @@ class Users extends Component {
         password: "aaa"
         username: "abc123"
         */
+        console.log(this.state.users)
         return (
             this.state.users.length === 0
             ?

@@ -11,6 +11,8 @@ import Register from "./Register/Register";
 import Fixtures from "./Fixtures/Fixtures";
 import Leagues from "./standings/Leagues";
 import Standings from "./standings/Standings";
+import Profile from "./Profile/Profile";
+import Users from "./Users/Users";
 
 const Routes = () => {
     return (
@@ -19,6 +21,7 @@ const Routes = () => {
                 <div className={"container-fluid"} id="navbar-container">
                     <Route path={"/"} exact render={() => <MainPage/>}/>
                     <Route path={"/login"} exact render={() => <SignIn/>}/>
+                    <Route path={"/profile"} exact component={Profile}/>
                     <Route path={"/register"} exact render={() => <Register/>}/>
                     <Route path={"/fixtures"} exact render={() => <Fixtures/>}/>
                     <Route path={"/leagues"} exact render={() => <Standings/>}/>
@@ -27,6 +30,7 @@ const Routes = () => {
                     <Route path={"/highlights"} exact component={Highlights}/>
                     <Route path={"/teams"} exact component={Teams}/>
                     <Route path={"/teams/:teamId"} exact component={TeamCard}/>
+                    <Route path={"/users"} exact component={Users}/>
                 </div>
             </Router>
         </div>

@@ -6,12 +6,12 @@ class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: this.props.user,
+            user: this.props.location.state.user,
             edit_mode: false,
-            password: this.props.user['password'],
-            first_name: this.props.user['first_name'],
-            last_name: this.props.user['last_name'],
-            profile_pic: "http://robohash.org/" + this.props.user['username']
+            password: this.props.location.state.user['password'],
+            first_name: this.props.location.state.user['first_name'],
+            last_name: this.props.location.state.user['last_name'],
+            profile_pic: "http://robohash.org/" + this.props.location.state.user['username']
         }
     }
 
@@ -84,9 +84,14 @@ class Profile extends Component {
         }).then(this.props.onRouteChange("signin"))
     };
 
+    goHome = () =>
+        this.props.history.push('/')
+
+    goToUsers = () =>
+        this.props.history.push('/users')
+
     render() {
         return (
-
             <div className='container-fluid tc'>
                 <div
                     className='tc bg-washed-yellow dib ma2 br3 pa1 shadow-5 w-33'>
@@ -94,7 +99,7 @@ class Profile extends Component {
                         <button
                             className="btn btn-warning pd5 ma2 home_button"
                             type="button"
-                            onClick={() => this.props.onRouteChange('home')}>Home Page
+                            onClick={() => this.goHome()}>Home Page
                         </button>
                     </div>
                     <div className='dp tc'>
@@ -192,7 +197,7 @@ class Profile extends Component {
                         this.state.user['isAdmin'] === 1
                         ?
                         <button className='btn btn-primary ma2'
-                                onClick={() => this.props.onRouteChange('users')}>
+                                onClick={() => this.goToUsers()}>
                             User list
                         </button>
                         :
