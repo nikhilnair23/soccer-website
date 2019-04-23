@@ -29,6 +29,9 @@ class Navigation extends React.Component {
     goHome = () =>
         this.props.history.push('/')
 
+    goToLogin =() =>
+        this.props.history.push('/login')
+
     goToTeams = () => {
         debugger;
         return(
@@ -151,7 +154,7 @@ class Navigation extends React.Component {
                                 :
                                 <li className="nav-item" id="signout_button">
                                     <button className="btn text-white"
-                                            onClick={() => this.props.onRouteChange('signin')}
+                                            onClick={() => this.goToLogin()}
                                     >Sign in
                                     </button>
                                 </li>

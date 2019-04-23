@@ -1,5 +1,6 @@
 import React from 'react';
 import {Component} from 'react';
+import {withRouter} from 'react-router';
 import './SignIn.css'
 
 class SignIn extends Component{
@@ -42,6 +43,7 @@ class SignIn extends Component{
         })
             //.then(response => response.json())
             .then(res => {
+                debugger;
                 if (res.status === 400) {
                     document.getElementById("username_input_login").value = '';
                     document.getElementById("password_input_login").value = '';
@@ -49,7 +51,7 @@ class SignIn extends Component{
                 }
                 else {
                     //console.log(res[0]['username']);
-                    this.props.getUser(res[0]);
+                    // this.props.getUser(res[0]);
                     this.props.history.push('/');
                     // this.props.onRouteChange('home');
                 }
@@ -112,4 +114,4 @@ class SignIn extends Component{
     }
 }
 
-export default SignIn;
+export default withRouter(SignIn);
