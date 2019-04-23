@@ -4,13 +4,17 @@
     margin-top: 20px;
     width: 100%;
     height: 350px;
-    background:  url("https://image.freepik.com/free-vector/dark-blue-blurred-background_1034-589.jpg");
+    background:  url("https://www.xmple.com/wallpaper/highlight-black-red-gradient-linear-1920x1080-c2-000000-8b0000-l-67-a-345-f-21.svg");
     -webkit-background-size: contain;
     background-size: cover;
     border: 1px solid #000;
     border-radius: 15px;
 
 }
+
+/*https://image.freepik.com/free-vector/dark-blue-blurred-background_1034-589.jpg*/
+
+
 
 .carousel-indicators{
     position: relative;

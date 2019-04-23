@@ -1,13 +1,11 @@
 import React, {Component} from 'react'
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
-import NewsCard from "../components/News/NewsCard";
 import NewsService from "../services/NewsService"
-import Card from "../components/Card";
 import Navigation from "../components/Navigation/Navigation";
 import SignIn from "../components/SignIn/SignIn";
 import NewsCarousel from "../components/News/NewsCarousel";
 import SearchService from "../services/SearchService";
-import {Redirect} from 'react-router';
+import UserService from '../services/UserService';
 import FavoriteTeam from "../components/FavoriteTeam/FavoriteTeam";
 import Register from "../components/Register/Register";
 import Standings from "../components/standings/Standings";
@@ -27,6 +25,8 @@ export default class MainPage extends Component {
             user: []
         };
         this.newsService = new NewsService();
+        this.userService = new UserService();
+        this.userService.is_logged_in()
     }
 
     componentDidMount() {
@@ -51,7 +51,7 @@ export default class MainPage extends Component {
         if (routeTo === 'home') {
             this.setState(
                 {
-                    routeStatus: 'logged_in'
+                    routeStatus: 'is_logged_in'
                 }
             )
         }

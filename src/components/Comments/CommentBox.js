@@ -21,7 +21,7 @@ export default class CommentBox extends Component {
                     comments: comments.body
                 })
         })
-        this.userService.logged_in().then(response => {
+        this.userService.is_logged_in().then(response => {
             if (response.data !== "NOT_LOGGED_IN") {
                 this.setState({
                     loggedIn:true,

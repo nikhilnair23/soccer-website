@@ -36,6 +36,23 @@ class Navigation extends React.Component {
         )
     }
 
+    goToFixtures = () => {
+        return(
+            this.props.history.push('/fixtures')
+        )
+    }
+
+    goToLeagues = () => {
+        return(
+            this.props.history.push('/leagues')
+        )
+    }
+
+    goToSearch = () =>
+        this.props.history.push('/search/'+this.state.searchText);
+
+
+
 
     search = () => {
         self.setState({
@@ -70,23 +87,26 @@ class Navigation extends React.Component {
                             <li className="nav-item" id="">
                                 <button
                                     className={"btn text-white"}
-                                    onClick={() => this.props.onRouteChange('fixtures')}>
+                                    onClick = {() => this.goToFixtures()}>
+                                    {/*onClick={() => this.props.onRouteChange('fixtures')}>*/}
                                     Fixtures
                                 </button>
                             </li>
                             <li className="nav-item" id="">
                                 <button
                                     className={"btn text-white"}
-                                    onClick={() => self.props.onRouteChange('standings')}>
+                                    /*onClick={() => self.props.onRouteChange('standings')}*/
+                                    onClick={() => this.goToLeagues()}
+                                >
                                     Leagues
                                 </button>
                             </li>
                             <li className="nav-item" id="">
                                 <button className={"btn text-white"}>Scores</button>
                             </li>
-                            <li className="nav-item mr-2" id="">
+                            {/*<li className="nav-item mr-2" id="">
                                 <button className={"btn text-white"}>Highlights</button>
-                            </li>
+                            </li>*/}
                             <li className="nav-item ml-2" id="wrap">
                                 <div className="search">
                                     <input onChange={this.titleChanged}
@@ -100,7 +120,7 @@ class Navigation extends React.Component {
                                 </div>
                             </li>
                             {
-                                this.props.routeStatus === 'logged_in'
+                                this.props.routeStatus === 'is_logged_in'
                                 ?
                                 <div>
                                     <div className='inline-block'>
