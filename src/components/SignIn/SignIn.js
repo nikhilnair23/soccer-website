@@ -50,7 +50,8 @@ class SignIn extends Component{
                 else {
                     //console.log(res[0]['username']);
                     this.props.getUser(res[0]);
-                    this.props.onRouteChange('home');
+                    this.props.history.push('/');
+                    // this.props.onRouteChange('home');
                 }
             });
 

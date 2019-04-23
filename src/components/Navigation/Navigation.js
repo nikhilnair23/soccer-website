@@ -120,7 +120,7 @@ class Navigation extends React.Component {
                                 </div>
                             </li>
                             {
-                                this.props.routeStatus === 'is_logged_in'
+                                this.props.loggedIn === true
                                 ?
                                 <div>
                                     <div className='inline-block'>

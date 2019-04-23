@@ -5,6 +5,7 @@ import Matches from "./Matches";
 import Future from "./Future";
 import Match_Details from "./Match_Details/Match_Details";
 import Odds from "../Odds/Odds";
+import Navigation from "../Navigation/Navigation";
 
 class Fixtures extends Component {
 
@@ -128,6 +129,9 @@ class Fixtures extends Component {
     render() {
         return (
             <div className="container-fluid tc">
+                <div className={"container-fluid"} id="navbar-container">
+                    <Navigation/>
+                </div>
                 <div className="col tc bg-moon-gray">
                     <button type='button'
                             className={this.state.league === 'live'

@@ -4,6 +4,7 @@ import './Standings.css';
 import UCL from "./UCL";
 import Leagues from "./Leagues";
 import Table from "./Table";
+import Navigation from "../Navigation/Navigation";
 
 class Standings extends Component {
 
@@ -75,6 +76,9 @@ class Standings extends Component {
             // this.state.league === 'ucl'
             // ?
             <div className='container-fluid'>
+                <div className={"container-fluid"} id="navbar-container">
+                    <Navigation/>
+                </div>
                 <div className="row">
                     <div className='col-md-3 bg-light-green'>
                         <Leagues changeLeague={this.changeLeague}
