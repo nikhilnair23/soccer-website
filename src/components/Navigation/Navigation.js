@@ -81,7 +81,7 @@ class Navigation extends React.Component {
         this.userService.sign_out().then((response) => {
             debugger;
                 return(this.props.history.push({
-                    pathname:'/login',
+                    pathname:'/',
                     state:{
                         signedOut:true
                     }

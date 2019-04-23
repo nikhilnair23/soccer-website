@@ -14,6 +14,7 @@ export default class TeamCard extends Component {
     constructor(props) {
         super(props);
         console.log(players)
+        debugger;
         this.state = {
             team: props.location.state.team,
             news: news,
@@ -21,8 +22,6 @@ export default class TeamCard extends Component {
             coach:players.coachs[0],
             players:players.players,
         }
-        console.log(this.state.coach)
-        console.log(this.state.players)
         this.newsService= new NewsService();
         this.teamService = new TeamService();
 

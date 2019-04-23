@@ -49,8 +49,19 @@ class MainPage extends Component {
         )*/
     }
 
-    /*componentDidUpdate(){
-        if (this.props.location!==undefined) {
+    componentDidUpdate(prevProps){
+        if (this.props.location != prevProps.location){
+            debugger;
+            this.userService.is_logged_in().then(response => {
+                console.log(response.data);
+                if (response.data === "NOT_LOGGED_IN") {
+                    this.setState({
+                        loggedIn: false,
+                    })
+                }
+            })
+        }
+        /*if (this.props.location!==undefined) {
             debugger;
             if(this.props.location.state!==undefined) {
                 debugger;
@@ -64,8 +75,8 @@ class MainPage extends Component {
                     }
                 })
             }
-        }
-    }*/
+        }*/
+    }
 
     onRouteChange = (routeTo) => {
         if (routeTo === 'signout') {

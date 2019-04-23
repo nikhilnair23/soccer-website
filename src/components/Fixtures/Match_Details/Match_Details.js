@@ -3,9 +3,11 @@ import {Component} from 'react';
 import pic from './vs.png'
 import odds from './odds.png';
 import './Match_Details.css';
+import {withRouter} from 'react-router';
 
 class Match_Details extends Component {
     constructor(props) {
+        debugger;
         super(props);
         this.state= {
             h2h: this.props.h2h,
@@ -32,6 +34,22 @@ class Match_Details extends Component {
 
     }
 
+    goToTeamPage = (teamId,name,logo) => {
+        debugger;
+        let team = {
+            team: {
+                team_id: teamId,
+                name: name,
+                logo: logo
+            },
+            league_id:this.props.fixtureById[0].league_id
+        }
+        this.props.history.push({
+            pathname: '/teams/' + teamId,
+            state: team
+        });
+    }
+
 
     render() {
 
@@ -44,6 +62,11 @@ class Match_Details extends Component {
                             <img
                                 className=''
                                 src = {this.state.home_crest}
+                                onClick={() =>
+                                    this.goToTeamPage
+                                    (this.state.fixtureById[0].homeTeam_id,
+                                        this.state.fixtureById[0].homeTeam,
+                                        this.state.home_crest)}
                                 alt = 'https://upload.wikimedia.org/wikipedia/en/b/be/Flag_of_England.svg'
                                 height={120}
                                 width={120}/>
@@ -58,6 +81,9 @@ class Match_Details extends Component {
                             <img
                                 className=''
                                 src = {this.state.away_crest}
+                                onClick={() => this.goToTeamPage(this.state.fixtureById[0].awayTeam_id,
+                                    this.state.fixtureById[0].awayTeam,
+                                    this.state.away_crest)}
                                 alt = 'https://upload.wikimedia.org/wikipedia/en/b/be/Flag_of_England.svg'
                                 height={120}
                                 width={120}/>
@@ -66,13 +92,20 @@ class Match_Details extends Component {
 
                     <div className='row ma3'>
                         <div className='col-md-4 tc'>
-                            <h4>{this.state.fixtureById[0].homeTeam}</h4>
+                            <h4 onClick={() => this.goToTeamPage(this.state.fixtureById[0].homeTeam_id,
+                                this.state.fixtureById[0].homeTeam,
+                                this.state.home_crest)}>
+                                {this.state.fixtureById[0].homeTeam}
+                                </h4>
                         </div>
                         <div className='col-md-4 tc'>
 
                         </div>
                         <div className='col-md-4 tc'>
-                            <h4>{this.state.fixtureById[0].awayTeam}</h4>
+                            <h4 onClick={() => this.goToTeamPage(this.state.fixtureById[0].awayTeam_id,
+                                this.state.fixtureById[0].awayTeam,
+                                this.state.away_crest)}>
+                                {this.state.fixtureById[0].awayTeam}</h4>
                         </div>
                     </div>
 
@@ -178,4 +211,4 @@ class Match_Details extends Component {
     }
 }
 
-export default Match_Details;
+export default withRouter(Match_Details);
