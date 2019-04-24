@@ -12,7 +12,8 @@ class Register extends Component {
             first_name: '',
             last_name: '',
             favorite_team: '',
-            isAdmin: 0
+            isAdmin: 0,
+            isPro: 0
         };
         //
     }
@@ -58,12 +59,13 @@ class Register extends Component {
             last_name: this.state.last_name,
             favorite_team: this.state.favorite_team,
             isAdmin: this.state.isAdmin,
-            ban_status: 0
+            ban_status: 0,
+            isPro: this.state.isPro
         };
 
         fetch('http://localhost:5000/register', {
             method: 'POST',
-            credentials : 'include',
+            credentials: 'include',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                                      username: this.state.username,
@@ -72,7 +74,8 @@ class Register extends Component {
                                      last_name: this.state.last_name,
                                      favorite_team: 'lfc',
                                      isAdmin: this.state.isAdmin,
-                                     ban_status: 0
+                                     ban_status: 0,
+                                     isPro: this.state.isPro
                                  })
         })
             .then(response => response.json())
@@ -86,11 +89,11 @@ class Register extends Component {
                     else {
                         // this.props.getUser(u);
                         this.props.history.push({
-                            pathname:'/favouriteTeam',
-                            state: {
-                                user: u
-                            }
-                        })
+                                                    pathname: '/favouriteTeam',
+                                                    state: {
+                                                        user: u
+                                                    }
+                                                })
                         // this.props.onRouteChange('favorite_team');
                     }
                     // console.log(res);
@@ -116,6 +119,23 @@ class Register extends Component {
             )
         }
     };
+
+    onProChange = () => {
+        if (document.getElementById("user_type").checked) {
+            this.setState(
+                {
+                    isPro: 1
+                }
+            )
+        }
+        else {
+            this.setState(
+                {
+                    isPro: 0
+                }
+            )
+        }
+    }
 
     render() {
         return (
@@ -144,12 +164,12 @@ class Register extends Component {
                         <input type="text"
                                placeholder="last name"
                                onChange={this.onLastNameChange}/>
-                        {/*<input id="user_type"*/}
-                               {/*type="checkbox"*/}
-                               {/*name="user_type"*/}
-                               {/*value="#"*/}
-                               {/*onClick={this.onAdminChange}*/}
-                        {/*/>Admin*/}
+                        <input id="user_type"
+                               type="checkbox"
+                               name="user_type"
+                               value="#"
+                               onClick={this.onProChange}
+                        />Are you a Pro user?
                         <button
                             type="button"
                             onClick={this.onRegister}>
