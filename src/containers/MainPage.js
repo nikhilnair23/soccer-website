@@ -167,7 +167,7 @@ this.state.route === 'signin' || this.state.route === 'signout'
             <Users onRouteChange={this.onRouteChange}/>
             :
  */
-            <div className={"container-fluid"} id="navbar-container">
+            /*<div className={"container-fluid"} id="navbar-container">
                 <div className="socc-height-inherit">
                     <div className={"container-fluid"} id="navbar-container">
                         <Navigation routeStatus={this.state.routeStatus}
@@ -191,11 +191,9 @@ this.state.route === 'signin' || this.state.route === 'signout'
                         </div>
                     </div>
                 </div>
-                {/*<FavoriteTeam/>*/}
+                {/!*<FavoriteTeam/>*!/}
             </div>
         )
     }
 
-}
-
-export default withRouter(MainPage)
+}*/

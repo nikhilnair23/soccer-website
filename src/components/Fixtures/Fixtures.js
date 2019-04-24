@@ -28,10 +28,6 @@ class Fixtures extends Component {
             user:'',
             loggedIn: false
         };
-        this.fixtureService = new FixtureService();
-        this.getFixtures();
-    }
-
         this.userService = new UserService();
         this.userService.is_logged_in().then(response => {
             if (response.data !== "NOT_LOGGED_IN") {
@@ -41,6 +37,11 @@ class Fixtures extends Component {
                 })
             }
         })
+        this.fixtureService = new FixtureService();
+        this.getFixtures();
+    }
+
+
 
     getFixtures() {
         this.fixtureService.getFixturesByLeague('live')

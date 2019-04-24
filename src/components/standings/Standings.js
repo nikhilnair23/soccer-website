@@ -20,9 +20,8 @@ class Standings extends Component {
             laliga: [],
             bundesliga: [],
             seriea: [],
-            league: 'ucl',
             user:'',
-            loggedIn: false
+            loggedIn: false,
             championship: [], //3
             league1: [], //164
             bundesliga2: [], //9
@@ -32,7 +31,6 @@ class Standings extends Component {
             eredivisie: [], //10
             mls: [], //199
             league: 'epl',
-            user: this.props.location.state.user
         };
 
         this.userService = new UserService();
