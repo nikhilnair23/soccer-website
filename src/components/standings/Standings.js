@@ -5,6 +5,7 @@ import UCL from "./UCL";
 import Leagues from "./Leagues";
 import Table from "./Table";
 import Navigation from "../Navigation/Navigation";
+import UserService from "../../services/UserService";
 
 class Standings extends Component {
 
@@ -16,8 +17,21 @@ class Standings extends Component {
             laliga: [],
             bundesliga: [],
             seriea: [],
-            league: 'ucl'
+            league: 'ucl',
+            user:'',
+            loggedIn: false
         };
+
+        this.userService = new UserService();
+        this.userService.is_logged_in().then(response => {
+            console.log(response.data);
+            if (response.data !== "NOT_LOGGED_IN") {
+                this.setState({
+                    loggedIn:true,
+                    user:response.data
+                })
+            }
+        })
 
         fetch('http://localhost:5000/standings/132')
             .then(response => response.json())
@@ -77,7 +91,8 @@ class Standings extends Component {
             // ?
             <div className='container-fluid'>
                 <div className={"container-fluid"} id="navbar-container">
-                    <Navigation/>
+                    <Navigation loggedIn ={this.state.loggedIn}
+                                user={this.state.user}/>
                 </div>
                 <div className="row">
                     <div className='col-md-3 bg-light-green left_col'>

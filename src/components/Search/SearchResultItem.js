@@ -3,11 +3,26 @@ import {withRouter, Redirect} from 'react-router-dom';
 import Navigation from "../Navigation/Navigation";
 import CommentBox from "../Comments/CommentBox"
 import comments from '../../data/comments'
+import UserService from "../../services/UserService";
 export default class SearchResultItem extends Component{
 
     constructor(props) {
         super(props);
 
+        this.state={
+            user:'',
+            loggedIn: false
+        }
+        this.userService = new UserService();
+        this.userService.is_logged_in().then(response => {
+            console.log(response.data);
+            if (response.data !== "NOT_LOGGED_IN") {
+                this.setState({
+                    loggedIn:true,
+                    user:response.data
+                })
+            }
+        })
     }
 
     getComments = () =>{
@@ -34,7 +49,8 @@ export default class SearchResultItem extends Component{
         return(
             <div className="socc-height-inherit socc-background">
                 <div className={"container-fluid"} id="navbar-container">
-                    <Navigation/>
+                    <Navigation loggedIn ={this.state.loggedIn}
+                                user={this.state.user}/>
                 </div>
                 <div className="row socc-height-inherit">
                     <div className="col-3">

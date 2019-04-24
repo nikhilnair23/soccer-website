@@ -6,6 +6,7 @@ import Future from "./Future";
 import Match_Details from "./Match_Details/Match_Details";
 import Odds from "../Odds/Odds";
 import Navigation from "../Navigation/Navigation";
+import UserService from "../../services/UserService";
 
 class Fixtures extends Component {
 
@@ -22,8 +23,20 @@ class Fixtures extends Component {
             h2h: [],
             fixtureById: [],
             details: false,
-            odds: false
+            odds: false,
+            user:'',
+            loggedIn: false
         };
+
+        this.userService = new UserService();
+        this.userService.is_logged_in().then(response => {
+            if (response.data !== "NOT_LOGGED_IN") {
+                this.setState({
+                    loggedIn:true,
+                    user:response.data
+                })
+            }
+        })
 
         fetch('http://localhost:5000/fixtures/live')
             .then(response => response.json())
@@ -134,7 +147,8 @@ class Fixtures extends Component {
         return (
             <div className="container-fluid tc">
                 <div className={"container-fluid"} id="navbar-container">
-                    <Navigation/>
+                    <Navigation loggedIn ={this.state.loggedIn}
+                                user={this.state.user}/>
                 </div>
                 <div className="col tc bg-moon-gray">
                     <button type='button'
