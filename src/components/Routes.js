@@ -24,8 +24,8 @@ const Routes = () => {
                     <Route path={"/login"} exact render={() => <SignIn/>}/>
                     <Route path={"/profile"} exact component={Profile}/>
                     <Route path={"/register"} exact render={() => <Register/>}/>
-                    <Route path={"/fixtures"} exact render={() => <Fixtures/>}/>
-                    <Route path={"/leagues"} exact render={() => <Standings/>}/>
+                    <Route path={"/fixtures"} exact component={Fixtures}/>
+                    <Route path={"/leagues"} exact component={Standings}/>
                     <Route path={"/search/:searchTerm"} exact component={SearchResults}/>
                     <Route path={"/searchItem"} exact component={SearchResultItem}/>
                     <Route path={"/highlights"} exact component={Highlights}/>

@@ -40,19 +40,29 @@ class Navigation extends React.Component {
         return (
             this.props.history.push('/teams')
         )
-    }
+    };
 
     goToFixtures = () => {
         return (
-            this.props.history.push('/fixtures')
+            this.props.history.push({
+                                        pathname: '/fixtures',
+                                        state: {
+                                            user: this.props.user
+                                        }
+                                    })
         )
-    }
+    };
 
     goToLeagues = () => {
         return (
-            this.props.history.push('/leagues')
+            this.props.history.push({
+                                        pathname: '/leagues',
+                                        state: {
+                                            user: this.props.user
+                                        }
+                                    })
         )
-    }
+    };
 
     goToSearch = () =>
         this.props.history.push('/search/' + this.state.searchText);
@@ -62,31 +72,30 @@ class Navigation extends React.Component {
         debugger;
         return (
             this.props.history.push({
-                pathname: '/profile',
-                state: {
-                    user: this.props.user
-                }
-            })
+                                        pathname: '/profile',
+                                        state: {
+                                            user: this.props.user
+                                        }
+                                    })
         )
     }
 
-
     search = () => {
         self.setState({
-            navigate: true
-        })
+                          navigate: true
+                      })
     }
 
     signOut = () =>
         this.userService.sign_out().then((response) => {
-            debugger;
-                return(this.props.history.push({
-                    pathname:'/login',
-                    state:{
-                        signedOut:true
-                    }
-                }))
-            }
+                                             debugger;
+                                             return (this.props.history.push({
+                                                                                 pathname: '/login',
+                                                                                 state: {
+                                                                                     signedOut: true
+                                                                                 }
+                                                                             }))
+                                         }
         )
 
     render() {
@@ -140,7 +149,8 @@ class Navigation extends React.Component {
                             <li className="nav-item ml-2" id="wrap">
                                 <div className="search">
                                     <input onChange={this.titleChanged}
-                                           type="text" id="searchTerm" className="form-control-sm mr-2"
+                                           type="text" id="searchTerm"
+                                           className="form-control-sm mr-2"
                                            placeholder="What are you looking for?"/>
                                     <button
                                         onClick={() => this.search()}
@@ -154,35 +164,35 @@ class Navigation extends React.Component {
                     <div className="col-2">
                         {
                             this.props.loggedIn === true
-                                ?
-                                <div>
-                                    <div className='inline-block'>
-                                        <li className="nav-item" id="signout_button">
-                                            <button className="btn text-white"
-                                                    onClick={() => this.signOut()}
-                                            >Sign out
-                                            </button>
-                                        </li>
-                                    </div>
-
-                                    <div className='inline-flex'>
-                                        <li className="nav-item" id="profile_button">
-                                            <button className="btn btn-primary text-white"
-                                                    onClick={() => this.goToProfile()}
-                                            >Profile
-                                            </button>
-                                        </li>
-                                    </div>
-
+                            ?
+                            <div>
+                                <div className='inline-block'>
+                                    <li className="nav-item" id="signout_button">
+                                        <button className="btn text-white"
+                                                onClick={() => this.signOut()}
+                                        >Sign out
+                                        </button>
+                                    </li>
                                 </div>
 
-                                :
-                                <li className="nav-item" id="signout_button">
-                                    <button className="btn text-white"
-                                            onClick={() => this.goToLogin()}
-                                    >Sign in
-                                    </button>
-                                </li>
+                                <div className='inline-flex'>
+                                    <li className="nav-item" id="profile_button">
+                                        <button className="btn btn-primary text-white"
+                                                onClick={() => this.goToProfile()}
+                                        >Profile
+                                        </button>
+                                    </li>
+                                </div>
+
+                            </div>
+
+                            :
+                            <li className="nav-item" id="signout_button">
+                                <button className="btn text-white"
+                                        onClick={() => this.goToLogin()}
+                                >Sign in
+                                </button>
+                            </li>
                         }
                     </div>
                 </div>

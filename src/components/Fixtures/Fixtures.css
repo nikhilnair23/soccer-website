@@ -4,7 +4,7 @@ details summary::-webkit-details-marker {
 
 
 .live_time {
-    background-color: royalblue;
+    color: royalblue;
     position: relative;
     -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
@@ -15,21 +15,31 @@ details summary::-webkit-details-marker {
 
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes example {
-    0%   {background-color:lightcyan;}
-    100% {background-color:lightgreen;}
+    0%   {color:green;}
+    100% {color:yellow;}
 }
 
 /* Standard syntax */
 @keyframes example {
-    0%   {background-color:lightcyan;}
-    100% {background-color:lightgreen;}
+    0%   {color:green;}
+    100% {color:yellow;}
 }
 
 .league_button {
     padding: 20px;
-    background-color: #1a1a1a;
+    background-color: darkorange;
 }
 
 .home_button {
     float: left;
+}
+
+.fixture_card {
+    color: silver;
+    background-color: darkslateblue;
+    border-color: black;
+}
+
+.outer_card {
+    border: 0px;
 }

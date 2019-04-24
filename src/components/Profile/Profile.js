@@ -1,5 +1,10 @@
 import React from 'react';
 import {Component} from 'react';
+import ProfileService from "../../services/ProfileService";
+
+import pro from './pro.png';
+import casual from './casual.jpg';
+import admin from './admin.jpg';
 
 class Profile extends Component {
 
@@ -12,7 +17,8 @@ class Profile extends Component {
             first_name: this.props.location.state.user['first_name'],
             last_name: this.props.location.state.user['last_name'],
             profile_pic: "http://robohash.org/" + this.props.location.state.user['username']
-        }
+        };
+        this.profileService = new ProfileService();
     }
 
     updateUser = () => {
@@ -21,23 +27,15 @@ class Profile extends Component {
         const fn = this.state.first_name;
         const ln = this.state.last_name;
 
-        fetch('http://localhost:5000/profile/' + this.state.user['username'], {
-                  method: 'PUT',
-                  headers: {'Content-Type': 'application/json'},
-                  body: JSON.stringify({
-                                           password: pw,
-                                           first_name: fn,
-                                           last_name: ln
-                                       })
-              }
-        ).then(
-            //console.log
-            this.setState(
-                {
-                    edit_mode: false
-                }
+        this.profileService.updateProfile(this.state.user['username'], pw, fn, ln)
+            .then(
+                //console.log
+                this.setState(
+                    {
+                        edit_mode: false
+                    }
+                )
             )
-        )
     };
 
     onPasswordChange = (event) => {
@@ -67,9 +65,9 @@ class Profile extends Component {
     cancelUpdate = () => {
         this.setState(
             {
-                password: this.props.user['password'],
-                first_name: this.props.user['first_name'],
-                last_name: this.props.user['last_name'],
+                password: this.props.location.state.user['password'],
+                first_name: this.props.location.state.user['first_name'],
+                last_name: this.props.location.state.user['last_name'],
                 edit_mode: false
             }
         )
@@ -77,11 +75,8 @@ class Profile extends Component {
 
     deleteUser = () => {
         alert("Sorry to see you go, " + this.state.user['username']);
-        fetch('http://localhost:5000/profile/' + this.state.user['username'], {
-            method: 'delete',
-            headers: {
-                'content-type': 'application/json'   }
-        }).then(this.goHome())
+        this.profileService.deleteProfile(this.state.user['username'])
+            .then(this.goHome())
     };
 
     goHome = () =>
@@ -102,14 +97,53 @@ class Profile extends Component {
                             onClick={() => this.goHome()}>Home Page
                         </button>
                     </div>
-                    <div className='dp tc'>
-                        <img
-                            className='ma2'
-                            src={this.state.profile_pic}
-                            alt='https://upload.wikimedia.org/wikipedia/en/b/be/Flag_of_England.svg'
-                            height={180}
-                            width={180}/>
+                    <div className='row'>
+                        <div className='dp tc col-md-9'>
+                            <img
+                                className='ma2'
+                                src={this.state.profile_pic}
+                                alt='https://upload.wikimedia.org/wikipedia/en/b/be/Flag_of_England.svg'
+                                height={180}
+                                width={180}/>
+                        </div>
+                        <div className='col-md-3 fr'>
+                            {
+
+                                this.state.user['isAdmin'] === 1
+                                ?
+                                <button className='btn btn-primary ma2'
+                                        onClick={() => this.goToUsers()}>
+                                    User list
+                                </button>
+                                :
+                                <img
+                                    className='ma2'
+                                    src={admin}
+                                    alt="Not admin"
+                                    height={90}
+                                    width={90}/>
+                            }
+                            {
+                                this.state.user['isPro'] === 1
+                                ?
+                                <img
+                                    className='ma2'
+                                    src={pro}
+                                    alt="Pro user"
+                                    height={90}
+                                    width={90}/>
+                                :
+                                <img
+                                    className='ma2'
+                                    src={casual}
+                                    alt="Casual"
+                                    height={80}
+                                    width={150}/>
+                            }
+                        </div>
                     </div>
+
+
 
                     <div>
                         <h3 className="font-weight-bold">
@@ -123,14 +157,14 @@ class Profile extends Component {
                         this.state.edit_mode === false
                         ?
                         <div>
-                            <div>
-                                <h3 className="font-weight-bold">
-                                    Password
-                                </h3>
-                                <h4>
-                                    {this.state.password}
-                                </h4>
-                            </div>
+                            {/*<div>*/}
+                            {/*<h3 className="font-weight-bold">*/}
+                            {/*Password*/}
+                            {/*</h3>*/}
+                            {/*<h4>*/}
+                            {/*{this.state.password}*/}
+                            {/*</h4>*/}
+                            {/*</div>*/}
                             <div>
                                 <h3 className="font-weight-bold">
                                     First Name
@@ -154,10 +188,7 @@ class Profile extends Component {
                                 <h3 className="font-weight-bold">
                                     Password
                                 </h3>
-                                {/*<h4>*/}
-                                {/*{this.state.user['password']}*/}
-                                {/*</h4>*/}
-                                <input type='text'
+                                <input type='password'
                                        onChange={this.onPasswordChange}
                                        id='password'
                                        defaultValue={this.state.user['password']}/>
@@ -192,19 +223,7 @@ class Profile extends Component {
                             {this.state.user['favorite_team']}
                         </h4>
                     </div>
-                    {
 
-                        this.state.user['isAdmin'] === 1
-                        ?
-                        <button className='btn btn-primary ma2'
-                                onClick={() => this.goToUsers()}>
-                            User list
-                        </button>
-                        :
-                        <p>
-                            You are a normal user.
-                        </p>
-                    }
                     {
                         this.state.edit_mode === false
                         ?

@@ -1,3 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron|Permanent+Marker');
+
+
+
 .card {
     display: flex;
+    overflow: auto;
+}
+
+/*h4 {*/
+    /*color: gold;*/
+/*}*/
+
+/*h3 {*/
+    /*color: black;*/
+    /*font-weight: bold;*/
+    /*font-family: 'Permanent Marker', cursive;*/
+/*}*/
+
+/*h5 {*/
+    /*color: gold;*/
+/*}*/
+
+.team_name {
+    position: relative;
+    font-family: 'Permanent Marker', cursive;
+    color: orange;
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+}
+
+.round_name {
+    position: relative;
+    font-family: 'Permanent Marker', cursive;
+    text-shadow:
+            -1px -1px 0 white,
+            1px -1px 0 white,
+            -1px 1px 0 white,
+            1px 1px 0 white;
+}
+
+.date_name {
+    position: relative;
+    font-family: Roboto;
+    font-weight: bold;
+    text-shadow:
+            -1px -1px 0 white,
+            1px -1px 0 white,
+            -1px 1px 0 white,
+            1px 1px 0 white;
+}
+
+.previous_name {
+    position: relative;
+    font-family: 'Permanent Marker', cursive;
+    color: white;
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+}
+
+.previous_game {
+    position: relative;
+    color: ivory;
+    /*font-weight: bold;*/
+    /*font-family: 'Orbitron', sans-serif;*/
+    font-family: 'Permanent Marker', cursive;
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
 }
