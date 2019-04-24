@@ -120,7 +120,7 @@ class Navigation extends React.Component {
         }
         return (
             <nav className="navbar navbar-expand-md navbar-dark bg-black">
-                <div className="navbar-container">
+                <div className="navbar-container-collapseable">
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarsExample03"
                             aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
@@ -154,10 +154,10 @@ class Navigation extends React.Component {
                                className="nav-link font-weight-bold text-white" href="#">
                                 Fixtures <span className="sr-only">(current)</span></a>
                         </li>
-                        <li className="nav-item">
+                        {/*<li className="nav-item">
                             <a className="nav-link font-weight-bold text-white" href="#">Scores <span
                                 className="sr-only">(current)</span></a>
-                        </li>
+                        </li>*/}
                         {/*<li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="http://example.com" id="dropdown03"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -172,7 +172,7 @@ class Navigation extends React.Component {
                         <div className="nav-item dropdown mr-2">
                             <a className="nav-link fa fa-user-circle fa-2x" href="http://example.com" id="dropdown03"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-                            <ul className="dropdown-menu pull-left" aria-labelledby="dropdown03">
+                            <ul className="dropdown-menu" aria-labelledby="dropdown03">
                                 {this.props.loggedIn === true &&
                                 <div>
                                     <li className="dropdown-item text-center">Welcome

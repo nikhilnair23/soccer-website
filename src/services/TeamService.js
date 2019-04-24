@@ -9,6 +9,10 @@ export default class TeamService {
         return teams
     };
 
+    get_team = (teamId) => {
+
+    }
+
     findTeams = (leagueId) =>
         fetch(this.url + leagueId, {
             method: 'get',

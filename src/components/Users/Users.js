@@ -82,8 +82,7 @@ class Users extends Component {
             </div>
             :
             <div className='container-fluid tc'>
-                <table className="table bg-moon-gray table-striped css-serial tc pa3 ma3">
-                    <caption>List of users</caption>
+                <table className="table bg-moon-gray table-striped css-serial tc pa3">
                     <thead className='bg-light'>
                     <tr>
                         <th scope="col">#</th>

@@ -12,7 +12,7 @@
 #profile_button {
 }
 
-.navbar-container{
+.navbar-container-collapseable{
     display: flex;
     flex-direction: row;
     margin-right: 25px;
