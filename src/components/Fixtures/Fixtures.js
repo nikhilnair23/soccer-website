@@ -166,7 +166,7 @@ class Fixtures extends Component {
 
     render() {
         return (
-            <div className="container-fluid tc">
+            <div className="container-fluid tc" id="navbar-container">
                 <div className={"container-fluid"} id="navbar-container">
                     <Navigation loggedIn ={this.state.loggedIn}
                                 user={this.state.user}/>

@@ -67,7 +67,7 @@ class MainPage extends Component {
     render() {
         console.log(this.state.user);
         return (
-            <div className={"container-fluid"} id="navbar-container">
+            <div className="container-fluid" id="navbar-container">
             <div className="socc-height-inherit">
                 <div className={"container-fluid"} id="navbar-container">
                     <Navigation loggedIn ={this.state.loggedIn}

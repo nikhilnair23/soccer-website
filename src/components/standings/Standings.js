@@ -158,13 +158,13 @@ class Standings extends Component {
         return (
             // this.state.league === 'ucl'
             // ?
-            <div className='container-fluid'>
+            <div className='container-fluid' id="navbar-container">
                 <div className={"container-fluid"} id="navbar-container">
                     <Navigation loggedIn ={this.state.loggedIn}
                                 user={this.state.user}/>
                 </div>
                 <div className="row">
-                    <div className='col-md-3 bg-black-80 left_col'>
+                    <div className='col-3 bg-black-80 left_col'>
                         <button
                             className="btn btn-warning pd5 ma2 home_but"
                             type="button"
@@ -182,7 +182,7 @@ class Standings extends Component {
 
                     </div>
 
-                    <div className="col-md-9 right_col">
+                    <div className="col-9 right_col">
                         {/*{console.log(this.state.ucl)}*/}
                         {
                             this.state.league === 'ucl'

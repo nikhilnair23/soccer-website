@@ -32,6 +32,10 @@
     list-style: none
 }
 
+.carousel-fade .carousel-item-next.carousel-item-left, .carousel-fade .carousel-item-prev.carousel-item-right, .carousel-fade .carousel-item.active{
+    background: transparent;
+}
+
 .socc-news-img{
     position: relative;
     width: 94%;

@@ -4,7 +4,7 @@ import './Standings.css';
 
 
 const Leagues = ({changeLeague, league}) =>
-    <div className='container-fluid ma3'>
+    <div className='container-fluid ma3' id="navbar-container">
         <ul className="nav nav-tabs flex-column">
             <li className="nav-item">
                 <a id='epl'
