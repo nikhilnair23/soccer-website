@@ -1,31 +1,40 @@
 import React from 'react';
 import {Component} from 'react';
 import pic from './vs.png'
+import bg_card from './bg_card.jpg';
 import odds from './odds.png';
 import './Match_Details.css';
+import TeamService from "../../../services/TeamService";
 import {withRouter} from 'react-router';
 
 class Match_Details extends Component {
     constructor(props) {
-        debugger;
         super(props);
-        this.state= {
+        this.state = {
             h2h: this.props.h2h,
             fixtureById: this.props.fixtureById,
             home_crest: 'https://upload.wikimedia.org/wikipedia/en/b/be/Flag_of_England.svg',
             away_crest: 'https://upload.wikimedia.org/wikipedia/en/b/be/Flag_of_England.svg'
         };
 
-        fetch('http://localhost:5000/teams/team/' + this.state.fixtureById[0]['homeTeam_id'])
-            .then(response => response.json())
+        this.teamService = new TeamService();
+        this.getTeamCrests();
+
+    }
+
+    getTeamCrests() {
+        // fetch('http://localhost:5000/teams/team/' + this.state.fixtureById[0]['homeTeam_id'])
+        //     .then(response => response.json())
+        this.teamService.getTeamCrests(this.state.fixtureById[0]['homeTeam_id'])
             .then(x => this.setState(
                 {
                     home_crest: x['api']['teams'][this.state.fixtureById[0]['homeTeam_id']]['logo']
                 }
             ));
 
-        fetch('http://localhost:5000/teams/team/' + this.state.fixtureById[0]['awayTeam_id'])
-            .then(response => response.json())
+        // fetch('http://localhost:5000/teams/team/' + this.state.fixtureById[0]['awayTeam_id'])
+        //     .then(response => response.json())
+        this.teamService.getTeamCrests(this.state.fixtureById[0]['awayTeam_id'])
             .then(x => this.setState(
                 {
                     away_crest: x['api']['teams'][this.state.fixtureById[0]['awayTeam_id']]['logo']
@@ -56,7 +65,8 @@ class Match_Details extends Component {
         return (
             <div className="container-fluid">
                 <div
-                    className='tc bg-washed-green dib ma2 br3 pa1 shadow-5 vh-75 w-50 card'>
+                    className='tc match_card dib ma2 br3 pa1 shadow-5 vh-75 w-50 card'
+                    style={{backgroundImage: `url(${bg_card})`}}>
                     <div className='row ma3'>
                         <div className='col-md-4 tc'>
                             <img
@@ -73,7 +83,7 @@ class Match_Details extends Component {
                         </div>
                         <div className='col-md-4 tc'>
                             <img className=''
-                                src={pic}
+                                 src={pic}
                                  height={120}
                                  width={120}/>
                         </div>
@@ -90,7 +100,7 @@ class Match_Details extends Component {
                         </div>
                     </div>
 
-                    <div className='row ma3'>
+                    <div className='row ma1'>
                         <div className='col-md-4 tc'>
                             <h4 onClick={() => this.goToTeamPage(this.state.fixtureById[0].homeTeam_id,
                                 this.state.fixtureById[0].homeTeam,
@@ -109,31 +119,24 @@ class Match_Details extends Component {
                         </div>
                     </div>
 
-                    <div className='row ma3'>
+                    <div className='row ma1'>
                         <div className='col tc'>
-                            <h3>{this.state.fixtureById[0].round}</h3>
+                            <h3 className='round_name'>{this.state.fixtureById[0].round}</h3>
                         </div>
                     </div>
 
-                    <div className='row ma3'>
+                    <div className='row ma2'>
                         <div className='col tc'>
-                            <h4>
+                            <h4 className='date_name'>
                                 {this.state.fixtureById[0].event_date.split("T")[0] + " "}
                                 at
-                                {" " + this.state.fixtureById[0].event_date.split("T")[1].split("+")[0]}
+                                {" " + this.state.fixtureById[0].event_date.split("T")[1].split(
+                                    "+")[0]}
                             </h4>
                         </div>
                     </div>
 
 
-                    {/*<div className='row'>*/}
-                        {/*<div className='col tc'>*/}
-                            {/*<img className='ma2'*/}
-                                 {/*src={odds}*/}
-                                 {/*height={85}*/}
-                                 {/*width={85}/>*/}
-                        {/*</div>*/}
-                    {/*</div>*/}
 
                     <div className='row ma4'>
                         <div className='col-md-3 tc'>
@@ -146,21 +149,21 @@ class Match_Details extends Component {
                         <div className='col-md-3 tc'>
                             <button type="button" className='col-md-3 tc'
                                     onClick={() => this.props.reset()}
-                                    className="btn btn-secondary">
+                                    className="btn btn-warning">
                                 Squads
                             </button>
                         </div>
                         <div className='col-md-3 tc'>
                             <button type="button"
                                     onClick={() => this.props.reset()}
-                                    className="btn btn-secondary">
+                                    className="btn btn-warning">
                                 Table
                             </button>
                         </div>
                         <div className='col-md-3 tc'>
                             <button type="button"
                                     onClick={() => this.props.setOdds()}
-                                    className="btn btn-secondary">
+                                    className="btn btn-warning">
                                 Odds
                             </button>
                         </div>
@@ -168,8 +171,8 @@ class Match_Details extends Component {
 
 
                     <div>
-                        <h3>
-                            Previous meetings
+                        <h3 className='previous_name'>
+                            PREVIOUS MEETINGS
                         </h3>
                         <h5>
                             {
@@ -179,26 +182,38 @@ class Match_Details extends Component {
                                             match.statusShort === "FT"
                                     )
                                     .map(
-                                    match =>
-                                        <div className="row ma3">
+                                        match =>
+                                            <div className="row ma3">
 
-                                            <div className="col-md-4 tc">
-                                                {match.homeTeam}
+                                                <div className="col-md-4 tc">
+                                                    <h4 className='previous_game'>
+                                                        {match.homeTeam}
+                                                    </h4>
+                                                </div>
+                                                <div className="col-md-1 tc">
+                                                    <h4 className='previous_game'>
+                                                        {match.goalsHomeTeam}
+                                                    </h4>
+                                                </div>
+                                                <div className="col-md-2 tc">
+                                                    <h4 className='previous_game'>
+                                                        -
+                                                    </h4>
+
+                                                </div>
+                                                <div className="col-md-1 tc">
+                                                    <h4 className='previous_game'>
+
+                                                        {match.goalsAwayTeam}
+                                                    </h4>
+                                                </div>
+                                                <div className="col-md-4 tc">
+                                                    <h4 className='previous_game'>
+                                                        {match.awayTeam}
+                                                    </h4>
+                                                </div>
                                             </div>
-                                            <div className="col-md-1 tc">
-                                                {match.goalsHomeTeam}
-                                            </div>
-                                            <div className="col-md-2 tc">
-                                                -
-                                            </div>
-                                            <div className="col-md-1 tc">
-                                                {match.goalsAwayTeam}
-                                            </div>
-                                            <div className="col-md-4 tc">
-                                                {match.awayTeam}
-                                            </div>
-                                        </div>
-                                )
+                                    )
                             }
                         </h5>
                     </div>

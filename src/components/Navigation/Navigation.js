@@ -41,19 +41,29 @@ class Navigation extends React.Component {
         return (
             this.props.history.push('/teams')
         )
-    }
+    };
 
     goToFixtures = () => {
         return (
-            this.props.history.push('/fixtures')
+            this.props.history.push({
+                                        pathname: '/fixtures',
+                                        state: {
+                                            user: this.props.user
+                                        }
+                                    })
         )
-    }
+    };
 
     goToLeagues = () => {
         return (
-            this.props.history.push('/leagues')
+            this.props.history.push({
+                                        pathname: '/leagues',
+                                        state: {
+                                            user: this.props.user
+                                        }
+                                    })
         )
-    }
+    };
 
     goToSearch = () =>{
         debugger;
@@ -71,19 +81,18 @@ class Navigation extends React.Component {
         debugger;
         return (
             this.props.history.push({
-                pathname: '/profile',
-                state: {
-                    user: this.props.user
-                }
-            })
+                                        pathname: '/profile',
+                                        state: {
+                                            user: this.props.user
+                                        }
+                                    })
         )
     }
 
-
     search = () => {
         self.setState({
-            navigate: true
-        })
+                          navigate: true
+                      })
     }
 
     signOut = () => {

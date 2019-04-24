@@ -37,22 +37,11 @@ class Users extends Component {
         fetch('http://localhost:5000/admin/' + username, {
                   method: 'PUT',
                   headers: {'Content-Type': 'application/json'}
-                  // body: JSON.stringify({
-                  //                          password: pw,
-                  //                          first_name: fn,
-                  //                          last_name: ln
-                  //                      })
               }
         ).then(
             this.setState(
 
             )
-            //this.forceUpdate()
-            // this.setState(
-            //     {
-            //         edit_mode: false
-            //     }
-            // )
         )
     };
 
@@ -81,14 +70,7 @@ class Users extends Component {
     };
 
     render() {
-        /*
-        favorite_team: "lfc"
-        first_name: "arv"
-        isAdmin: 1
-        last_name: "ind"
-        password: "aaa"
-        username: "abc123"
-        */
+
         console.log(this.state.users)
         return (
             this.state.users.length === 0
@@ -100,9 +82,9 @@ class Users extends Component {
             </div>
             :
             <div className='container-fluid tc'>
-                <table className="table bg-moon-gray css-serial tc">
+                <table className="table bg-moon-gray table-striped css-serial tc pa3 ma3">
                     <caption>List of users</caption>
-                    <thead>
+                    <thead className='bg-light'>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Username</th>
@@ -183,6 +165,32 @@ class Users extends Component {
                     }
                     </tbody>
                 </table>
+                <details className='fl tl bg-lightest-blue pa3 ma3'>
+                    <summary className='bg-light-blue'>
+                        Click here to view instructions
+                        <span className="caret">&#9660;</span>
+                    </summary>
+                    <ul>
+                        <li>
+                            Click on "Make Admin" to make a user an admin.
+                        </li>
+                        <li>
+                            Click on "Ban user" to ban a user.
+                        </li>
+                        <li>
+                            Click on "Banned" to un-ban a user.
+                        </li>
+                        <li>
+                            A banned user cannot be made an admin. If a banned user is un-banned, they
+                            can be made an admin.
+                        </li>
+                        <li>
+                            An admin cannot revoke admin rights once they make another user an admin.
+                            Hence, be cautious if you make someone an admin as you cannot reverse it
+                            on the front end.
+                        </li>
+                    </ul>
+                </details>
             </div>
         )
     }

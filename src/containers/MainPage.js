@@ -31,9 +31,9 @@ class MainPage extends Component {
             console.log(response.data);
             if (response.data !== "NOT_LOGGED_IN") {
                 this.setState({
-                    loggedIn:true,
-                    user:response.data
-                })
+                                  loggedIn: true,
+                                  user: response.data
+                              })
             }
         })
     }
@@ -41,7 +41,7 @@ class MainPage extends Component {
     componentDidMount() {
         this.newsService.get_news().then(response => {
             this.setState(
-                { articles : response.articles}
+                {articles: response.articles}
             )
         })
     }
@@ -153,7 +153,9 @@ this.state.route === 'signin' || this.state.route === 'signout'
             :
             this.state.route === 'fixtures'
             ?
-            <Fixtures onRouteChange={this.onRouteChange}/>
+            <Fixtures onRouteChange={this.onRouteChange}
+                      user={this.state.user}/>
+
             :
             this.state.route === 'profile'
             ?
@@ -165,3 +167,35 @@ this.state.route === 'signin' || this.state.route === 'signout'
             <Users onRouteChange={this.onRouteChange}/>
             :
  */
+            <div className={"container-fluid"} id="navbar-container">
+                <div className="socc-height-inherit">
+                    <div className={"container-fluid"} id="navbar-container">
+                        <Navigation routeStatus={this.state.routeStatus}
+                                    loggedIn={this.state.loggedIn}
+                                    user={this.state.user}
+                                    onRouteChange={this.onRouteChange}/>
+                    </div>
+                    <div className="container-fluid socc-height-inherit">
+                        <div className="row socc-height-inherit">
+                            <div className="col-3">
+                                <h2 className="text-white text-wrap">Placeholder</h2>
+                            </div>
+                            <div className="col-6">
+                                <NewsCarousel
+                                    articles={this.state.articles}
+                                />
+                            </div>
+                            <div className="col-3">
+                                <h2 className="text-white">sample</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {/*<FavoriteTeam/>*/}
+            </div>
+        )
+    }
+
+}
+
+export default withRouter(MainPage)

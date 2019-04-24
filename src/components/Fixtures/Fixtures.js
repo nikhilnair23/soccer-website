@@ -7,6 +7,7 @@ import Match_Details from "./Match_Details/Match_Details";
 import Odds from "../Odds/Odds";
 import Navigation from "../Navigation/Navigation";
 import UserService from "../../services/UserService";
+import FixtureService from "../../services/FixtureService";
 
 class Fixtures extends Component {
 
@@ -27,6 +28,9 @@ class Fixtures extends Component {
             user:'',
             loggedIn: false
         };
+        this.fixtureService = new FixtureService();
+        this.getFixtures();
+    }
 
         this.userService = new UserService();
         this.userService.is_logged_in().then(response => {
@@ -38,40 +42,36 @@ class Fixtures extends Component {
             }
         })
 
-        fetch('http://localhost:5000/fixtures/live')
-            .then(response => response.json())
+    getFixtures() {
+        this.fixtureService.getFixturesByLeague('live')
             .then(x => this.setState(
                 {
                     live: Object.values(x['api']['fixtures'])
                 }
             ));
 
-        fetch('http://localhost:5000/fixtures/epl')
-            .then(response => response.json())
+        this.fixtureService.getFixturesByLeague('epl')
             .then(x => this.setState(
                 {
                     epl: Object.values(x['api']['fixtures'])
                 }
             ));
 
-        fetch('http://localhost:5000/fixtures/laliga')
-            .then(response => response.json())
+        this.fixtureService.getFixturesByLeague('laliga')
             .then(x => this.setState(
                 {
                     laliga: Object.values(x['api']['fixtures'])
                 }
             ));
 
-        fetch('http://localhost:5000/fixtures/bundesliga')
-            .then(response => response.json())
+        this.fixtureService.getFixturesByLeague('bundesliga')
             .then(x => this.setState(
                 {
                     bundesliga: Object.values(x['api']['fixtures'])
                 }
             ));
 
-        fetch('http://localhost:5000/fixtures/seriea')
-            .then(response => response.json())
+        this.fixtureService.getFixturesByLeague('seriea')
             .then(x => this.setState(
                 {
                     seriea: Object.values(x['api']['fixtures'])
@@ -93,16 +93,14 @@ class Fixtures extends Component {
 
     matchDetails = (homeTeam, awayTeam, fixture_id) => {
 
-        fetch('http://localhost:5000/fixtures/h2h/' + homeTeam + '/' + awayTeam)
-            .then(response => response.json())
+        this.fixtureService.getH2H(homeTeam, awayTeam)
             .then(x => this.setState(
                 {
                     h2h: Object.values(x['api']['fixtures'])
                 }
             ));
 
-        fetch('http://localhost:5000/fixtures/id/' + fixture_id)
-            .then(response => response.json())
+        this.fixtureService.getFixtureById(fixture_id)
             .then(x => this.setState(
                 {
                     fixtureById: Object.values(x['api']['fixtures'])
@@ -128,11 +126,33 @@ class Fixtures extends Component {
     };
 
     setOdds = () => {
-        this.setState(
-            {
-                odds: true
+
+        //console.log(this.state);
+        if (this.state.user.length === 0) {
+            alert("Please log in as pro to view this.");
+            this.setState(
+                {
+                    odds: false
+                }
+            )
+        }
+        else {
+            if(this.state.user['isPro'] === 1) {
+                this.setState(
+                    {
+                        odds: true
+                    }
+                )
             }
-        )
+            else {
+                alert("Please log in as pro to view this.");
+                this.setState(
+                    {
+                        odds: false
+                    }
+                )
+            }
+        }
     };
 
     resetOdds = () => {
@@ -152,42 +172,42 @@ class Fixtures extends Component {
                 </div>
                 <div className="col tc bg-moon-gray">
                     <button type='button'
-                            className={"home_button league_button btn-warning ma3 active"}
+                            className={"home_button league_button btn-warning ma3 active rounded"}
                             onClick={() => this.props.onRouteChange('home')}>
                         Home page
                     </button>
                     <button type='button'
                             className={this.state.league === 'live'
-                                       ? "league_button btn-primary ma3 active"
-                                       : "league_button btn-secondary ma3"}
+                                       ? "league_button btn-success ma3 active rounded"
+                                       : "league_button btn-secondary ma3 rounded black"}
                             onClick={() => this.changeLeague('live')}>
                         LIVE scores
                     </button>
                     <button type='button'
                             className={this.state.league === 'epl'
-                                       ? "league_button btn-primary ma3 active"
-                                       : "league_button btn-secondary ma3"}
+                                       ? "league_button btn-success ma3 active rounded"
+                                       : "league_button btn-secondary ma3 rounded black"}
                             onClick={() => this.changeLeague('epl')}>
                         English Premier League
                     </button>
                     <button type='button'
                             className={this.state.league === 'laliga'
-                                       ? "league_button btn-primary ma3 active"
-                                       : "league_button btn-secondary ma3"}
+                                       ? "league_button btn-success ma3 active rounded"
+                                       : "league_button btn-secondary ma3 rounded black"}
                             onClick={() => this.changeLeague('laliga')}>
                         La Liga
                     </button>
                     <button type='button'
                             className={this.state.league === 'bundesliga'
-                                       ? "league_button btn-primary ma3 active"
-                                       : "league_button btn-secondary ma3"}
+                                       ? "league_button btn-success ma3 active rounded"
+                                       : "league_button btn-secondary ma3 rounded black"}
                             onClick={() => this.changeLeague('bundesliga')}>
                         Bundesliga
                     </button>
                     <button type='button'
                             className={this.state.league === 'seriea'
-                                       ? "league_button btn-primary ma3 active"
-                                       : "league_button btn-secondary ma3"}
+                                       ? "league_button btn-success ma3 active rounded"
+                                       : "league_button btn-secondary ma3 rounded black"}
                             onClick={() => this.changeLeague('seriea')}>
                         Serie A
                     </button>
