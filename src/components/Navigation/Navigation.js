@@ -80,11 +80,11 @@ class Navigation extends React.Component {
 
     signOut = () =>
         this.userService.sign_out().then((response) => {
-            debugger;
-                return(this.props.history.push({
-                    pathname:'/',
-                    state:{
-                        signedOut:true
+                debugger;
+                return (this.props.history.push({
+                    pathname: '/',
+                    state: {
+                        signedOut: true
                     }
                 }))
             }
@@ -105,12 +105,13 @@ class Navigation extends React.Component {
                     <div className="col-2">
                         <button onClick={this.goHome}
                                 className="btn">
-                            <img  className="img rounded"
-                                src={logo}
+                            <img className="img rounded"
+                                 src={logo}
                                  height="90px"
-                                  width="auto"
-                                /*className="img-thumbnail"*//>
+                                 width="auto"
+                                 className="img"/>
                             {/*<h3 className="float-left pt-2 mr-1 mt-2 font-italic font-weight-bolder text-danger">FOOTBALL</h3>*/}
+
                         </button>
                     </div>
                     <div className="col-8 nav-container">
@@ -124,14 +125,13 @@ class Navigation extends React.Component {
                                 <button
                                     className={"btn text-white"}
                                     onClick={() => this.goToFixtures()}>
-                                    {/*onClick={() => this.props.onRouteChange('fixtures')}>*/}
                                     Fixtures
                                 </button>
                             </li>
                             <li className="nav-item" id="">
                                 <button
                                     className={"btn text-white"}
-                                    /*onClick={() => self.props.onRouteChange('standings')}*/
+                                    onClick={() => self.props.onRouteChange('standings')}
                                     onClick={() => this.goToLeagues()}
                                 >
                                     Leagues
@@ -140,9 +140,6 @@ class Navigation extends React.Component {
                             <li className="nav-item" id="">
                                 <button className={"btn text-white"}>Scores</button>
                             </li>
-                            {/*<li className="nav-item mr-2" id="">
-                                <button className={"btn text-white"}>Highlights</button>
-                            </li>*/}
                             <li className="nav-item ml-2" id="wrap">
                                 <div className="search">
                                     <input onChange={this.titleChanged}
@@ -193,42 +190,48 @@ class Navigation extends React.Component {
                     </div>
                 </div>
             </nav>
-        );
+        )
+            ;
     }
 }
 
 export default withRouter(Navigation)
 
 /*
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Expand at sm</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<nav className="navbar navbar-expand-sm navbar-dark bg-black">
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03"
+                        aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <a className="navbar-brand text-white" href="#">Expand at sm</a>
+                <div className="collapse navbar-collapse" id="navbarsExample03">
+                    <ul className="navbar-nav mr-auto">
+                        <li className="nav-item active">
+                            <a className="nav-link font-weight-bold" href="#">Home <span className="sr-only">(current)</span></a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">Link</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link disabled" href="#">Disabled</a>
+                        </li>
+                        <li className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle" href="http://example.com" id="dropdown03"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <div className="dropdown-menu" aria-labelledby="dropdown03">
+                                <a className="dropdown-item" href="#">Action</a>
+                                <a className="dropdown-item" href="#">Another action</a>
+                                <a className="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <form className="form-inline my-2 my-md-0">
+                        <input className="form-control" type="text" placeholder="Search"/>
+                    </form>
+                </div>
+            </nav> */
 
-      <div class="collapse navbar-collapse" id="navbarsExample03">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown03">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-md-0">
-          <input class="form-control" type="text" placeholder="Search">
-        </form>
-      </div>
-    </nav>
- */
+
+/*
+
+ *!/*/
