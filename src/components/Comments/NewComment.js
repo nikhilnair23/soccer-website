@@ -29,7 +29,10 @@ const NewComment = (props) => {
             <div className="card comment-text">
                 <h5 className ="p-1 comment-text-display">{props.details.comment}</h5>
             </div>
-                {props.user.isAdmin ===1 && <button className="btn btn-danger">DELETE</button>}
+                {props.user.isAdmin ===1 && <button
+                    onClick={() => props.deleteComment(props.details.comment,props.details.user)}
+                    className="btn btn-danger">
+                    DELETE</button>}
             </div>
         </div>
     )

@@ -29,4 +29,18 @@ export default class CommentService{
             })
         })).then(response => response)
     }
+
+    delete_news_comment = (url,comment) => {
+        debugger;
+        let dest = "http://localhost:5000/api/comment_news"
+        return(fetch(dest,{
+            method: "delete",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                url: url,
+                user: comment.user,
+                comment: comment.body,
+            })
+        })).then(response => response)
+    }
 }
