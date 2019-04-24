@@ -100,94 +100,48 @@ class Navigation extends React.Component {
                 }}/>)
         }
         return (
-            <nav className="navbar navbar-expand bg-black-90">
-                <div className="row container-fluid">
-                    <div className="col-2">
-                        <button onClick={this.goHome}
-                                className="btn">
-                            <img className="img rounded"
-                                 src={logo}
-                                 height="90px"
-                                 width="auto"
-                                 className="img"/>
-                            {/*<h3 className="float-left pt-2 mr-1 mt-2 font-italic font-weight-bolder text-danger">FOOTBALL</h3>*/}
-
+            <nav className="navbar navbar-expand-md navbar-dark bg-black">
+                <div className="navbar-container">
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03"
+                        aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                    <img className="img rounded"
+                         src={logo}
+                         height="80px"
+                         width="auto"
+                    />
+                </div>
+                {/*<a className="navbar-brand text-white" href="#">Expand at sm</a>*/}
+                <div className="collapse navbar-collapse" id="navbarsExample03">
+                    <ul className="navbar-nav mr-auto">
+                        <li className="nav-item active">
+                            <a className="nav-link font-weight-bold" href="#">Home <span className="sr-only">(current)</span></a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#">Link</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link disabled" href="#">Disabled</a>
+                        </li>
+                        <li className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle" href="http://example.com" id="dropdown03"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <div className="dropdown-menu" aria-labelledby="dropdown03">
+                                <a className="dropdown-item" href="#">Action</a>
+                                <a className="dropdown-item" href="#">Another action</a>
+                                <a className="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <form className="form-inline mr-3">
+                        <input className="form-control mr-2" type="text" placeholder="Search"/>
+                        <button
+                            onClick={() => this.search()}
+                            className="searchButton">
+                            <i className="fa fa-search"></i>
                         </button>
-                    </div>
-                    <div className="col-8 nav-container">
-                        <ul className="nav nav-pills bg-black p-2">
-                            <li className="nav-item" id="">
-                                <button onClick={() => this.goToTeams()}
-                                        className={"btn text-white"}>Teams
-                                </button>
-                            </li>
-                            <li className="nav-item" id="">
-                                <button
-                                    className={"btn text-white"}
-                                    onClick={() => this.goToFixtures()}>
-                                    Fixtures
-                                </button>
-                            </li>
-                            <li className="nav-item" id="">
-                                <button
-                                    className={"btn text-white"}
-                                    onClick={() => self.props.onRouteChange('standings')}
-                                    onClick={() => this.goToLeagues()}
-                                >
-                                    Leagues
-                                </button>
-                            </li>
-                            <li className="nav-item" id="">
-                                <button className={"btn text-white"}>Scores</button>
-                            </li>
-                            <li className="nav-item ml-2" id="wrap">
-                                <div className="search">
-                                    <input onChange={this.titleChanged}
-                                           type="text" id="searchTerm" className="form-control-sm mr-2"
-                                           placeholder="What are you looking for?"/>
-                                    <button
-                                        onClick={() => this.search()}
-                                        className="searchButton">
-                                        <i className="fa fa-search"></i>
-                                    </button>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="col-2">
-                        {
-                            this.props.loggedIn === true
-                                ?
-                                <div>
-                                    <div className='inline-block'>
-                                        <li className="nav-item" id="signout_button">
-                                            <button className="btn text-white"
-                                                    onClick={() => this.signOut()}
-                                            >Sign out
-                                            </button>
-                                        </li>
-                                    </div>
-
-                                    <div className='inline-flex'>
-                                        <li className="nav-item" id="profile_button">
-                                            <button className="btn btn-primary text-white"
-                                                    onClick={() => this.goToProfile()}
-                                            >Profile
-                                            </button>
-                                        </li>
-                                    </div>
-
-                                </div>
-
-                                :
-                                <li className="nav-item" id="signout_button">
-                                    <button className="btn text-white"
-                                            onClick={() => this.goToLogin()}
-                                    >Sign in
-                                    </button>
-                                </li>
-                        }
-                    </div>
+                    </form>
                 </div>
             </nav>
         )
@@ -232,6 +186,94 @@ export default withRouter(Navigation)
             </nav> */
 
 
-/*
+/*<nav className="navbar navbar-expand bg-black-90">
+    <div className="row container-fluid">
+    <div className="col-2">
+    <button onClick={this.goHome}
+className="btn">
+    <img className="img rounded"
+src={logo}
+height="90px"
+width="auto"
+className="img"/>
+    {/!*<h3 className="float-left pt-2 mr-1 mt-2 font-italic font-weight-bolder text-danger">FOOTBALL</h3>*!/}
 
- *!/*/
+</button>
+</div>
+<div className="col-8 nav-container">
+    <ul className="nav nav-pills bg-black p-2">
+        <li className="nav-item" id="">
+            <button onClick={() => this.goToTeams()}
+                    className={"btn text-white"}>Teams
+            </button>
+        </li>
+        <li className="nav-item" id="">
+            <button
+                className={"btn text-white"}
+                onClick={() => this.goToFixtures()}>
+                Fixtures
+            </button>
+        </li>
+        <li className="nav-item" id="">
+            <button
+                className={"btn text-white"}
+                onClick={() => self.props.onRouteChange('standings')}
+                onClick={() => this.goToLeagues()}
+            >
+                Leagues
+            </button>
+        </li>
+        <li className="nav-item" id="">
+            <button className={"btn text-white"}>Scores</button>
+        </li>
+        <li className="nav-item ml-2" id="wrap">
+            <div className="search">
+                <input onChange={this.titleChanged}
+                       type="text" id="searchTerm" className="form-control-sm mr-2"
+                       placeholder="What are you looking for?"/>
+                <button
+                    onClick={() => this.search()}
+                    className="searchButton">
+                    <i className="fa fa-search"></i>
+                </button>
+            </div>
+        </li>
+    </ul>
+</div>
+<div className="col-2">
+{
+    this.props.loggedIn === true
+    ?
+    <div>
+        <div className='inline-block'>
+            <li className="nav-item" id="signout_button">
+                <button className="btn text-white"
+                        onClick={() => this.signOut()}
+                >Sign out
+                </button>
+            </li>
+        </div>
+
+        <div className='inline-flex'>
+            <li className="nav-item" id="profile_button">
+                <button className="btn btn-primary text-white"
+                        onClick={() => this.goToProfile()}
+                >Profile
+                </button>
+            </li>
+        </div>
+
+    </div>
+
+    :
+    <li className="nav-item" id="signout_button">
+        <button className="btn text-white"
+                onClick={() => this.goToLogin()}
+        >Sign in
+        </button>
+    </li>
+}
+</div>
+</div>
+</nav>*/
+
