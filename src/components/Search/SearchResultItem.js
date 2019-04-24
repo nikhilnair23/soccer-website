@@ -46,6 +46,11 @@ export default class SearchResultItem extends Component{
 
 
     render() {
+        if (this.props.location.state===undefined){
+            return(
+            <Redirect to={'/'}/>
+        )
+        }
         return(
             <div className="socc-height-inherit socc-background">
                 <div className={"container-fluid"} id="navbar-container">

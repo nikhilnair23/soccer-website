@@ -78,7 +78,8 @@ class Navigation extends React.Component {
         })
     }
 
-    signOut = () =>
+    signOut = () => {
+        debugger;
         this.userService.sign_out().then((response) => {
                 debugger;
                 return (this.props.history.push({
@@ -89,6 +90,7 @@ class Navigation extends React.Component {
                 }))
             }
         )
+    }
 
     render() {
         if (this.state.navigate === true) {
