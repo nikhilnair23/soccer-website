@@ -114,17 +114,20 @@ class Navigation extends React.Component {
                 </div>
                 {/*<a className="navbar-brand text-white" href="#">Expand at sm</a>*/}
                 <div className="collapse navbar-collapse" id="navbarsExample03">
-                    <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active">
-                            <a className="nav-link font-weight-bold" href="#">Home <span className="sr-only">(current)</span></a>
+                    <ul className="nav nav-pills mr-auto">
+                        <li className="nav-item">
+                            <a className="nav-link font-weight-bold text-white" href="#">Teams <span className="sr-only">(current)</span></a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Link</a>
+                            <a className="nav-link font-weight-bold text-white" href="#">Leagues <span className="sr-only">(current)</span></a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link disabled" href="#">Disabled</a>
+                            <a className="nav-link font-weight-bold text-white" href="#">Fixtures <span className="sr-only">(current)</span></a>
                         </li>
-                        <li className="nav-item dropdown">
+                        <li className="nav-item">
+                            <a className="nav-link font-weight-bold text-white" href="#">Scores <span className="sr-only">(current)</span></a>
+                        </li>
+                        {/*<li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="http://example.com" id="dropdown03"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
                             <div className="dropdown-menu" aria-labelledby="dropdown03">
@@ -132,9 +135,9 @@ class Navigation extends React.Component {
                                 <a className="dropdown-item" href="#">Another action</a>
                                 <a className="dropdown-item" href="#">Something else here</a>
                             </div>
-                        </li>
+                        </li>*/}
                     </ul>
-                    <form className="form-inline mr-3">
+                    <form className="form-inline">
                         <input className="form-control mr-2" type="text" placeholder="Search"/>
                         <button
                             onClick={() => this.search()}

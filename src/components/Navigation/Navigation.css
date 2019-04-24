@@ -15,7 +15,15 @@
 .navbar-container{
     display: flex;
     flex-direction: row;
-    margin-right: 80px;
+    margin-right: 50px;
+}
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    background: #c40000;
+    margin-right: 8px;
+    opacity: 1.2;
 }
 
 .navbar-toggler {
