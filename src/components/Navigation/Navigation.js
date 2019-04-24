@@ -102,30 +102,42 @@ class Navigation extends React.Component {
         return (
             <nav className="navbar navbar-expand-md navbar-dark bg-black">
                 <div className="navbar-container">
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03"
-                        aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                    <img className="img rounded"
-                         src={logo}
-                         height="80px"
-                         width="auto"
-                    />
+                    <button className="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarsExample03"
+                            aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <button className="btn"
+                            onClick={this.goHome}>
+                        <img className="img rounded"
+                             src={logo}
+                             height="80px"
+                             width="auto"
+                        />
+                    </button>
                 </div>
                 {/*<a className="navbar-brand text-white" href="#">Expand at sm</a>*/}
                 <div className="collapse navbar-collapse" id="navbarsExample03">
                     <ul className="nav nav-pills mr-auto">
                         <li className="nav-item">
-                            <a className="nav-link font-weight-bold text-white" href="#">Teams <span className="sr-only">(current)</span></a>
+                            <a onClick={this.goToTeams}
+                               href='#'
+                               className="nav-link font-weight-bold text-white">
+                                Teams <span className="sr-only">(current)</span></a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link font-weight-bold text-white" href="#">Leagues <span className="sr-only">(current)</span></a>
+                            <a onClick={this.goToLeagues}
+                               className="nav-link font-weight-bold text-white" href="#">
+                                Leagues <span className="sr-only">(current)</span></a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link font-weight-bold text-white" href="#">Fixtures <span className="sr-only">(current)</span></a>
+                            <a onClick={this.goToFixtures}
+                               className="nav-link font-weight-bold text-white" href="#">
+                                Fixtures <span className="sr-only">(current)</span></a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link font-weight-bold text-white" href="#">Scores <span className="sr-only">(current)</span></a>
+                            <a className="nav-link font-weight-bold text-white" href="#">Scores <span
+                                className="sr-only">(current)</span></a>
                         </li>
                         {/*<li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="http://example.com" id="dropdown03"
@@ -138,12 +150,51 @@ class Navigation extends React.Component {
                         </li>*/}
                     </ul>
                     <form className="form-inline">
-                        <input className="form-control mr-2" type="text" placeholder="Search"/>
+                        <div className="nav-item dropdown mr-2">
+                            <a className="nav-link fa fa-user-circle fa-2x" href="http://example.com" id="dropdown03"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                            <ul className="dropdown-menu pull-left" aria-labelledby="dropdown03">
+                                {this.props.loggedIn === true &&
+                                <div>
+                                    <li className="dropdown-item text-center">Welcome
+                                        back {this.props.user.user}</li>
+                                    <li className="dropdown-item text-center" href="#">
+                                        <button onClick={this.goToProfile}
+                                                className="btn btn-success">Profile
+                                        </button>
+                                    </li>
+                                    <li className="dropdown-item text-center" href="#">
+                                        <button onClick={this.signOut}
+                                                className="btn btn-danger">Sign Out
+                                        </button>
+                                    </li>
+                                </div>
+                                }
+                                {this.props.loggedIn === false &&
+                                <div>
+                                    <li className="dropdown-item text-center" href="#">
+                                        <button onClick={this.goToLogin}
+                                                className="btn btn-primary">Sign In
+                                        </button>
+                                    </li>
+                                </div>
+                                }
+
+                                {/*<li className="dropdown-item text-center" href="#">
+                                    <button onClick={this.goToLogin}
+                                            className="btn btn-primary">Sign In
+                                    </button>
+                                </li>*/}
+                            </ul>
+                        </div>
+                        <input onChange={this.titleChanged}
+                            className="form-control mr-2" type="text" placeholder="Search"/>
                         <button
                             onClick={() => this.search()}
                             className="searchButton">
                             <i className="fa fa-search"></i>
                         </button>
+
                     </form>
                 </div>
             </nav>
