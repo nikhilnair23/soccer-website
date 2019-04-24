@@ -55,8 +55,16 @@ class Navigation extends React.Component {
         )
     }
 
-    goToSearch = () =>
-        this.props.history.push('/search/' + this.state.searchText);
+    goToSearch = () =>{
+        debugger;
+        if(this.state.searchText===""){
+            return(this.props.history.push('/search/soccer'))
+        }
+        else{
+            return(this.props.history.push('/search/' + this.state.searchText))
+        }
+    }
+
 
     goToProfile = () => {
 
@@ -192,7 +200,7 @@ class Navigation extends React.Component {
                         <input onChange={this.titleChanged}
                             className="form-control mr-2" type="text" placeholder="Search"/>
                         <button
-                            onClick={() => this.search()}
+                            onClick={() => this.goToSearch()}
                             className="searchButton">
                             <i className="fa fa-search"></i>
                         </button>
