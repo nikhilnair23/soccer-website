@@ -5,3 +5,18 @@
 .dp {
     float: right;
 }
+
+.profile_card {
+    width: 33%;
+}
+
+@media only screen and (max-width: 1500px) {
+    .profile_card {
+        width: 50%
+    }
+}
+@media only screen and (max-width: 1000px) {
+    .profile_card {
+        width: 80%
+    }
+}
