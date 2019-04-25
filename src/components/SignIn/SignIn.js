@@ -1,6 +1,7 @@
 import React from 'react';
 import {Component} from 'react';
 import {withRouter} from 'react-router';
+import UserService from '../../services/UserService'
 import './SignIn.css'
 
 class SignIn extends Component{
@@ -11,6 +12,7 @@ class SignIn extends Component{
             password: '',
             isAdmin: ''
         };
+        this.userService = new UserService();
     }
 
     onUsernameChange = (event) => {
@@ -29,19 +31,18 @@ class SignIn extends Component{
         )
     };
 
-    onSignIn = () =>
-
-        //this.props.onRouteChange('home');
+    onSignIn = () => {
+        return(
         fetch('http://localhost:5000/login', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            credentials:'include',
+            credentials: 'include',
             body: JSON.stringify({
-                                     username: this.state.username,
-                                     password: this.state.password
-                                 })
+                username: this.state.username,
+                password: this.state.password
+            })
         })
-            //.then(response => response.json())
+        //.then(response => response.json())
             .then(res => {
                 debugger;
                 if (res.status === 400) {
@@ -55,7 +56,9 @@ class SignIn extends Component{
                     this.props.history.push('/');
                     // this.props.onRouteChange('home');
                 }
-            });
+            })
+    )
+    }
 
     onAdminChange = () => {
         if (document.getElementById("user_type").checked) {

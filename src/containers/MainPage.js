@@ -6,6 +6,7 @@ import SignIn from "../components/SignIn/SignIn";
 import NewsCarousel from "../components/News/NewsCarousel";
 import SearchService from "../services/SearchService";
 import UserService from '../services/UserService';
+import TeamService from '../services/TeamService'
 import FavoriteTeam from "../components/FavoriteTeam/FavoriteTeam";
 import Register from "../components/Register/Register";
 import Standings from "../components/standings/Standings";
@@ -29,13 +30,21 @@ class MainPage extends Component {
         };
         this.newsService = new NewsService();
         this.userService = new UserService();
+        this.teamService = new TeamService();
+        var userData;
         this.userService.is_logged_in().then(response => {
             console.log(response.data);
             if (response.data !== "NOT_LOGGED_IN") {
-                this.setState({
-                    loggedIn: true,
-                    user: response.data
+                userData = response.data
+                this.teamService.getTeamCrest(userData.favorite_team).then((response) => {
+                    debugger;
+                    this.setState({
+                        loggedIn: true,
+                        user: userData,
+                        team_crest: response.data
+                    })
                 })
+
             }
         })
     }
@@ -62,6 +71,9 @@ class MainPage extends Component {
         }
     }
 
+    goToLogin = () =>
+        this.props.history.push('/login')
+
     setTeam = (team_name) => {
         this.state.user['favorite_team'] = team_name;
     };
@@ -82,11 +94,20 @@ class MainPage extends Component {
                                     <div className="fav-team-text">
                                         <h4 className="text-center text-white font-weight-bold pt-2 pb-2">Your Favourite Team</h4>
                                     </div>
-                                    <div className="fav-team-logo">
+                                    <div className="fav-team-logo text-center">
                                         <img className="img-thumbnail fav-team-logo-img mb-2"
                                             height="100px"
                                              width="100px"
                                             src={this.state.team_crest}/>
+                                        {this.state.loggedIn === false
+                                            ?
+                                            <a
+                                                onClick={() => this.goToLogin()}>
+                                            <p className="team-text-prompt ">Login to select your favourite team</p>
+                                            </a>
+                                            :
+                                            <p></p>
+                                        }
                                     </div>
                                 </div>
                             </div>

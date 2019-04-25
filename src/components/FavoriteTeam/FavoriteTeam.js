@@ -46,6 +46,7 @@ class FavoriteTeam extends Component {
     };
 
     teamSelect = (team_name) => {
+        debugger;
         //console.log(this.props.user);
         fetch('http://localhost:5000/favorite_team/' + this.state.user['username'], {
                   method: 'PUT',

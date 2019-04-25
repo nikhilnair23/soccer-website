@@ -158,6 +158,15 @@ h5 {
     border-radius: 25px;
 }
 
+.team-text-prompt{
+    font-size: 15px;
+    color: white;
+}
+
+.team-text-prompt:hover{
+    cursor: pointer;
+}
+
 /*.socc-car-item-div{
     height: 100px;
     width: 400px;

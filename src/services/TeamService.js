@@ -9,9 +9,6 @@ export default class TeamService {
         return teams
     };
 
-    get_team = (teamId) => {
-
-    }
 
     findTeams = (leagueId) =>
         fetch(this.url + leagueId, {
@@ -59,6 +56,18 @@ export default class TeamService {
             fetch('http://localhost:5000/teams/team/' + team_id)
                 .then(response => response.json())
         );
+    }
+
+    getTeamCrest = (name) => {
+        return(
+            fetch('http://localhost:5000/team_logo',{
+                method:'get',
+                body:{
+                    name:name
+                }
+            })
+                .then(response => response.json())
+        )
     }
 
 }

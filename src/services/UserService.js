@@ -24,4 +24,8 @@ export default class UserService{
             return response;
         }))
     }
+
+    log_in = () => {
+
+    }
 }
