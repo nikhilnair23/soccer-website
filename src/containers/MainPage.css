@@ -1,0 +1,9 @@
+@media screen and (max-width: 1028px) {
+    .first-column{
+        display: none;
+    }
+}
+
+.first-column{
+    display: block;
+}

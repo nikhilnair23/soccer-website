@@ -14,6 +14,7 @@ import Fixtures from "../components/Fixtures/Fixtures";
 import Profile from "../components/Profile/Profile";
 import Users from "../components/Users/Users";
 import logo from "../img/Logo.png"
+import './MainPage.css'
 import crest from "../img/crest.png"
 import {withRouter} from 'react-router';
 
@@ -27,6 +28,7 @@ class MainPage extends Component {
             routeStatus: 'not_logged_in',
             loggedIn: false,
             team_crest: crest,
+            team_name:'',
             user: '',
         };
         this.newsService = new NewsService();
@@ -34,29 +36,31 @@ class MainPage extends Component {
         this.teamService = new TeamService();
         var userData;
         this.userService = new UserService();
-        this.userService.is_logged_in().then(response => {
+        /*this.userService.is_logged_in().then(response => {
             if (response.data !== "NOT_LOGGED_IN") {
                 this.setState({
                     loggedIn:true,
                     user:response.data
                 })
             }
-        })
-        /*this.userService.is_logged_in().then(response => {
+        })*/
+        this.userService.is_logged_in().then(response => {
             console.log(response.data);
             if (response.data !== "NOT_LOGGED_IN") {
                 userData = response.data
                 this.teamService.getTeamCrest(userData.favorite_team).then((response) => {
-                    debugger;
+                    let team_crest = crest
+                    if(response.data !== undefined){
+                        team_crest =response.data.logo
+                    }
                     this.setState({
                         loggedIn: true,
                         user: userData,
-                        team_crest: response.data
+                        team_crest: team_crest
                     })
                 })
-
             }
-        })*/
+        })
     }
 
     componentDidMount() {
@@ -69,7 +73,6 @@ class MainPage extends Component {
 
     componentDidUpdate(prevProps) {
         if (this.props.location != prevProps.location) {
-            debugger;
             this.userService.is_logged_in().then(response => {
                 console.log(response.data);
                 if (response.data === "NOT_LOGGED_IN") {
@@ -99,15 +102,15 @@ class MainPage extends Component {
                     </div>
                     <div className="container-fluid socc-height-inherit">
                         <div className="row socc-height-inherit">
-                            <div className="col-3">
+                            <div className="col-3 d-none d-lg-block">
                                 <div className="card fav-team-card bg-black">
                                     <div className="fav-team-text">
                                         <h4 className="text-center text-white font-weight-bold pt-2 pb-2">Your Favourite Team</h4>
                                     </div>
                                     <div className="fav-team-logo text-center">
                                         <img className="img-thumbnail fav-team-logo-img mb-2"
-                                            height="100px"
-                                             width="100px"
+                                            height="150px"
+                                             width="150px"
                                             src={this.state.team_crest}/>
                                         {this.state.loggedIn === false
                                             ?
@@ -116,17 +119,17 @@ class MainPage extends Component {
                                             <p className="team-text-prompt ">Login to select your favourite team</p>
                                             </a>
                                             :
-                                            <p></p>
+                                            <h4 className="text-white rounded">{this.state.user.favorite_team}</h4>
                                         }
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-6 ">
+                            <div className="col-lg-6 col-md-7 ">
                                 <NewsCarousel
                                     articles={this.state.articles}
                                 />
                             </div>
-                            <div className="col-3">
+                            <div className="col-lg-3 col-md-5">
                                 <div className="card news-articles-card mb-3">
                                     <div className="card-header mt-3">
                                         <h4>News Articles</h4>
