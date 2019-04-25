@@ -30,14 +30,22 @@ export default class UserService{
     }
 
     addTeamToFollowList = (username,teamId,team) => {
-        let url2 = this.url + '/profile/team'
+        let url2 = this.url + 'profile/teams'
         return(fetch(url2,{
             method:'post',
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 username: username,
                 team_id: teamId,
                 team: team
             })
         })).then(response => response)
+    }
+
+    getTeamsFollowed = (username) => {
+        let url2= this.url + 'profile/teams/'+username
+        return(fetch(url2,{
+            method:'get'
+        })).then(response => response.json())
     }
 }

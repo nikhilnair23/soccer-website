@@ -13,15 +13,26 @@ class AnonProfile extends Component {
         super(props);
         this.state = {
             user: '',
+            loggedInUser:'',
             edit_mode: false,
             password: '',
             first_name: '',
             last_name: '',
             profile_pic: '',
+            loggedIn:false,
             clubs_followed: [],
             users_followed: []
         };
         this.profileService = new ProfileService();
+        this.userService.is_logged_in().then(response => {
+            if (response.data !== "NOT_LOGGED_IN") {
+                this.setState({
+                    loggedIn: true,
+                    loggedInUser: response.data,
+                    profile_pic: 'https://robohash.org/'+response.data.username
+                })
+            }
+        })
         this.profileService.getProfile(this.props.match.params.username).then((response) => {
             this.setState({
                 user: response,

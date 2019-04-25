@@ -15,42 +15,50 @@ export default class TeamCard extends Component {
     constructor(props) {
         super(props);
         console.log(players)
-        debugger;
         this.state = {
             team: props.location.state.team,
             news: news,
-            standings:PlTable,
-            coach:players.coachs[0],
-            players:players.players,
-            user:'',
-            loggedIn: false
+            standings: PlTable,
+            coach: players.coachs[0],
+            players: players.players,
+            user: '',
+            loggedIn: false,
+            followedTeams: []
         }
-        this.newsService= new NewsService();
+        this.newsService = new NewsService();
         this.teamService = new TeamService();
         this.userService = new UserService();
+        let userData = ''
         this.userService.is_logged_in().then(response => {
             if (response.data !== "NOT_LOGGED_IN") {
-                this.setState({
+                userData = response.data
+                this.userService.getTeamsFollowed(userData.username).then((response) => {
+                    this.setState({
+                        loggedIn: true,
+                        user: userData,
+                        followedTeams: response.data
+                    })
+                })
+
+                /*this.setState({
                     loggedIn:true,
                     user:response.data
-                })
+                })*/
             }
         })
-
     }
 
     componentDidMount() {
         this.teamService.getTeamPlayers(this.state.team.team_id).then(
             api => {
-                debugger;
                 this.setState({
-                    coach:api.api.coachs[0],
-                    players:api.api.players
+                    coach: api.api.coachs[0],
+                    players: api.api.players
                 })
             }
         )
 
-        this.teamService.getLeagueStanding(this.props.location.state.league_id).then((api)=>
+        this.teamService.getLeagueStanding(this.props.location.state.league_id).then((api) =>
             this.setState({
                 standings: api.api.standings[0]
             })
@@ -64,10 +72,22 @@ export default class TeamCard extends Component {
             ))
     }
 
-    addTeams = () => {
-        console.log(this.state.teams[0]);
+    followTeam = () => {
+        if (this.state.loggedIn === false) {
+            alert("You need to be logged in to follow a team");
+            return;
+        }
+        this.userService.addTeamToFollowList(this.state.user.username, this.state.team.team_id, this.state.team.name)
+            .then(response => {
+                this.userService.getTeamsFollowed(this.state.user.username).then(response => {
+                    debugger;
+                    this.setState({
+                        followedTeams: response.data
+                    })
 
-        this.state.teams.map(
+                })
+            })
+        /*this.state.teams.map(
             team => {
                 fetch('http://localhost:5000/team_registry', {
                     method: 'POST',
@@ -81,15 +101,25 @@ export default class TeamCard extends Component {
                 })
                     .then(console.log)
             }
-        )
-
+        )*/
     };
 
+    checkIfTeamIsFollowed = (arr,team) => {
+        for (let i =0;i<arr.length;i++){
+            if (arr[0].TEAM===team){
+                return true;
+            }
+        }
+        return false;
+    }
+
     render() {
+        console.log(this.state.followedTeams)
+        console.log(this.state.team.name)
         return (
             <div className="socc-height-inherit socc-background">
                 <div className={"container-fluid"} id="navbar-container">
-                    <Navigation loggedIn ={this.state.loggedIn}
+                    <Navigation loggedIn={this.state.loggedIn}
                                 user={this.state.user}/>
                 </div>
                 <div className="card mt-2">
@@ -102,8 +132,15 @@ export default class TeamCard extends Component {
                             </div>
                             <div className="col-9 justify-content-center team-card-name">
                                 <h1 className="font-weight-bolder ">{this.state.team.name}</h1>
-                                <button
-                                    className="btn btn-primary">Follow</button>
+                                {   this.checkIfTeamIsFollowed(this.state.followedTeams,this.state.team.name)
+                                    ?
+                                    <button
+                                        className="btn btn-success">Following</button>
+                                    :
+                                    <button
+                                        onClick={this.followTeam}
+                                        className="btn btn-primary">Follow</button>
+                                }
                             </div>
                         </div>
                     </div>
@@ -125,16 +162,16 @@ export default class TeamCard extends Component {
                         <ul className="list-group">
                             {this.state.news.map((article =>
                                     <li className="list-group-item mt-2">
-                                    <div className="card">
-                                        <div className="card-header">
-                                            <img className="d-block p-2 rounded socc-news-img"
-                                                 src={article.urlToImage}
-                                            />
+                                        <div className="card">
+                                            <div className="card-header">
+                                                <img className="d-block p-2 rounded socc-news-img"
+                                                     src={article.urlToImage}
+                                                />
+                                            </div>
+                                            <div className="card-body">
+                                                <h4 className="font-weight-bolder text-center">{article.title}</h4>
+                                            </div>
                                         </div>
-                                        <div className="card-body">
-                                            <h4 className="font-weight-bolder text-center">{article.title}</h4>
-                                        </div>
-                                    </div>
                                     </li>
                             ))}
                         </ul>

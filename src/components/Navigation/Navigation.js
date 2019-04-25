@@ -177,7 +177,7 @@ class Navigation extends React.Component {
                                 {this.props.loggedIn === true &&
                                 <div>
                                     <li className="dropdown-item text-center">Welcome
-                                        back {this.props.user.user}</li>
+                                        back {this.props.user.username}</li>
                                     <li className="dropdown-item text-center" href="#">
                                         <button onClick={this.goToProfile}
                                                 className="btn btn-success">Profile
