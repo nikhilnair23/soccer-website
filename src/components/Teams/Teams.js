@@ -48,6 +48,23 @@ export default class Teams extends Component {
         return newArr;
     }
 
+    followTeam = (username, teamId,team) => {
+        if (this.state.loggedIn === false) {
+            alert('You need to be logged in to follow a team')
+        }
+        else{
+            this.userService.addTeamToFollowList(username,teamId,team).then(response => {
+                this.userService.is_logged_in().then(response => {
+                    if (response.data !== "NOT_LOGGED_IN") {
+                        this.setState({
+                            user: response.data
+                        })
+                    }
+                })
+            })
+        }
+    }
+
     compare(a, b) {
         if (a.name < b.name) {
             return -1;
@@ -78,27 +95,6 @@ export default class Teams extends Component {
                                     }
                                 });
 
-    addTeams = () => {
-        console.log(this.state.teams[0]);
-
-        this.state.teams.map(
-            team => {
-                fetch('http://localhost:5000/team_registry', {
-                    method: 'POST',
-                    credentials: 'include',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({
-                                             team_id: team.team_id,
-                                             name: team.name,
-                                             logo: team.logo
-                                         })
-                })
-                    .then(console.log)
-            }
-        )
-
-    };
-
     render() {
         return (
             <div className="socc-height-inherit socc-background">
@@ -112,10 +108,10 @@ export default class Teams extends Component {
                 {/*</button>*/}
                 <div className="row socc-height-inherit">
                     <div className="col-3">
-                        <h2 className="text-white text-wrap">Placeholder</h2>
+                        <h2 className="text-white text-wrap"></h2>
                     </div>
                     <div className="col-6">
-                        <div className="card mt-3">
+                        <div className="card mt-3 mb-3">
                             <div>
                                 <DropdownButton
                                     id="dropdown-basic-button"

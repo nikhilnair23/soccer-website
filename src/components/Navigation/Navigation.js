@@ -4,7 +4,7 @@ import SearchService from "../../services/SearchService";
 import UserService from "../../services/UserService"
 import {Redirect} from "react-router-dom";
 import {withRouter} from 'react-router';
-//import logo from '../../img/Logo.png'
+import logo from '../../img/Logo.png'
 
 let self
 
@@ -127,11 +127,11 @@ class Navigation extends React.Component {
                     </button>
                     <button className="btn"
                             onClick={this.goHome}>
-                        {/*<img className="img rounded"*/}
-                             {/*src={logo}*/}
-                             {/*height="80px"*/}
-                             {/*width="auto"*/}
-                        {/*/>*/}
+                        <img className="img rounded"
+                             src={logo}
+                             height="80px"
+                             width="auto"
+                        />
                     </button>
                 </div>
                 {/*<a className="navbar-brand text-white" href="#">Expand at sm</a>*/}
@@ -170,7 +170,9 @@ class Navigation extends React.Component {
                     <form className="form-inline">
                         <div className="nav-item dropdown mr-2">
                             <a className="nav-link fa fa-user-circle fa-2x" href="http://example.com" id="dropdown03"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                            </a>
                             <ul className="dropdown-menu" aria-labelledby="dropdown03">
                                 {this.props.loggedIn === true &&
                                 <div>

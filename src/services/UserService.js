@@ -24,4 +24,20 @@ export default class UserService{
             return response;
         }))
     }
+
+    log_in = () => {
+
+    }
+
+    addTeamToFollowList = (username,teamId,team) => {
+        let url2 = this.url + '/profile/team'
+        return(fetch(url2,{
+            method:'post',
+            body: JSON.stringify({
+                username: username,
+                team_id: teamId,
+                team: team
+            })
+        })).then(response => response)
+    }
 }

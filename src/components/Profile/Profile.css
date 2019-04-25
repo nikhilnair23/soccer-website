@@ -8,6 +8,8 @@
 
 .profile_card {
     width: 33%;
+    display: flex;
+    flex-direction: column;
 }
 
 @media only screen and (max-width: 1500px) {
@@ -19,4 +21,15 @@
     .profile_card {
         width: 80%
     }
+}
+
+
+.club-follow-card{
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.user-follow-card{
+    margin-top: 20px;
+    margin-right: 10px;
 }

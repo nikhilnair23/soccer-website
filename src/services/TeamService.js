@@ -65,4 +65,16 @@ export default class TeamService {
         );
     }
 
+    /*getTeamCrest = (name) => {
+        return(
+            fetch('http://localhost:5000/team_logo',{
+                method:'get',
+                body:{
+                    name:name
+                }
+            })
+                .then(response => response.json())
+        )
+    }*/
+
 }

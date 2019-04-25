@@ -14,6 +14,7 @@ import Standings from "./standings/Standings";
 import Profile from "./Profile/Profile";
 import Users from "./Users/Users";
 import FavoriteTeam from "./FavoriteTeam/FavoriteTeam";
+import AnonProfile from "./Profile/AnonProfile";
 
 const Routes = () => {
     return (
@@ -23,6 +24,7 @@ const Routes = () => {
                     <Route path={"/"} exact render={() => <MainPage/>}/>
                     <Route path={"/login"} exact render={() => <SignIn/>}/>
                     <Route path={"/profile"} exact component={Profile}/>
+                    <Route path={"/profile/:username"} exact component={AnonProfile}/>
                     <Route path={"/register"} exact render={() => <Register/>}/>
                     <Route path={"/fixtures"} exact component={Fixtures}/>
                     <Route path={"/leagues"} exact component={Standings}/>
