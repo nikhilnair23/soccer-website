@@ -108,10 +108,10 @@ export default class Teams extends Component {
                     {/*Add teams*/}
                 {/*</button>*/}
                 <div className="row socc-height-inherit">
-                    <div className="col-3">
+                    <div className="col-2 d-none d-sm-block ">
                         <h2 className="text-white text-wrap"></h2>
                     </div>
-                    <div className="col-6">
+                    <div className="col-12 ml-3">
                         <div className="card mt-3 mb-3">
                             <div>
                                 <DropdownButton
@@ -137,9 +137,9 @@ export default class Teams extends Component {
                                     <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>*/}
                                 </DropdownButton>
                             </div>
-                            <div className="row">
+                            <div className="row no-gutters">
                                 <div className="col-6">
-                                    <ul id="double" className="list-group-flush pr-5"><span
+                                    <ul id="double" className="list-group-flush pl-3"><span
                                         className="code-comment"></span>
                                         {
                                             Object.values(this.state.teams)
@@ -154,7 +154,7 @@ export default class Teams extends Component {
                                                                      height="45px"
                                                                      width="40px"
                                                                      src={team.logo}/>
-                                                                <h5 className="text-center">{team.name}</h5>
+                                                                <div className="text-left">{team.name}</div>
                                                             </div>
                                                         </li>
                                                     )
@@ -163,7 +163,7 @@ export default class Teams extends Component {
                                     </ul>
                                 </div>
                                 <div className="col-6">
-                                    <ul id="double" className="list-group-flush pr-5"><span
+                                    <ul id="double" className="list-group-flush "><span
                                         className="code-comment"></span>
                                         {
                                             Object.values(this.state.teams)
@@ -178,7 +178,7 @@ export default class Teams extends Component {
                                                                      height="45px"
                                                                      width="40px"
                                                                      src={team.logo}/>
-                                                                <h5 className="mt-2">{team.name}</h5>
+                                                                <div className="text-left">{team.name}</div>
                                                             </div>
                                                         </li>
                                                     )
@@ -189,7 +189,7 @@ export default class Teams extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="col-3">
+                    <div className="col-2 d-none-d-sm-block">
                     </div>
                 </div>
             </div>
