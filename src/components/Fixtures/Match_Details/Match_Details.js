@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {Component} from 'react';
 import pic from './vs.png'
@@ -65,7 +66,7 @@ class Match_Details extends Component {
         return (
             <div className="container-fluid">
                 <div
-                    className='tc match_card dib ma2 br3 pa1 shadow-5 vh-75 w-50 card'
+                    className='tc match_card dib ma2 br3 pa1 shadow-5 vh-75 card'
                     style={{backgroundImage: `url(${bg_card})`}}>
                     <div className='row ma3'>
                         <div className='col-md-4 tc'>
@@ -168,7 +169,6 @@ class Match_Details extends Component {
                             </button>
                         </div>
                     </div>
-
 
                     <div>
                         <h3 className='previous_name'>

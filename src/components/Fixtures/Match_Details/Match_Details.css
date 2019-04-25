@@ -76,3 +76,19 @@
             -1px 1px 0 #000,
             1px 1px 0 #000;
 }
+
+.match_card {
+    width: 50%
+}
+
+@media only screen and (max-width: 1500px) {
+    .match_card {
+        width: 80%
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .match_card {
+        width: 95%
+    }
+}

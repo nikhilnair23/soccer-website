@@ -5,6 +5,7 @@ import ProfileService from "../../services/ProfileService";
 import pro from './pro.png';
 import casual from './casual.jpg';
 import admin from './admin.jpg';
+import './Profile.css';
 
 class Profile extends Component {
 
@@ -89,7 +90,7 @@ class Profile extends Component {
         return (
             <div className='container-fluid tc'>
                 <div
-                    className='tc bg-washed-yellow dib ma2 br3 pa1 shadow-5 w-33'>
+                    className='tc bg-washed-yellow ma2 br3 dib pa1 shadow-5 profile_card'>
                     <div>
                         <button
                             className="btn btn-warning pd5 ma2 home_button"

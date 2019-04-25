@@ -26,23 +26,23 @@ export default class Teams extends Component {
         this.userService.is_logged_in().then(response => {
             if (response.data !== "NOT_LOGGED_IN") {
                 this.setState({
-                    loggedIn:true,
-                    user:response.data
-                })
+                                  loggedIn: true,
+                                  user: response.data
+                              })
             }
         })
     }
 
     componentDidMount() {
         this.setState({
-            teams: this.sortObjects(defaultTeams.teams)
-        })
+                          teams: this.sortObjects(defaultTeams.teams)
+                      })
     }
 
     sortObjects = (obj) => {
         let newArr = [];
         Object.values(obj).map((team) =>
-            newArr.push(team)
+                                   newArr.push(team)
         )
         newArr.sort(this.compare);
         return newArr;
@@ -60,32 +60,56 @@ export default class Teams extends Component {
 
     changeLeague = (league) => {
         this.teamService.findTeams(league.league_id).then((api) => {
-                self.setState({
-                    teams: api.api.teams,
-                    league: league.name,
-                    league_id: league.league_id
-                })
-            }
+                                                              self.setState({
+                                                                                teams: api.api.teams,
+                                                                                league: league.name,
+                                                                                league_id: league.league_id
+                                                                            })
+                                                          }
         )
     }
 
     selectTeam = (team) =>
         this.props.history.push({
-            pathname:'/teams/'+team.team_id,
-            state : {
-                team:team,
-                league_id: this.state.league_id
-            }
-        })
+                                    pathname: '/teams/' + team.team_id,
+                                    state: {
+                                        team: team,
+                                        league_id: this.state.league_id
+                                    }
+                                });
 
+    addTeams = () => {
+        console.log(this.state.teams[0]);
+
+        this.state.teams.map(
+            team => {
+                fetch('http://localhost:5000/team_registry', {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                                             team_id: team.team_id,
+                                             name: team.name,
+                                             logo: team.logo
+                                         })
+                })
+                    .then(console.log)
+            }
+        )
+
+    };
 
     render() {
         return (
             <div className="socc-height-inherit socc-background">
                 <div className={"container-fluid"} id="navbar-container">
-                    <Navigation loggedIn ={this.state.loggedIn}
-                                user={this.state.user}/>
+                    <Navigation/>
                 </div>
+                {/*<button type='button'*/}
+                        {/*className='btn btn-success ma5'*/}
+                        {/*onClick={this.addTeams}>*/}
+                    {/*Add teams*/}
+                {/*</button>*/}
                 <div className="row socc-height-inherit">
                     <div className="col-3">
                         <h2 className="text-white text-wrap">Placeholder</h2>
@@ -126,13 +150,14 @@ export default class Teams extends Component {
                                                 .map((team) => {
                                                     return (
                                                         <li className="list-group-item">
-                                                            <div onClick={()=>this.selectTeam(team)}
-                                                                className="team-container team-div">
-                                                                    <img className="img mr-3"
-                                                                         height="45px"
-                                                                         width="40px"
-                                                                         src={team.logo}/>
-                                                                    <h5 className="text-center">{team.name}</h5>
+                                                            <div onClick={() => this.selectTeam(
+                                                                team)}
+                                                                 className="team-container team-div">
+                                                                <img className="img mr-3"
+                                                                     height="45px"
+                                                                     width="40px"
+                                                                     src={team.logo}/>
+                                                                <h5 className="text-center">{team.name}</h5>
                                                             </div>
                                                         </li>
                                                     )
@@ -149,8 +174,9 @@ export default class Teams extends Component {
                                                 .map((team) => {
                                                     return (
                                                         <li className="list-group-item">
-                                                            <div onClick={()=>this.selectTeam(team)}
-                                                                className="team-container team-div">
+                                                            <div onClick={() => this.selectTeam(
+                                                                team)}
+                                                                 className="team-container team-div">
                                                                 <img className="img mr-3"
                                                                      height="45px"
                                                                      width="40px"
