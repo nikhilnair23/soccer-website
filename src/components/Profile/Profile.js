@@ -17,9 +17,17 @@ class Profile extends Component {
             password: this.props.location.state.user['password'],
             first_name: this.props.location.state.user['first_name'],
             last_name: this.props.location.state.user['last_name'],
-            profile_pic: "http://robohash.org/" + this.props.location.state.user['username']
+            profile_pic: "http://robohash.org/" + this.props.location.state.user['username'],
+            clubs_followed: [],
+            users_followed: []
         };
         this.profileService = new ProfileService();
+        this.profileService.getUsersFollowed(this.state.user['username'])
+            .then((response) => {
+                this.setState({
+                                  users_followed: response
+                              })
+            });
     }
 
     updateUser = () => {
@@ -146,117 +154,159 @@ class Profile extends Component {
 
 
 
-                    <div>
-                        <h3 className="font-weight-bold">
-                            Username
-                        </h3>
-                        <h4>
-                            {this.state.user['username']}
-                        </h4>
-                    </div>
-                    {
-                        this.state.edit_mode === false
-                        ?
-                        <div>
-                            {/*<div>*/}
-                            {/*<h3 className="font-weight-bold">*/}
-                            {/*Password*/}
-                            {/*</h3>*/}
-                            {/*<h4>*/}
-                            {/*{this.state.password}*/}
-                            {/*</h4>*/}
-                            {/*</div>*/}
-                            <div>
-                                <h3 className="font-weight-bold">
-                                    First Name
-                                </h3>
-                                <h4>
-                                    {this.state.first_name}
-                                </h4>
-                            </div>
-                            <div>
-                                <h3 className="font-weight-bold">
-                                    Last Name
-                                </h3>
-                                <h4>
-                                    {this.state.last_name}
-                                </h4>
-                            </div>
-                        </div>
-                        :
-                        <div>
-                            <div>
-                                <h3 className="font-weight-bold">
-                                    Password
-                                </h3>
-                                <input type='password'
-                                       onChange={this.onPasswordChange}
-                                       id='password'
-                                       defaultValue={this.state.user['password']}/>
-
-                            </div>
-                            <div>
-                                <h3 className="font-weight-bold">
-                                    First Name
-                                </h3>
-                                <input type='text'
-                                       onChange={this.onFirstNameChange}
-                                       id='first_name'
-                                       defaultValue={this.state.user['first_name']}/>
-                            </div>
-                            <div>
-                                <h3 className="font-weight-bold">
-                                    Last Name
-                                </h3>
-                                <input type='text'
-                                       onChange={this.onLastNameChange}
-                                       id='last_name'
-                                       defaultValue={this.state.user['last_name']}/>
-                            </div>
-                        </div>
-                    }
-
-                    <div>
-                        <h3 className="font-weight-bold">
-                            Favorite Team
-                        </h3>
-                        <h4>
-                            {this.state.user['favorite_team']}
-                        </h4>
-                    </div>
-
-                    {
-                        this.state.edit_mode === false
-                        ?
-                        <div className='tc'>
-                            <button className='btn button btn-warning ma2'
-                                    onClick={() => this.setState(
+                    <div className='row'>
+                        <div className="col-4">
+                            <div className="card bg-washed-blue club-follow-card">
+                                <div className="card-header">
+                                    List of Clubs Followed:
+                                </div>
+                                <div className="card-body">
+                                    <ul className="list-group">
                                         {
-                                            edit_mode: true
+                                            this.state.clubs_followed.map((club) =>
+                                                                              <li className="list-group-item-info">
+                                                                                  <h4>{club}</h4>
+                                                                              </li>
+                                            )
                                         }
-                                    )}>
-                                Edit
-                            </button>
-                            <button className='btn button btn-danger ma2'
-                                    onClick={this.deleteUser}>
-                                Delete User
-                            </button>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='col-4'>
+                            <div>
+                                <h3 className="font-weight-bold">
+                                    Username
+                                </h3>
+                                <h4>
+                                    {this.state.user['username']}
+                                </h4>
+                            </div>
+                            {
+                                this.state.edit_mode === false
+                                ?
+                                <div>
+                                    {/*<div>*/}
+                                    {/*<h3 className="font-weight-bold">*/}
+                                    {/*Password*/}
+                                    {/*</h3>*/}
+                                    {/*<h4>*/}
+                                    {/*{this.state.password}*/}
+                                    {/*</h4>*/}
+                                    {/*</div>*/}
+                                    <div>
+                                        <h3 className="font-weight-bold">
+                                            First Name
+                                        </h3>
+                                        <h4>
+                                            {this.state.first_name}
+                                        </h4>
+                                    </div>
+                                    <div>
+                                        <h3 className="font-weight-bold">
+                                            Last Name
+                                        </h3>
+                                        <h4>
+                                            {this.state.last_name}
+                                        </h4>
+                                    </div>
+                                </div>
+                                :
+                                <div>
+                                    <div>
+                                        <h3 className="font-weight-bold">
+                                            Password
+                                        </h3>
+                                        <input type='password'
+                                               onChange={this.onPasswordChange}
+                                               id='password'
+                                               defaultValue={this.state.user['password']}/>
+
+                                    </div>
+                                    <div>
+                                        <h3 className="font-weight-bold">
+                                            First Name
+                                        </h3>
+                                        <input type='text'
+                                               onChange={this.onFirstNameChange}
+                                               id='first_name'
+                                               defaultValue={this.state.user['first_name']}/>
+                                    </div>
+                                    <div>
+                                        <h3 className="font-weight-bold">
+                                            Last Name
+                                        </h3>
+                                        <input type='text'
+                                               onChange={this.onLastNameChange}
+                                               id='last_name'
+                                               defaultValue={this.state.user['last_name']}/>
+                                    </div>
+                                </div>
+                            }
+
+                            <div>
+                                <h3 className="font-weight-bold">
+                                    Favorite Team
+                                </h3>
+                                <h4>
+                                    {this.state.user['favorite_team']}
+                                </h4>
+                            </div>
+
+                            {
+                                this.state.edit_mode === false
+                                ?
+                                <div className='tc'>
+                                    <button className='btn button btn-warning ma2'
+                                            onClick={() => this.setState(
+                                                {
+                                                    edit_mode: true
+                                                }
+                                            )}>
+                                        Edit
+                                    </button>
+                                    <button className='btn button btn-danger ma2'
+                                            onClick={this.deleteUser}>
+                                        Delete User
+                                    </button>
+                                </div>
+
+                                :
+                                <div className='tc'>
+                                    <button className='btn button btn-success ma2'
+                                            onClick={this.updateUser}>
+                                        Save
+                                    </button>
+                                    <button className='btn button btn-secondary ma2'
+                                            onClick={this.cancelUpdate}>
+                                        Cancel
+                                    </button>
+
+                                </div>
+
+                            }
                         </div>
 
-                        :
-                        <div className='tc'>
-                            <button className='btn button btn-success ma2'
-                                    onClick={this.updateUser}>
-                                Save
-                            </button>
-                            <button className='btn button btn-secondary ma2'
-                                    onClick={this.cancelUpdate}>
-                                Cancel
-                            </button>
-
+                        <div className="col-4">
+                            <div className="card bg-washed-blue user-follow-card">
+                                <div className="card-header">
+                                    List of Users Followed:
+                                </div>
+                                <div className="card-body">
+                                    <ul className="list-group">
+                                        {
+                                            this.state.users_followed.map((user) =>
+                                                                              <li className="list-group-item-info">
+                                                                                  <h4>{user.user_followed}</h4>
+                                                                              </li>
+                                            )
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
+                    </div>
 
-                    }
 
 
                 </div>

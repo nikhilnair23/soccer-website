@@ -218,9 +218,6 @@ class Match_Details extends Component {
                         </h5>
                     </div>
                 </div>
-                <button onClick={() => this.props.reset()}>
-                    Go Back
-                </button>
             </div>
         )
     }
