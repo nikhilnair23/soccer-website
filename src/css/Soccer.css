@@ -124,6 +124,40 @@ h5 {
     cursor: pointer;
 }
 
+.fav-team-header{
+    font-family: "avenir next";
+    font-weight: bold;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.fav-team-card{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 10px black;
+    border-radius: 25px;
+}
+
+.fav-team-logo-img{
+    padding: 0.25rem;
+    background-color: #fff;
+    border: 1.5px solid black;
+    border-radius: 0.5rem;
+    max-width: 100%;
+    height: auto;
+}
+
+.news-articles-card{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 10px black;
+    border-radius: 25px;
+}
+
 /*.socc-car-item-div{
     height: 100px;
     width: 400px;

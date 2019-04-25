@@ -61,16 +61,16 @@
 }
 
 .article-text{
-    font-family: "Bodoni 72 Oldstyle";
+    font-family: "avenir next";
     font-synthesis: small-caps;
     font-size: 14px;
+    justify-content: center;
     font-weight: bold;
-    color: black;
-    opacity: 0.8;
-    background: white;
+    color: white;
+    opacity: 0.9;
+    background: black;
     border: 1px darkred;
-    border-radius: 15px;
-
+    border-radius: 10px;
     text-transform: uppercase;
 }
 
