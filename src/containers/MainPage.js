@@ -13,6 +13,7 @@ import Standings from "../components/standings/Standings";
 import Fixtures from "../components/Fixtures/Fixtures";
 import Profile from "../components/Profile/Profile";
 import Users from "../components/Users/Users";
+import logo from "../img/Logo.png"
 import crest from "../img/crest.png"
 import {withRouter} from 'react-router';
 
@@ -32,7 +33,16 @@ class MainPage extends Component {
         this.userService = new UserService();
         this.teamService = new TeamService();
         var userData;
+        this.userService = new UserService();
         this.userService.is_logged_in().then(response => {
+            if (response.data !== "NOT_LOGGED_IN") {
+                this.setState({
+                    loggedIn:true,
+                    user:response.data
+                })
+            }
+        })
+        /*this.userService.is_logged_in().then(response => {
             console.log(response.data);
             if (response.data !== "NOT_LOGGED_IN") {
                 userData = response.data
@@ -46,7 +56,7 @@ class MainPage extends Component {
                 })
 
             }
-        })
+        })*/
     }
 
     componentDidMount() {

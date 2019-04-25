@@ -112,10 +112,10 @@ export default class Teams extends Component {
                 {/*</button>*/}
                 <div className="row socc-height-inherit">
                     <div className="col-3">
-                        <h2 className="text-white text-wrap">Placeholder</h2>
+                        <h2 className="text-white text-wrap"></h2>
                     </div>
                     <div className="col-6">
-                        <div className="card mt-3">
+                        <div className="card mt-3 mb-3">
                             <div>
                                 <DropdownButton
                                     id="dropdown-basic-button"

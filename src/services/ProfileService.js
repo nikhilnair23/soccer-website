@@ -28,4 +28,14 @@ export default class ProfileService {
         );
     }
 
+    getProfile = (username) => {
+        return(
+            fetch('http://localhost:5000/profile/' + username, {
+                method: 'get',
+                headers: {
+                    'content-type': 'application/json'   }
+            })
+        );
+    }
+
 }
