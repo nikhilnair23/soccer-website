@@ -64,6 +64,27 @@ export default class TeamCard extends Component {
             ))
     }
 
+    addTeams = () => {
+        console.log(this.state.teams[0]);
+
+        this.state.teams.map(
+            team => {
+                fetch('http://localhost:5000/team_registry', {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        team_id: team.team_id,
+                        name: team.name,
+                        logo: team.logo
+                    })
+                })
+                    .then(console.log)
+            }
+        )
+
+    };
+
     render() {
         return (
             <div className="socc-height-inherit socc-background">
@@ -81,7 +102,8 @@ export default class TeamCard extends Component {
                             </div>
                             <div className="col-9 justify-content-center team-card-name">
                                 <h1 className="font-weight-bolder ">{this.state.team.name}</h1>
-                                <button className="btn btn-primary">Follow</button>
+                                <button
+                                    className="btn btn-primary">Follow</button>
                             </div>
                         </div>
                     </div>
