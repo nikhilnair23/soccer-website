@@ -27,17 +27,28 @@ class AnonProfile extends Component {
                 user: response,
                 profile_pic: 'https://robohash.org/'+response.username
             })
-        })
+        });
+        this.profileService.getUsersFollowed(this.props.match.params.username)
+            .then((response) => {
+            this.setState({
+                              users_followed: response
+                          })
+        });
+    }
+
+    componentDidMount() {
+
     }
 
 
     goHome = () =>
-        this.props.history.push('/')
+        this.props.history.push('/');
 
     goToUsers = () =>
-        this.props.history.push('/users')
+        this.props.history.push('/users');
 
     render() {
+        console.log(this.state);
         return (
             <div className='container-fluid tc'>
                 <div
@@ -142,7 +153,7 @@ class AnonProfile extends Component {
                                         {
                                             this.state.users_followed.map((user)=>
                                                 <li className="list-group-item-info">
-                                                    <h4>{user}</h4>
+                                                    <h4>{user.user_followed}</h4>
                                                 </li>
                                             )
                                         }

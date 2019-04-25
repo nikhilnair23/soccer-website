@@ -15,6 +15,7 @@ class Register extends Component {
             favorite_team: '',
             isAdmin: 0,
             isPro: 0,
+            ban_status: 0,
             teams: []
         };
         this.teamService = new TeamService();
@@ -72,7 +73,7 @@ class Register extends Component {
             last_name: this.state.last_name,
             favorite_team: this.state.favorite_team,
             isAdmin: this.state.isAdmin,
-            ban_status: 0,
+            ban_status: this.state.ban_status,
             isPro: this.state.isPro
         };
 
@@ -88,7 +89,7 @@ class Register extends Component {
                                      last_name: this.state.last_name,
                                      favorite_team: 'lfc',
                                      isAdmin: this.state.isAdmin,
-                                     ban_status: 0,
+                                     ban_status: this.state.ban_status,
                                      isPro: this.state.isPro
                                  })
         })

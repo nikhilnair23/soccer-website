@@ -26,11 +26,21 @@ export default class ProfileService {
                     'content-type': 'application/json'   }
             })
         );
-    }
+    };
 
     getProfile = (username) => {
         return(
             fetch('http://localhost:5000/profile/' + username, {
+                method: 'get',
+                headers: {
+                    'content-type': 'application/json'   }
+            }).then(response => response.json())
+        );
+    }
+
+    getUsersFollowed = (username) => {
+        return(
+            fetch('http://localhost:5000/profile/follow/' + username, {
                 method: 'get',
                 headers: {
                     'content-type': 'application/json'   }
