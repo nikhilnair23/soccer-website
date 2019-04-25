@@ -171,7 +171,7 @@ class Fixtures extends Component {
                     <Navigation loggedIn ={this.state.loggedIn}
                                 user={this.state.user}/>
                 </div>
-                <div className="col tc bg-moon-gray">
+                <div className="col tc bg-black-70">
                     <button type='button'
                             className={"home_button league_button btn-warning ma3 active rounded"}
                             onClick={() => this.props.onRouteChange('home')}>

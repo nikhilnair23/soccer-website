@@ -12,6 +12,7 @@ class FavoriteTeam extends Component {
         this.teamService = new TeamService();
         this.state = {
             teams: [],
+            teams2: this.props.location.state.teams,
             search_team: '1234ABC',
             user: this.props.location.state.user
         }
@@ -22,7 +23,8 @@ class FavoriteTeam extends Component {
 
         this.setState(
             {
-                teams: this.teamService.get_teams()[0].teams
+                teams: this.teamService.get_teams()[0].teams,
+                //teams2: this.teamService.getAllTeams()
             }
         )
     }
@@ -63,6 +65,7 @@ class FavoriteTeam extends Component {
     };
 
     render() {
+        console.log(this.state)
         return (
             <div className='tc'>
                 <h1 className='f1 bg-washed-yellow'>Select your favorite team</h1>
@@ -72,7 +75,7 @@ class FavoriteTeam extends Component {
                     placeholder = 'Search for your team(type 2 letters)'
                     onChange={this.onSearchChange}/>
                 <TeamList Teams={
-                    this.state.teams.filter(
+                    this.state.teams2.filter(
                         team => {
                             return team.name.toLowerCase()
                                 .includes(

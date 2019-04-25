@@ -2,6 +2,7 @@ import React from 'react';
 import {Component} from 'react';
 import './Register.css'
 import {withRouter} from 'react-router';
+import TeamService from "../../services/TeamService";
 
 class Register extends Component {
     constructor(props) {
@@ -13,9 +14,21 @@ class Register extends Component {
             last_name: '',
             favorite_team: '',
             isAdmin: 0,
-            isPro: 0
+            isPro: 0,
+            teams: []
         };
-        //
+        this.teamService = new TeamService();
+    }
+
+    componentDidMount() {
+        this.teamService.getAllTeams()
+            .then(
+                res => this.setState(
+                    {
+                        teams: res.data
+                    }
+                )
+            )
     }
 
     onUsernameChange = (event) => {
@@ -63,6 +76,7 @@ class Register extends Component {
             isPro: this.state.isPro
         };
 
+
         fetch('http://localhost:5000/register', {
             method: 'POST',
             credentials: 'include',
@@ -91,7 +105,8 @@ class Register extends Component {
                         this.props.history.push({
                                                     pathname: '/favouriteTeam',
                                                     state: {
-                                                        user: u
+                                                        user: u,
+                                                        teams: this.state.teams
                                                     }
                                                 })
                         // this.props.onRouteChange('favorite_team');

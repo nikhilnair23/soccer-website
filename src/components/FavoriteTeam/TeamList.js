@@ -9,10 +9,10 @@ const TeamList = ({Teams, teamSelect}) => {
                     team => {
                         return (
                             <TeamCard
-                                key={team.id}
-                                id={team.id}
+                                key={team.team_id}
+                                id={team.team_id}
                                 name={team.name}
-                                crest={team.crestUrl}
+                                crest={team.logo}
                                 teamSelect={teamSelect}/>
                         );
                     }

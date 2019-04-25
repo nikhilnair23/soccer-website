@@ -11,7 +11,11 @@ export default class TeamService {
 
     get_team = (teamId) => {
 
-    }
+    };
+
+    getAllTeams = () =>
+        fetch('http://localhost:5000/teams/all')
+            .then(response => response.json())
 
     findTeams = (leagueId) =>
         fetch(this.url + leagueId, {

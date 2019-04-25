@@ -1,19 +1,20 @@
 import React from 'react'
 import './TeamCard.css'
+import def_logo from "../../img/crest.png";
 
 const TeamCard = (props) => {
     const {name, crest} = props;
     return (
         <div
-            className='tc bg-washed-yellow dib ma2 br3 pa1 grow shadow-5 team'>
+            className='tc bg-washed-yellow dib ma2 br3 pa1 shadow-5 team'>
             <img
                 className='ma2'
-                src = {crest === null
+                src = {crest === null || crest === ""
                         ?
-                        "https://upload.wikimedia.org/wikipedia/en/b/be/Flag_of_England.svg"
+                        def_logo
                         :
                         crest}
-                 alt = 'https://upload.wikimedia.org/wikipedia/en/b/be/Flag_of_England.svg'
+                 alt = {def_logo}
                  height={180}
                  width={180}/>
             <div>
