@@ -174,7 +174,7 @@ class Fixtures extends Component {
                 <div className="col tc bg-black-70">
                     <button type='button'
                             className={"home_button league_button btn-warning ma3 active rounded"}
-                            onClick={() => this.props.onRouteChange('home')}>
+                            onClick={() => this.props.history.push('/')}>
                         Home page
                     </button>
                     <button type='button'

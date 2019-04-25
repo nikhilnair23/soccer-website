@@ -165,11 +165,11 @@ class Standings extends Component {
                 </div>
                 <div className="row">
                     <div className='col-3 bg-black-80 left_col'>
-                        <button
-                            className="btn btn-warning pd5 ma2 home_but"
-                            type="button"
-                            onClick={() => this.props.onRouteChange('home')}>Home Page
-                        </button>
+                        {/*<button*/}
+                            {/*className="btn btn-warning pd5 ma2 home_but"*/}
+                            {/*type="button"*/}
+                            {/*onClick={() => () => this.props.history.push('/')}>Home Page*/}
+                        {/*</button>*/}
                         {
                             this.state.user['isPro'] === 0
                             ?
