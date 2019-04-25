@@ -44,30 +44,63 @@ class MainPage extends Component {
                 {articles: response.articles}
             )
         })
-        /*this.setState(
-            {articles: this.newsService.get_news()}
-        )*/
     }
 
-    /*componentDidUpdate(){
-        if (this.props.location!==undefined) {
+    componentDidUpdate(prevProps){
+        if (this.props.location != prevProps.location){
             debugger;
-            if(this.props.location.state!==undefined) {
-                debugger;
-                this.userService.is_logged_in().then(response => {
-                    console.log(response.data);
-                    if (response.data !== "NOT_LOGGED_IN") {
-                        this.setState({
-                            loggedIn: true,
-                            user: response.data
-                        })
-                    }
-                })
-            }
+            this.userService.is_logged_in().then(response => {
+                console.log(response.data);
+                if (response.data === "NOT_LOGGED_IN") {
+                    this.setState({
+                        loggedIn: false,
+                    })
+                }
+            })
         }
-    }*/
+    }
 
-    onRouteChange = (routeTo) => {
+    setTeam = (team_name) => {
+        this.state.user['favorite_team'] = team_name;
+    };
+
+    render() {
+        console.log(this.state.user);
+        return (
+            <div className="container-fluid" id="navbar-container">
+            <div className="socc-height-inherit">
+                <div className={"container-fluid"} id="navbar-container">
+                    <Navigation loggedIn ={this.state.loggedIn}
+                                user={this.state.user}/>
+                </div>
+                <div className="container-fluid socc-height-inherit">
+                    <div className="row socc-height-inherit">
+                        <div className="col-3">
+                            <h2 className="text-white text-wrap">Placeholder</h2>
+                        </div>
+                        <div className="col-6 ">
+                            <NewsCarousel
+                                articles={this.state.articles}
+                            />
+                        </div>
+                        <div className="col-3">
+                            <h2 className="text-white">sample</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                {/*<FavoriteTeam/>*/}
+            </div>
+        )
+    }
+
+}
+
+export default withRouter(MainPage)
+
+
+
+/*onRouteChange = (routeTo) => {
         if (routeTo === 'signout') {
             this.setState(
                 {
@@ -75,8 +108,7 @@ class MainPage extends Component {
                 }
             )
         }
-        if ((this.state.route === 'signin' || this.state.route === 'favorite_team') && routeTo
-            === 'home') {
+        if ((this.state.route ==='signin' || this.state.route ==='favorite_team') && routeTo === 'home') {
             this.setState(
                 {
                     routeStatus: 'is_logged_in'
@@ -88,25 +120,18 @@ class MainPage extends Component {
                 route: routeTo
             }
         )
-    };
+    };*/
 
-    getUser = (user) => {
+/*getUser = (user) => {
         this.setState(
             {
                 user: user
             }
         );
-        //console.log(this.state.user);
-    };
+    };*/
 
-    setTeam = (team_name) => {
-        this.state.user['favorite_team'] = team_name;
-    };
-
-    render() {
-        console.log(this.state.user);
-        return (
-            this.state.route === 'signin' || this.state.route === 'signout'
+/*
+this.state.route === 'signin' || this.state.route === 'signout'
             ?
             <SignIn onRouteChange={this.onRouteChange}
                     getUser={this.getUser}/>
@@ -141,7 +166,8 @@ class MainPage extends Component {
             ?
             <Users onRouteChange={this.onRouteChange}/>
             :
-            <div className={"container-fluid"} id="navbar-container">
+ */
+            /*<div className={"container-fluid"} id="navbar-container">
                 <div className="socc-height-inherit">
                     <div className={"container-fluid"} id="navbar-container">
                         <Navigation routeStatus={this.state.routeStatus}
@@ -165,11 +191,9 @@ class MainPage extends Component {
                         </div>
                     </div>
                 </div>
-                {/*<FavoriteTeam/>*/}
+                {/!*<FavoriteTeam/>*!/}
             </div>
         )
     }
 
-}
-
-export default withRouter(MainPage)
+}*/

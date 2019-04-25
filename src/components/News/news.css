@@ -9,7 +9,6 @@
     background-size: cover;
     border: 1px solid #000;
     border-radius: 15px;
-
 }
 
 /*https://image.freepik.com/free-vector/dark-blue-blurred-background_1034-589.jpg*/
@@ -31,6 +30,10 @@
     margin-right: 15%;
     margin-left: 15%;
     list-style: none
+}
+
+.carousel-fade .carousel-item-next.carousel-item-left, .carousel-fade .carousel-item-prev.carousel-item-right, .carousel-fade .carousel-item.active{
+    background: transparent;
 }
 
 .socc-news-img{
@@ -70,6 +73,12 @@
 
     text-transform: uppercase;
 }
+
+.article-link:hover{
+    cursor: pointer;
+}
+
+
 
 .carousel-indicators li{
     background-color: red;

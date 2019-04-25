@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Navigation from "../Navigation/Navigation";
 import SearchService from "../../services/SearchService";
 import NewsCarousel from "../News/NewsCarousel";
+import UserService from "../../services/UserService";
 
 let self
 export default class SearchResults extends Component {
@@ -10,9 +11,21 @@ export default class SearchResults extends Component {
         self= this;
         this.state = {
             articles: [],
-            navigate: false
+            navigate: false,
+            user:'',
+            loggedIn: false
         };
         this.searchService = new SearchService();
+        this.userService = new UserService();
+        this.userService.is_logged_in().then(response => {
+            console.log(response.data);
+            if (response.data !== "NOT_LOGGED_IN") {
+                this.setState({
+                    loggedIn:true,
+                    user:response.data
+                })
+            }
+        })
     }
 
     search = () => {
@@ -46,7 +59,8 @@ export default class SearchResults extends Component {
         return (
             <div className="socc-height-inherit socc-background">
                 <div className={"container-fluid"} id="navbar-container">
-                    <Navigation/>
+                    <Navigation loggedIn ={this.state.loggedIn}
+                                user={this.state.user}/>
                 </div>
                 <div className="row">
                     <div className="col-3">

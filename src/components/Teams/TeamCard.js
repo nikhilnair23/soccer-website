@@ -8,23 +8,34 @@ import PlTable from '../../data/PL_Table'
 import players from '../../data/players'
 import TeamTable from "./TeamTable";
 import Roster from "./Roster";
+import UserService from "../../services/UserService";
 
 
 export default class TeamCard extends Component {
     constructor(props) {
         super(props);
         console.log(players)
+        debugger;
         this.state = {
             team: props.location.state.team,
             news: news,
             standings:PlTable,
             coach:players.coachs[0],
             players:players.players,
+            user:'',
+            loggedIn: false
         }
-        console.log(this.state.coach)
-        console.log(this.state.players)
         this.newsService= new NewsService();
         this.teamService = new TeamService();
+        this.userService = new UserService();
+        this.userService.is_logged_in().then(response => {
+            if (response.data !== "NOT_LOGGED_IN") {
+                this.setState({
+                    loggedIn:true,
+                    user:response.data
+                })
+            }
+        })
 
     }
 
@@ -57,7 +68,8 @@ export default class TeamCard extends Component {
         return (
             <div className="socc-height-inherit socc-background">
                 <div className={"container-fluid"} id="navbar-container">
-                    <Navigation/>
+                    <Navigation loggedIn ={this.state.loggedIn}
+                                user={this.state.user}/>
                 </div>
                 <div className="card mt-2">
                     <div className="card-header">

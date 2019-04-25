@@ -5,6 +5,8 @@ import Matches from "./Matches";
 import Future from "./Future";
 import Match_Details from "./Match_Details/Match_Details";
 import Odds from "../Odds/Odds";
+import Navigation from "../Navigation/Navigation";
+import UserService from "../../services/UserService";
 import FixtureService from "../../services/FixtureService";
 
 class Fixtures extends Component {
@@ -23,11 +25,23 @@ class Fixtures extends Component {
             fixtureById: [],
             details: false,
             odds: false,
-            user: this.props.location.state.user
+            user:'',
+            loggedIn: false
         };
+        this.userService = new UserService();
+        this.userService.is_logged_in().then(response => {
+            if (response.data !== "NOT_LOGGED_IN") {
+                this.setState({
+                    loggedIn:true,
+                    user:response.data
+                })
+            }
+        })
         this.fixtureService = new FixtureService();
         this.getFixtures();
     }
+
+
 
     getFixtures() {
         this.fixtureService.getFixturesByLeague('live')
@@ -152,11 +166,12 @@ class Fixtures extends Component {
 
     render() {
         return (
-            <div className="container-fluid tc">
-                {/*<div className={"container-fluid"} id="navbar-container">*/}
-                    {/*<Navigation/>*/}
-                {/*</div>*/}
-                <div className="col tc bg-black-60">
+            <div className="container-fluid tc" id="navbar-container">
+                <div className={"container-fluid"} id="navbar-container">
+                    <Navigation loggedIn ={this.state.loggedIn}
+                                user={this.state.user}/>
+                </div>
+                <div className="col tc bg-moon-gray">
                     <button type='button'
                             className={"home_button league_button btn-warning ma3 active rounded"}
                             onClick={() => this.props.onRouteChange('home')}>

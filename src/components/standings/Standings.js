@@ -5,6 +5,7 @@ import UCL from "./UCL";
 import Leagues from "./Leagues";
 import Table from "./Table";
 import Navigation from "../Navigation/Navigation";
+import UserService from "../../services/UserService";
 import StandingsService from "../../services/StandingsService";
 import Leagues_Pro from "./Leagues_Pro";
 import UCL_list from "./UCL_list";
@@ -19,6 +20,8 @@ class Standings extends Component {
             laliga: [],
             bundesliga: [],
             seriea: [],
+            user:'',
+            loggedIn: false,
             championship: [], //3
             league1: [], //164
             bundesliga2: [], //9
@@ -28,8 +31,18 @@ class Standings extends Component {
             eredivisie: [], //10
             mls: [], //199
             league: 'epl',
-            user: this.props.location.state.user
         };
+
+        this.userService = new UserService();
+        this.userService.is_logged_in().then(response => {
+            console.log(response.data);
+            if (response.data !== "NOT_LOGGED_IN") {
+                this.setState({
+                    loggedIn:true,
+                    user:response.data
+                })
+            }
+        })
 
         this.standingsService = new StandingsService();
         this.fetchTeams();
@@ -142,16 +155,16 @@ class Standings extends Component {
     };
 
     render() {
-        //console.log(this.state)
         return (
             // this.state.league === 'ucl'
             // ?
-            <div className='container-fluid'>
-                <div className="container-fluid" id="navbar-container">
-                    <Navigation/>
+            <div className='container-fluid' id="navbar-container">
+                <div className={"container-fluid"} id="navbar-container">
+                    <Navigation loggedIn ={this.state.loggedIn}
+                                user={this.state.user}/>
                 </div>
                 <div className="row">
-                    <div className='col-md-3 bg-black-80 left_col'>
+                    <div className='col-3 bg-black-80 left_col'>
                         <button
                             className="btn btn-warning pd5 ma2 home_but"
                             type="button"
@@ -169,7 +182,7 @@ class Standings extends Component {
 
                     </div>
 
-                    <div className="col-md-9 right_col">
+                    <div className="col-9 right_col">
                         {/*{console.log(this.state.ucl)}*/}
                         {
                             this.state.league === 'ucl'

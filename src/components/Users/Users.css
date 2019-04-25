@@ -6,3 +6,4 @@
     counter-increment: serial-number;
     content: counter(serial-number);
 }
+

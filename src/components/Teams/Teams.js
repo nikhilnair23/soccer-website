@@ -5,6 +5,7 @@ import leagues from '../../data/leagues'
 import './Teams.css'
 import Dropdown from "react-bootstrap/Dropdown";
 import {DropdownButton} from "react-bootstrap";
+import UserService from '../../services/UserService';
 import TeamService from '../../services/TeamService';
 
 let self;
@@ -15,10 +16,21 @@ export default class Teams extends Component {
             league_id: 2,
             leagues: leagues,
             league: 'Premier League',
-            teams: []
+            teams: [],
+            user: '',
+            loggedIn: false
         }
         self = this;
         this.teamService = new TeamService();
+        this.userService = new UserService();
+        this.userService.is_logged_in().then(response => {
+            if (response.data !== "NOT_LOGGED_IN") {
+                this.setState({
+                    loggedIn:true,
+                    user:response.data
+                })
+            }
+        })
     }
 
     componentDidMount() {
@@ -71,7 +83,8 @@ export default class Teams extends Component {
         return (
             <div className="socc-height-inherit socc-background">
                 <div className={"container-fluid"} id="navbar-container">
-                    <Navigation/>
+                    <Navigation loggedIn ={this.state.loggedIn}
+                                user={this.state.user}/>
                 </div>
                 <div className="row socc-height-inherit">
                     <div className="col-3">
