@@ -165,18 +165,18 @@ class Standings extends Component {
                 </div>
                 <div className="row">
                     <div className='col-3 bg-black-80 left_col'>
-                        <button
-                            className="btn btn-warning pd5 ma2 home_but"
-                            type="button"
-                            onClick={() => this.props.onRouteChange('home')}>Home Page
-                        </button>
+                        {/*<button*/}
+                            {/*className="btn btn-warning pd5 ma2 home_but"*/}
+                            {/*type="button"*/}
+                            {/*onClick={() => () => this.props.history.push('/')}>Home Page*/}
+                        {/*</button>*/}
                         {
-                            this.state.user['isPro'] === 0
+                            this.state.user['isPro'] === 1
                             ?
-                            <Leagues changeLeague={this.changeLeague}
+                            <Leagues_Pro changeLeague={this.changeLeague}
                                      league={this.state.league}/>
                             :
-                            <Leagues_Pro changeLeague={this.changeLeague}
+                            <Leagues changeLeague={this.changeLeague}
                                      league={this.state.league}/>
                         }
 

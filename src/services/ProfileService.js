@@ -34,6 +34,7 @@ export default class ProfileService {
         return (
             fetch('http://localhost:5000/profile/' + username, {
                 method: 'delete',
+                credentials:'include',
                 headers: {
                     'content-type': 'application/json'
                 }
