@@ -45,7 +45,7 @@ class NewsCarousel extends React.Component {
                     activeIndex={index}
                     direction={direction}
                     onSelect={this.handleSelect}
-                    interval = {40000}
+                    interval = {4000}
                     fade={true}
                 >
                         {

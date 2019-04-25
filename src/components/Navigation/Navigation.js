@@ -37,7 +37,6 @@ class Navigation extends React.Component {
         this.props.history.push('/login')
 
     goToTeams = () => {
-        debugger;
         return (
             this.props.history.push('/teams')
         )

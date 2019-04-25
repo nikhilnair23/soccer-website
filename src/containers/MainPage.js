@@ -12,6 +12,7 @@ import Standings from "../components/standings/Standings";
 import Fixtures from "../components/Fixtures/Fixtures";
 import Profile from "../components/Profile/Profile";
 import Users from "../components/Users/Users";
+import crest from "../img/crest.png"
 import {withRouter} from 'react-router';
 
 class MainPage extends Component {
@@ -23,6 +24,7 @@ class MainPage extends Component {
             route: 'home',
             routeStatus: 'not_logged_in',
             loggedIn: false,
+            team_crest: crest,
             user: '',
         };
         this.newsService = new NewsService();
@@ -31,9 +33,9 @@ class MainPage extends Component {
             console.log(response.data);
             if (response.data !== "NOT_LOGGED_IN") {
                 this.setState({
-                                  loggedIn: true,
-                                  user: response.data
-                              })
+                    loggedIn: true,
+                    user: response.data
+                })
             }
         })
     }
@@ -46,8 +48,8 @@ class MainPage extends Component {
         })
     }
 
-    componentDidUpdate(prevProps){
-        if (this.props.location != prevProps.location){
+    componentDidUpdate(prevProps) {
+        if (this.props.location != prevProps.location) {
             debugger;
             this.userService.is_logged_in().then(response => {
                 console.log(response.data);
@@ -67,29 +69,56 @@ class MainPage extends Component {
     render() {
         console.log(this.state.user);
         return (
-            <div className="container-fluid" id="navbar-container">
-            <div className="socc-height-inherit">
-                <div className={"container-fluid"} id="navbar-container">
-                    <Navigation loggedIn ={this.state.loggedIn}
-                                user={this.state.user}/>
-                </div>
-                <div className="container-fluid socc-height-inherit">
-                    <div className="row socc-height-inherit">
-                        <div className="col-3">
-                            <h2 className="text-white text-wrap">Placeholder</h2>
-                        </div>
-                        <div className="col-6 ">
-                            <NewsCarousel
-                                articles={this.state.articles}
-                            />
-                        </div>
-                        <div className="col-3">
-                            <h2 className="text-white">sample</h2>
+            <div className="container-fluid socc-background" id="navbar-container">
+                <div className="socc-height-inherit socc-background">
+                    <div className={"container-fluid"} id="navbar-container">
+                        <Navigation loggedIn={this.state.loggedIn}
+                                    user={this.state.user}/>
+                    </div>
+                    <div className="container-fluid socc-height-inherit">
+                        <div className="row socc-height-inherit">
+                            <div className="col-3">
+                                <div className="card fav-team-card bg-black">
+                                    <div className="fav-team-text">
+                                        <h4 className="text-center text-white font-weight-bold pt-2 pb-2">Your Favourite Team</h4>
+                                    </div>
+                                    <div className="fav-team-logo">
+                                        <img className="img-thumbnail fav-team-logo-img mb-2"
+                                            height="100px"
+                                             width="100px"
+                                            src={this.state.team_crest}/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-6 ">
+                                <NewsCarousel
+                                    articles={this.state.articles}
+                                />
+                            </div>
+                            <div className="col-3">
+                                <div className="card news-articles-card">
+                                    <div className="card-header mt-3">
+                                        <h4>News Articles</h4>
+                                    </div>
+                                    <div className="card-body">
+                                        <ul className="list-group">
+                                            {this.state.articles.slice(0,5).map((article)=>{
+                                                return(
+                                                <li className="list-group-item">
+                                                    <a  className="text-black-50"
+                                                        href={article.url} target="_blank">
+                                                    {article.title}
+                                                    </a>
+                                                    </li>
+                                                )
+                                            })}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-                {/*<FavoriteTeam/>*/}
             </div>
         )
     }
@@ -97,7 +126,6 @@ class MainPage extends Component {
 }
 
 export default withRouter(MainPage)
-
 
 
 /*onRouteChange = (routeTo) => {
@@ -167,33 +195,33 @@ this.state.route === 'signin' || this.state.route === 'signout'
             <Users onRouteChange={this.onRouteChange}/>
             :
  */
-            /*<div className={"container-fluid"} id="navbar-container">
-                <div className="socc-height-inherit">
-                    <div className={"container-fluid"} id="navbar-container">
-                        <Navigation routeStatus={this.state.routeStatus}
-                                    loggedIn={this.state.loggedIn}
-                                    user={this.state.user}
-                                    onRouteChange={this.onRouteChange}/>
-                    </div>
-                    <div className="container-fluid socc-height-inherit">
-                        <div className="row socc-height-inherit">
-                            <div className="col-3">
-                                <h2 className="text-white text-wrap">Placeholder</h2>
-                            </div>
-                            <div className="col-6">
-                                <NewsCarousel
-                                    articles={this.state.articles}
-                                />
-                            </div>
-                            <div className="col-3">
-                                <h2 className="text-white">sample</h2>
-                            </div>
-                        </div>
-                    </div>
+/*<div className={"container-fluid"} id="navbar-container">
+    <div className="socc-height-inherit">
+        <div className={"container-fluid"} id="navbar-container">
+            <Navigation routeStatus={this.state.routeStatus}
+                        loggedIn={this.state.loggedIn}
+                        user={this.state.user}
+                        onRouteChange={this.onRouteChange}/>
+        </div>
+        <div className="container-fluid socc-height-inherit">
+            <div className="row socc-height-inherit">
+                <div className="col-3">
+                    <h2 className="text-white text-wrap">Placeholder</h2>
                 </div>
-                {/!*<FavoriteTeam/>*!/}
+                <div className="col-6">
+                    <NewsCarousel
+                        articles={this.state.articles}
+                    />
+                </div>
+                <div className="col-3">
+                    <h2 className="text-white">sample</h2>
+                </div>
             </div>
-        )
-    }
+        </div>
+    </div>
+    {/!*<FavoriteTeam/>*!/}
+</div>
+)
+}
 
 }*/
