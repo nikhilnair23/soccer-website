@@ -47,11 +47,18 @@ class AnonProfile extends Component {
                                   users_followed: response
                               })
             });
+        this.userService.getTeamsFollowed(this.props.match.params.username)
+            .then((response) => {
+                this.setState({
+                    clubs_followed:response.data
+                })
+            })
     }
 
     componentDidMount() {
 
     }
+
 
     goHome = () =>
         this.props.history.push('/');
@@ -103,41 +110,6 @@ class AnonProfile extends Component {
                                 height={180}
                                 width={180}/>
                         </div>
-                        <div className='col-md-3 fr'>
-                            {/*{
-
-                                this.state.user['isAdmin'] === 1
-                                    ?
-                                    <button className='btn btn-primary ma2'
-                                            onClick={() => this.goToUsers()}>
-                                        User list
-                                    </button>
-                                    :
-                                    <img
-                                        className='ma2'
-                                        src={admin}
-                                        alt="Not admin"
-                                        height={90}
-                                        width={90}/>
-                            }*/}
-                            {/*{
-                                this.state.user['isPro'] === 1
-                                    ?
-                                    <img
-                                        className='ma2'
-                                        src={pro}
-                                        alt="Pro user"
-                                        height={90}
-                                        width={90}/>
-                                    :
-                                    <img
-                                        className='ma2'
-                                        src={casual}
-                                        alt="Casual"
-                                        height={80}
-                                        width={150}/>
-                            }*/}
-                        </div>
                     </div>
                     <div className="row">
                         <div className="col-4">
@@ -148,10 +120,10 @@ class AnonProfile extends Component {
                                 <div className="card-body">
                                     <ul className="list-group">
                                         {
-                                            this.state.clubs_followed.map((club) =>
-                                                                              <li className="list-group-item-info">
-                                                                                  <h4>{club}</h4>
-                                                                              </li>
+                                            this.state.clubs_followed.map((club)=>
+                                                <li className="list-group-item p-1">
+                                                    <h4>{club.TEAM}</h4>
+                                                </li>
                                             )
                                         }
                                     </ul>

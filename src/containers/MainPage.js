@@ -127,7 +127,7 @@ class MainPage extends Component {
                                 />
                             </div>
                             <div className="col-3">
-                                <div className="card news-articles-card">
+                                <div className="card news-articles-card mb-3">
                                     <div className="card-header mt-3">
                                         <h4>News Articles</h4>
                                     </div>

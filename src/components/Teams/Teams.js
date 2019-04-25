@@ -99,7 +99,8 @@ export default class Teams extends Component {
         return (
             <div className="socc-height-inherit socc-background">
                 <div className={"container-fluid"} id="navbar-container">
-                    <Navigation/>
+                    <Navigation loggedIn={this.state.loggedIn}
+                                user={this.state.user}/>
                 </div>
                 {/*<button type='button'*/}
                         {/*className='btn btn-success ma5'*/}
