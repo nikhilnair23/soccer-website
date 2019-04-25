@@ -85,11 +85,19 @@ class Profile extends Component {
     deleteUser = () => {
         alert("Sorry to see you go, " + this.state.user['username']);
         this.profileService.deleteProfile(this.state.user['username'])
-            .then(this.goHome())
+            .then(response => this.goHomeDelete())
     };
 
     goHome = () =>
         this.props.history.push('/')
+
+    goHomeDelete = () =>
+        this.props.history.push({
+            pathname: '/',
+            state:{
+                loggedIn:false
+            }
+        })
 
     goToUsers = () =>
         this.props.history.push('/users')

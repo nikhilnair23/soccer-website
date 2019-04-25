@@ -171,12 +171,12 @@ class Standings extends Component {
                             {/*onClick={() => () => this.props.history.push('/')}>Home Page*/}
                         {/*</button>*/}
                         {
-                            this.state.user['isPro'] === 0
+                            this.state.user['isPro'] === 1
                             ?
-                            <Leagues changeLeague={this.changeLeague}
+                            <Leagues_Pro changeLeague={this.changeLeague}
                                      league={this.state.league}/>
                             :
-                            <Leagues_Pro changeLeague={this.changeLeague}
+                            <Leagues changeLeague={this.changeLeague}
                                      league={this.state.league}/>
                         }
 

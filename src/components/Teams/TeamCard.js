@@ -122,8 +122,8 @@ export default class TeamCard extends Component {
                     <Navigation loggedIn={this.state.loggedIn}
                                 user={this.state.user}/>
                 </div>
-                <div className="card mt-2">
-                    <div className="card-header">
+                <div className="card mt-2 ml-2 mr-2">
+                    <div className="card-header ml-2">
                         <div className="row m-3">
                             <div className="col-3 club-logo-container">
                                 <img src={this.state.team.logo}
