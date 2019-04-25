@@ -17,12 +17,18 @@ class AnonProfile extends Component {
             password: '',
             first_name: '',
             last_name: '',
-            profile_pic: ''
+            profile_pic: '',
+            clubs_followed: [],
+            users_followed: []
         };
         this.profileService = new ProfileService();
+        this.profileService.getProfile(this.props.match.params.username).then((response) => {
+            this.setState({
+                user: response,
+                profile_pic: 'https://robohash.org/'+response.username
+            })
+        })
     }
-
-
 
 
     goHome = () =>
@@ -88,25 +94,64 @@ class AnonProfile extends Component {
                             }*/}
                         </div>
                     </div>
+                    <div className="row">
+                        <div className="col-4">
+                            <div className="card bg-washed-blue club-follow-card">
+                                <div className="card-header">
+                                    List of Clubs Followed:
+                                </div>
+                                <div className="card-body">
+                                    <ul className="list-group">
+                                        {
+                                            this.state.clubs_followed.map((club)=>
+                                                <li className="list-group-item-info">
+                                                    <h4>{club}</h4>
+                                                </li>
+                                            )
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-4">
+                            <div>
+                                <h3 className="font-weight-bold">
+                                    Username
+                                </h3>
+                                <h4>
+                                    {this.state.user['username']}
+                                </h4>
+                            </div>
 
+                            <div>
+                                <h3 className="font-weight-bold">
+                                    Favorite Team
+                                </h3>
+                                <h4>
+                                    {this.state.user['favorite_team']}
+                                </h4>
+                            </div>
+                        </div>
+                        <div className="col-4">
+                            <div className="card bg-washed-blue user-follow-card">
+                                <div className="card-header">
+                                    List of Users Followed:
+                                </div>
+                                <div className="card-body">
+                                    <ul className="list-group">
+                                        {
+                                            this.state.users_followed.map((user)=>
+                                                <li className="list-group-item-info">
+                                                    <h4>{user}</h4>
+                                                </li>
+                                            )
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
 
-                    <div>
-                        <h3 className="font-weight-bold">
-                            Username
-                        </h3>
-                        <h4>
-                            {this.state.user['username']}
-                        </h4>
-                    </div>
-
-                    <div>
-                        <h3 className="font-weight-bold">
-                            Favorite Team
-                        </h3>
-                        <h4>
-                            {this.state.user['favorite_team']}
-                        </h4>
-                    </div>
                 </div>
             </div>
 

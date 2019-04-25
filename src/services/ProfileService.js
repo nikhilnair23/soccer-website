@@ -34,7 +34,7 @@ export default class ProfileService {
                 method: 'get',
                 headers: {
                     'content-type': 'application/json'   }
-            })
+            }).then(response => response.json())
         );
     }
 
