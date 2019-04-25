@@ -18,32 +18,47 @@ export default class ProfileService {
         ));
     };
 
+    follow = (un_following, un_followed) => {
+        return (fetch('http://localhost:5000/follow_user', {
+                          method: 'POST',
+                          headers: {'Content-Type': 'application/json'},
+                          body: JSON.stringify({
+                                                   username_following: un_following,
+                                                   username_followed: un_followed
+                                               })
+                      }
+        ));
+    };
+
     deleteProfile = (username) => {
-        return(
+        return (
             fetch('http://localhost:5000/profile/' + username, {
                 method: 'delete',
                 headers: {
-                    'content-type': 'application/json'   }
+                    'content-type': 'application/json'
+                }
             })
         );
     };
 
     getProfile = (username) => {
-        return(
+        return (
             fetch('http://localhost:5000/profile/' + username, {
                 method: 'get',
                 headers: {
-                    'content-type': 'application/json'   }
+                    'content-type': 'application/json'
+                }
             }).then(response => response.json())
         );
     }
 
     getUsersFollowed = (username) => {
-        return(
+        return (
             fetch('http://localhost:5000/profile/follow/' + username, {
                 method: 'get',
                 headers: {
-                    'content-type': 'application/json'   }
+                    'content-type': 'application/json'
+                }
             }).then(response => response.json())
         );
     }

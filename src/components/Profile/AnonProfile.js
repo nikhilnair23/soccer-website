@@ -6,6 +6,7 @@ import pro from './pro.png';
 import casual from './casual.jpg';
 import admin from './admin.jpg';
 import './Profile.css';
+import UserService from "../../services/UserService";
 
 class AnonProfile extends Component {
 
@@ -13,50 +14,64 @@ class AnonProfile extends Component {
         super(props);
         this.state = {
             user: '',
-            loggedInUser:'',
+            loggedInUser: '',
             edit_mode: false,
             password: '',
             first_name: '',
             last_name: '',
             profile_pic: '',
-            loggedIn:false,
+            loggedIn: false,
             clubs_followed: [],
             users_followed: []
         };
         this.profileService = new ProfileService();
+        this.userService = new UserService();
         this.userService.is_logged_in().then(response => {
             if (response.data !== "NOT_LOGGED_IN") {
                 this.setState({
-                    loggedIn: true,
-                    loggedInUser: response.data,
-                    profile_pic: 'https://robohash.org/'+response.data.username
-                })
+                                  loggedIn: true,
+                                  loggedInUser: response.data,
+                                  profile_pic: 'https://robohash.org/' + response.data.username
+                              })
             }
-        })
+        });
         this.profileService.getProfile(this.props.match.params.username).then((response) => {
             this.setState({
-                user: response,
-                profile_pic: 'https://robohash.org/'+response.username
-            })
+                              user: response,
+                              profile_pic: 'https://robohash.org/' + response.username
+                          })
         });
         this.profileService.getUsersFollowed(this.props.match.params.username)
             .then((response) => {
-            this.setState({
-                              users_followed: response
-                          })
-        });
+                this.setState({
+                                  users_followed: response
+                              })
+            });
     }
 
     componentDidMount() {
 
     }
 
-
     goHome = () =>
         this.props.history.push('/');
 
     goToUsers = () =>
         this.props.history.push('/users');
+
+    followUser = () => {
+        if (this.state.loggedIn === false) {
+            alert("You must be signed in to follow.")
+        }
+        else {
+            this.profileService.follow(this.state.loggedInUser.username, this.state.user.username)
+                .then(
+                    document.getElementById("follow_button").innerText = "Following",
+                    document.getElementById("follow_button").classList.remove("btn-primary"),
+                    document.getElementById("follow_button").classList.add("btn-success")
+                )
+        }
+    };
 
     render() {
         console.log(this.state);
@@ -69,6 +84,14 @@ class AnonProfile extends Component {
                             className="btn btn-warning pd5 ma2 home_button"
                             type="button"
                             onClick={() => this.goHome()}>Home Page
+                        </button>
+                    </div>
+                    <div className='fr'>
+                        <button
+                            id='follow_button'
+                            className="btn btn-primary pd5 ma2 follow_button"
+                            type="button"
+                            onClick={() => this.followUser()}>Follow
                         </button>
                     </div>
                     <div className='row'>
@@ -125,10 +148,10 @@ class AnonProfile extends Component {
                                 <div className="card-body">
                                     <ul className="list-group">
                                         {
-                                            this.state.clubs_followed.map((club)=>
-                                                <li className="list-group-item-info">
-                                                    <h4>{club}</h4>
-                                                </li>
+                                            this.state.clubs_followed.map((club) =>
+                                                                              <li className="list-group-item-info">
+                                                                                  <h4>{club}</h4>
+                                                                              </li>
                                             )
                                         }
                                     </ul>
@@ -162,17 +185,17 @@ class AnonProfile extends Component {
                                 <div className="card-body">
                                     <ul className="list-group">
                                         {
-                                            this.state.users_followed.map((user)=>
-                                                <li className="list-group-item-info">
-                                                    <h4>{user.user_followed}</h4>
-                                                </li>
+                                            this.state.users_followed.map((user) =>
+                                                                              <li className="list-group-item-info">
+                                                                                  <h4>{user.user_followed}</h4>
+                                                                              </li>
                                             )
                                         }
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        </div>
+                    </div>
 
                 </div>
             </div>
