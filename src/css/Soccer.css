@@ -132,12 +132,18 @@ h5 {
 }
 
 .fav-team-card{
+    height: 500px;
     margin-top: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
     border: 10px black;
     border-radius: 25px;
+}
+
+.team-information{
+    margin-top:35%;
+    margin-bottom:50%
 }
 
 .fav-team-logo-img{
@@ -149,13 +155,25 @@ h5 {
     height: auto;
 }
 
+.fav-team-name{
+    color: white;
+    font-family: "avenir next";
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
 .news-articles-card{
     margin-top: 20px;
+    height: 500px;
     display: flex;
     flex-direction: row;
     align-items: center;
     border: 10px black;
-    border-radius: 25px;
+    border-radius: 1.25rem;
+}
+
+.article-card-body{
+    overflow-y: scroll;
 }
 
 .team-text-prompt{
