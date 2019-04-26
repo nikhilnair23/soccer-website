@@ -92,7 +92,6 @@ class Navigation extends React.Component {
     }
 
     signOut = () => {
-        debugger;
         this.userService.sign_out().then((response) => {
                 debugger;
                 return (this.props.history.push({
@@ -107,7 +106,6 @@ class Navigation extends React.Component {
 
     render() {
         if (this.state.navigate === true) {
-            debugger;
             return (
                 <Redirect to={{
                     pathname: '/search/' + this.state.searchText,
