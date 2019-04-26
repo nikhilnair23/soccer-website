@@ -158,7 +158,7 @@ class Standings extends Component {
         return (
             // this.state.league === 'ucl'
             // ?
-            <div className='container-fluid' id="navbar-container">
+            <div className='container-fluid socc-background' id="navbar-container">
                 <div className={"container-fluid"} id="navbar-container">
                     <Navigation loggedIn ={this.state.loggedIn}
                                 user={this.state.user}/>

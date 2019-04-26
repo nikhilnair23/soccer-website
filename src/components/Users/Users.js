@@ -83,7 +83,7 @@ class Users extends Component {
                 </p>
             </div>
             :
-            <div className='container-fluid tc'>
+            <div className='container-fluid socc-background tc'>
                 <table className="table bg-moon-gray table-striped css-serial tc pa3">
                     <thead className='bg-light'>
                     <tr>
