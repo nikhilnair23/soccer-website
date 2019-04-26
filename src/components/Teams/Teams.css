@@ -2,12 +2,14 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    color:white;
+    font-weight: bold;
+    font-size: 20px;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
+    border-radius: 1rem;
 }
 
 
@@ -33,6 +35,7 @@
 .team-card-name{
     padding-top: 0;
     padding-bottom: 0;
+    color: black;
     font-size: large;
 }
 
@@ -48,6 +51,17 @@
     padding-left: 0.35rem;
     padding-right: 0.35rem;
     border-top:0px;
+}
+
+.roster-names{
+    font-weight: normal;
+    font-size: 15px;
+}
+
+.card-article-text{
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 h5{

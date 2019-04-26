@@ -2,12 +2,12 @@ import React from "react";
 
 const Roster = ({players}) => {
     return(
-        <table className="table table-responsive-md table-hover table-light text-left">
+        <table className="table table-responsive-xs text-center table-light text-left">
             <tbody>
             {players
                 .map((player)=>
                     <tr>
-                        <td>{player.player}</td>
+                        <td className="roster-names">{player.player}</td>
                     </tr>
                 )}
             </tbody>

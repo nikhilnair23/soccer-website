@@ -131,7 +131,7 @@ export default class TeamCard extends Component {
                                      className="m-2 club-logo"/>
                             </div>
                             <div className="col-9 justify-content-center team-card-name">
-                                <h1 className="font-weight-bolder ">{this.state.team.name}</h1>
+                                <h1 className="font-weight-bolder">{this.state.team.name}</h1>
                                 {   this.checkIfTeamIsFollowed(this.state.followedTeams,this.state.team.name)
                                     ?
                                     <button
@@ -151,7 +151,7 @@ export default class TeamCard extends Component {
                             <div className="card-header">
                                 <h5 className="text-center">Roster</h5>
                             </div>
-                            <div className="card-body">
+                            <div className="ml-2">
                                 <Roster
                                     players={this.state.players}
                                 />
@@ -168,7 +168,7 @@ export default class TeamCard extends Component {
                                                      src={article.urlToImage}
                                                 />
                                             </div>
-                                            <div className="card-body">
+                                            <div className="card-body card-article-text">
                                                 <h4 className="font-weight-bolder text-center">{article.title}</h4>
                                             </div>
                                         </div>

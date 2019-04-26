@@ -112,11 +112,11 @@ export default class Teams extends Component {
                         <h2 className="text-white text-wrap"></h2>
                     </div>
                     <div className="col-12 ml-3">
-                        <div className="card mt-3 mb-3">
+                        <div className="card mt-3 mb-3 bg-black">
                             <div>
                                 <DropdownButton
                                     id="dropdown-basic-button"
-                                    className="pull-right p-2"
+                                    className="pull-right mr-3 mt-3 mb-3"
                                     title={this.state.league}>
                                     {
                                         Object.values(this.state.leagues)
@@ -138,7 +138,7 @@ export default class Teams extends Component {
                                 </DropdownButton>
                             </div>
                             <div className="row no-gutters">
-                                <div className="col-6">
+                                <div className="col-6 ">
                                     <ul id="double" className="list-group-flush pl-3"><span
                                         className="code-comment"></span>
                                         {
@@ -146,7 +146,7 @@ export default class Teams extends Component {
                                                 .slice(0, 10)
                                                 .map((team) => {
                                                     return (
-                                                        <li className="list-group-item">
+                                                        <li className="list-group-item bg-white-10">
                                                             <div onClick={() => this.selectTeam(
                                                                 team)}
                                                                  className="team-container team-div">
@@ -170,7 +170,7 @@ export default class Teams extends Component {
                                                 .slice(10, (Object.keys(this.state.teams).length))
                                                 .map((team) => {
                                                     return (
-                                                        <li className="list-group-item">
+                                                        <li className="list-group-item bg-white-10 mr-3">
                                                             <div onClick={() => this.selectTeam(
                                                                 team)}
                                                                  className="team-container team-div">
