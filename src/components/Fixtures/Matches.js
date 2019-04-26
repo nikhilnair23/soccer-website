@@ -12,7 +12,6 @@ const Matches = ({fixtures, matchDetails}) =>
              overflow: 'scroll',
              border: '3px silver',
              height: '800px',
-             margin: '10px'
          }}>
         {
             fixtures.length === 0

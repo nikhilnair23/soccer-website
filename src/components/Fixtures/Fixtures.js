@@ -166,7 +166,7 @@ class Fixtures extends Component {
 
     render() {
         return (
-            <div className="container-fluid tc" id="navbar-container">
+            <div className="container-fluid tc socc-background" id="navbar-container">
                 <div className={"container-fluid"} id="navbar-container">
                     <Navigation loggedIn ={this.state.loggedIn}
                                 user={this.state.user}/>
@@ -213,7 +213,7 @@ class Fixtures extends Component {
                         Serie A
                     </button>
                 </div>
-                <div className="tc ma5">
+                <div className="tc ml-5 mr-5 mt-5 ">
                     {
 
                         this.state.odds === true && this.state.details === true
