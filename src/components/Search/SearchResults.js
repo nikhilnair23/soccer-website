@@ -67,9 +67,9 @@ export default class SearchResults extends Component {
                     <div className="col-3">
                     </div>
                     <div className="col-6">
-                        {this.state.articles.size === 0
+                        {this.state.articles.length === 0
                             ?
-                            <h2>Sorry no results were found. Please try a different search query</h2>
+                            <h2 className="mt-3 text-white text-center font-weight-bolder bg-black-90">Sorry no results were found. Please try a different search query</h2>
                             :
                             <ul className="list-group p-2">
                                 {
