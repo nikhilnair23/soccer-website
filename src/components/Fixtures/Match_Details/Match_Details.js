@@ -102,7 +102,7 @@ class Match_Details extends Component {
                     </div>
 
                     <div className='row ma1'>
-                        <div className='col-md-4 tc'>
+                        <div className='col-md-4 tc team_name'>
                             <h4 onClick={() => this.goToTeamPage(this.state.fixtureById[0].homeTeam_id,
                                 this.state.fixtureById[0].homeTeam,
                                 this.state.home_crest)}>
@@ -112,7 +112,7 @@ class Match_Details extends Component {
                         <div className='col-md-4 tc'>
 
                         </div>
-                        <div className='col-md-4 tc'>
+                        <div className='col-md-4 tc team_name'>
                             <h4 onClick={() => this.goToTeamPage(this.state.fixtureById[0].awayTeam_id,
                                 this.state.fixtureById[0].awayTeam,
                                 this.state.away_crest)}>
@@ -140,37 +140,16 @@ class Match_Details extends Component {
 
 
                     <div className='row ma4'>
-                        <div className='col-md-3 tc'>
-                            <button type="button"
-                                    onClick={() => this.props.reset()}
-                                    className="btn btn-secondary">
-                                Team news
-                            </button>
-                        </div>
-                        <div className='col-md-3 tc'>
-                            <button type="button" className='col-md-3 tc'
-                                    onClick={() => this.props.reset()}
-                                    className="btn btn-warning">
-                                Squads
-                            </button>
-                        </div>
-                        <div className='col-md-3 tc'>
-                            <button type="button"
-                                    onClick={() => this.props.reset()}
-                                    className="btn btn-warning">
-                                Table
-                            </button>
-                        </div>
-                        <div className='col-md-3 tc'>
+                        <div className='col tc'>
                             <button type="button"
                                     onClick={() => this.props.setOdds()}
                                     className="btn btn-warning">
-                                Odds
+                                Match insights
                             </button>
                         </div>
                     </div>
 
-                    <div>
+                    <div >
                         <h3 className='previous_name'>
                             PREVIOUS MEETINGS
                         </h3>
@@ -183,7 +162,7 @@ class Match_Details extends Component {
                                     )
                                     .map(
                                         match =>
-                                            <div className="row ma3">
+                                            <div className="row ma3 bg-black-50">
 
                                                 <div className="col-md-4 tc">
                                                     <h4 className='previous_game'>
