@@ -19,8 +19,8 @@ const Matches = ({fixtures, matchDetails}) =>
             ?
             <div>
                 <div className="card">
-                    <ul className="list-group list-group-flush bg-washed-yellow">
-                        <li className="list-group-item hover-bg-light-blue bg-light-green shadow-hover ma2">
+                    <ul className="list-group list-group-flush bg-black border-dark">
+                        <li className="list-group-item hover-bg-dark-green fixture_card shadow-hover ma2">
                             <div className="row">
                                 <div className="col tc">
                                     <h3>
