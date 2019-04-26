@@ -82,8 +82,28 @@
     cursor: pointer;
 }
 
-
-
 .carousel-indicators li{
     background-color: red;
+}
+
+@media screen and (max-width: 767px) {
+    .card-cont{
+        width:100%;
+        /*height:auto;*/
+        margin-top: 20px;
+        width: 53%;
+        margin-left: -14%;
+        height: 500px;
+        border: 1px solid #000;
+        border-radius: 15px;
+    }
+
+    .socc-news-img{
+        position: relative;
+        width: 94%;
+        margin-left: 13px;
+        height: 470px;
+        margin-top: 10px;
+        object-fit: contain;
+    }
 }

@@ -126,7 +126,7 @@ class MainPage extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-6 col-md-7 ">
+                            <div className="col-lg-6 col-md-7 carousel-column">
                                 <NewsCarousel
                                     articles={this.state.articles}
                                 />
