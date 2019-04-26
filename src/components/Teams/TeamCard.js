@@ -146,7 +146,7 @@ export default class TeamCard extends Component {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-2 mt-2 pl-4 pr-0">
+                    <div className="col-2 d-none d-lg-block mt-3 pl-4 pr-0">
                         <div className="card">
                             <div className="card-header">
                                 <h5 className="text-center">Roster</h5>
@@ -158,8 +158,8 @@ export default class TeamCard extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="col-7">
-                        <ul className="list-group">
+                    <div className="col-lg-7 col-md-8 col-sm-12">
+                        <ul className="list-group p-2">
                             {this.state.news.map((article =>
                                     <li className="list-group-item mt-2">
                                         <div className="card">
@@ -176,7 +176,7 @@ export default class TeamCard extends Component {
                             ))}
                         </ul>
                     </div>
-                    <div className="col-3 pr-4 pt-2 pl-0">
+                    <div className="col-lg-3 col-md-4 d-none d-md-block mt-2 pr-4 pt-2 pl-0">
                         <div className="card">
                             <div className="card-header">
                                 <h5 className="text-center">League Table</h5>

@@ -5,8 +5,7 @@ const Future = ({fixtures, matchDetails}) =>
          style={{
              overflow: 'scroll',
              border: '3px silver',
-             height: '800px',
-             margin: '10px'
+             height: '340px',
          }}>
         {
             fixtures.filter(

@@ -128,7 +128,7 @@ h5 {
     font-family: "avenir next";
     font-weight: bold;
     padding: 5px;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .fav-team-card{
@@ -139,11 +139,16 @@ h5 {
     align-items: center;
     border: 10px black;
     border-radius: 25px;
+    overflow-y: hidden;
 }
 
 .team-information{
     margin-top:35%;
     margin-bottom:50%
+}
+
+.fav-team-logo{
+    margin-top: 18px;
 }
 
 .fav-team-logo-img{

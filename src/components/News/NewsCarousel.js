@@ -25,7 +25,7 @@ class NewsCarousel extends React.Component {
 
     navigate = (title, description, content, url, urlToImage, date, author ) =>
         this.props.history.push({
-            pathname:'/searchItem',
+            pathname:'/details/'+title,
             state: {
                 title: title,
                 description: description,

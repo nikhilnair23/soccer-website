@@ -112,7 +112,7 @@ class Profile extends Component {
 
     render() {
         return (
-            <div className='container-fluid tc'>
+            <div className='container-fluid tc socc-background'>
                 <div
                     className='tc bg-washed-yellow ma2 br3 dib pa1 shadow-5 profile_card'>
                     <div>
