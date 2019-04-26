@@ -1,13 +1,17 @@
 import React from 'react';
 import {Component} from 'react';
 import './Users.css';
+import UserService from "../../services/UserService";
 
+let self;
 class Users extends Component {
     constructor(props) {
         super(props);
+        self = this;
         this.state = {
             users: []
         }
+        this.userService = new UserService();
     }
 
     componentDidMount() {
@@ -21,8 +25,8 @@ class Users extends Component {
             )})
     }
 
-    componentDidUpdate(prevProps) {
-        if (this.props!=prevProps) {
+    /*componentDidUpdate(prevProps) {
+        if (this.props!==prevProps) {
             fetch('http://localhost:5000/users')
                 .then(response => response.json())
                 .then(res => {
@@ -33,43 +37,49 @@ class Users extends Component {
                     )
                 })
         }
-    }
+    }*/
 
     makeAdmin = (username) => {
         fetch('http://localhost:5000/admin/' + username, {
                   method: 'PUT',
                   headers: {'Content-Type': 'application/json'}
               }
-        ).then(
-            this.setState(
-
-            )
+        ).then( response =>
+            this.userService.getListOfUsers().then(response => {
+                this.setState({
+                    users:response.data
+                              })
+            })
         )
     };
 
-    banUser = (username) => {
+    banUser = (username) =>
         fetch('http://localhost:5000/ban/' + username, {
                   method: 'PUT',
                   headers: {'Content-Type': 'application/json'}
               }
-        ).then(
-            this.setState(
-
-            )
+        ).then( response =>
+            this.userService.getListOfUsers().then(response => {
+                debugger;
+                self.setState({
+                                  users:response.data
+                              })
+            })
         )
-    };
 
-    unBanUser = (username) => {
+    unBanUser = (username) =>
         fetch('http://localhost:5000/unban/' + username, {
                   method: 'PUT',
                   headers: {'Content-Type': 'application/json'}
               }
-        ).then(
-            this.setState(
-
-            )
+        ).then( response =>
+            this.userService.getListOfUsers().then(response => {
+                debugger;
+                self.setState({
+                                  users:response.data
+                              })
+            })
         )
-    };
 
     render() {
 

@@ -48,4 +48,7 @@ export default class UserService{
             method:'get'
         })).then(response => response.json())
     }
+
+    getListOfUsers = () =>
+        fetch('http://localhost:5000/users').then(response => response.json())
 }
