@@ -94,7 +94,7 @@ h5 {
 
 .carousel{
     width:100%;
-    height:auto;
+    max-height: 700px;
     padding-right: 0px;
     margin-right: 0px;
 }
@@ -115,9 +115,9 @@ h5 {
     background-color: #000000;
     border: 1px solid rgba(230, 2, 0, 0.02);
     border-radius: 0.30rem;
-    max-height: 350px;
+    max-height: 700px;
     width: auto;
-    height: auto;
+
 }
 
 .socc-link:hover{
