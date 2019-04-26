@@ -6,6 +6,7 @@ import pro from './pro.png';
 import casual from './casual.jpg';
 import admin from './admin.jpg';
 import './Profile.css';
+import UserService from "../../services/UserService";
 
 class Profile extends Component {
 
@@ -22,12 +23,19 @@ class Profile extends Component {
             users_followed: []
         };
         this.profileService = new ProfileService();
+        this.userService = new UserService();
         this.profileService.getUsersFollowed(this.state.user['username'])
             .then((response) => {
                 this.setState({
                                   users_followed: response
                               })
             });
+        this.userService.getTeamsFollowed(this.state.user['username'])
+            .then((response) => {
+                this.setState({
+                    clubs_followed:response.data
+                })
+            })
     }
 
     updateUser = () => {
@@ -172,8 +180,8 @@ class Profile extends Component {
                                     <ul className="list-group">
                                         {
                                             this.state.clubs_followed.map((club) =>
-                                                                              <li className="list-group-item-info">
-                                                                                  <h4>{club}</h4>
+                                                                              <li className="list-group-item p-1">
+                                                                                  <h4>{club.TEAM}</h4>
                                                                               </li>
                                             )
                                         }

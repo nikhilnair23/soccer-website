@@ -55,10 +55,6 @@ class AnonProfile extends Component {
             })
     }
 
-    componentDidMount() {
-
-    }
-
 
     goHome = () =>
         this.props.history.push('/');
