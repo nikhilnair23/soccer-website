@@ -1,7 +1,7 @@
 export default class CommentService{
 
     constructor(props) {
-        this.url="http://localhost:5000"
+        this.url="https://soccer-website-server-sp19.herokuapp.com"
     }
 
 

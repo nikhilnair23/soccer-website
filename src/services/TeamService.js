@@ -3,7 +3,7 @@ import teams from "../services/teams.json"
 export default class TeamService {
     constructor(props) {
         this.url = "https://api-football-v1.p.rapidapi.com/teams/league/"
-        this.url2= "http://localhost:5000"
+        this.url2= "https://soccer-website-server-sp19.herokuapp.com"
     }
 
     get_teams = () => {
