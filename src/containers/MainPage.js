@@ -84,6 +84,20 @@ class MainPage extends Component {
         }
     }
 
+    navigate = (title, description, content, url, urlToImage, date, author ) =>
+        this.props.history.push({
+            pathname:'/details/'+title,
+            state: {
+                title: title,
+                description: description,
+                content: content,
+                url: url,
+                urlToImage: urlToImage,
+                date: date,
+                author: author
+            }
+        })
+
     goToLogin = () =>
         this.props.history.push('/login')
 
@@ -140,9 +154,12 @@ class MainPage extends Component {
                                         <ul className="list-group">
                                             {this.state.articles.slice(0,5).map((article)=>{
                                                 return(
-                                                <li className="list-group-item border-danger bg-black-90">
-                                                    <a  className="text-white font-weight-bold"
-                                                        href={article.url} target="_blank">
+                                                <li className="list-group-item border-danger bg-black-90 news-links-right"
+                                                    onClick={() => this.navigate(article.title, article.description, article.content,
+                                                        article.url, article.urlToImage, article.publishedAt, article.author
+                                                    )}
+                                                >
+                                                    <a  className="text-white font-weight-bold">
                                                     {article.title}
                                                     </a>
                                                     </li>

@@ -2,7 +2,7 @@ import {BrowserRouter as Router, Route} from "react-router-dom";
 import MainPage from "../containers/MainPage";
 import SignIn from './SignIn/SignIn'
 import SearchResults from "./Search/SearchResults";
-import SearchResultItem from "./Search/SearchResultItem"
+import Details from "./Search/Details"
 import React from "react";
 import Highlights from "./Highlights";
 import Teams from "./Teams/Teams";
@@ -29,7 +29,7 @@ const Routes = () => {
                     <Route path={"/fixtures"} exact component={Fixtures}/>
                     <Route path={"/leagues"} exact component={Standings}/>
                     <Route path={"/search/:searchTerm"} exact component={SearchResults}/>
-                    <Route path={"/searchItem"} exact component={SearchResultItem}/>
+                    <Route path={"/details/:title"} exact component={Details}/>
                     <Route path={"/highlights"} exact component={Highlights}/>
                     <Route path={"/teams"} exact component={Teams}/>
                     <Route path={"/teams/:teamId"} exact component={TeamCard}/>
