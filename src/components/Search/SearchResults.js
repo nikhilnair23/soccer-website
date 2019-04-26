@@ -56,6 +56,7 @@ export default class SearchResults extends Component {
 
     render() {
         console.log(this.props)
+        console.log(this.state)
         return (
             <div className="socc-height-inherit socc-background">
                 <div className={"container-fluid"} id="navbar-container">
@@ -64,32 +65,35 @@ export default class SearchResults extends Component {
                 </div>
                 <div className="row">
                     <div className="col-3">
-                        <h2 className="text-white text-wrap">Placeholder</h2>
                     </div>
                     <div className="col-6">
-                        <ul className="list-group p-2">
-                            {
-                                this.state.articles.slice(0,10).map((article) =>
-                                    <li className="list-group-item mb-3">
-                                        <div className="img-text-container">
-                                            <img className="img-thumbnail mr-3"
-                                                 height="200px"
-                                                 width="200px"
-                                                 src={article.urlToImage}/>
-                                            <a  className="socc-link"
-                                                onClick={() => this.navigate(article.title,article.description,article.content,
-                                                    article.url, article.urlToImage, article.publishedAt, article.author
-                                                )}>
-                                                <p className="font-weight-bold text-left text-dark">{article.title}</p>
-                                            </a>
-                                        </div>
-                                    </li>
-                                )
-                            }
-                        </ul>
+                        {this.state.articles.size === 0
+                            ?
+                            <h2>Sorry no results were found. Please try a different search query</h2>
+                            :
+                            <ul className="list-group p-2">
+                                {
+                                    this.state.articles.slice(0, 10).map((article) =>
+                                        <li className="list-group-item mb-3">
+                                            <div className="img-text-container">
+                                                <img className="img-thumbnail mr-3"
+                                                     height="200px"
+                                                     width="200px"
+                                                     src={article.urlToImage}/>
+                                                <a className="socc-link"
+                                                   onClick={() => this.navigate(article.title, article.description, article.content,
+                                                       article.url, article.urlToImage, article.publishedAt, article.author
+                                                   )}>
+                                                    <p className="font-weight-bold text-left text-dark">{article.title}</p>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    )
+                                }
+                            </ul>
+                        }
                     </div>
                     <div className="col-3">
-                        <h2 className="text-white">sample</h2>
                     </div>
                 </div>
                 </div>

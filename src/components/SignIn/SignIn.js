@@ -44,7 +44,6 @@ class SignIn extends Component{
         })
         //.then(response => response.json())
             .then(res => {
-                debugger;
                 if (res.status === 400) {
                     document.getElementById("username_input_login").value = '';
                     document.getElementById("password_input_login").value = '';

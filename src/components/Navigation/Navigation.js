@@ -65,7 +65,6 @@ class Navigation extends React.Component {
     };
 
     goToSearch = () =>{
-        debugger;
         if(this.state.searchText===""){
             return(this.props.history.push('/search/soccer'))
         }
@@ -76,8 +75,6 @@ class Navigation extends React.Component {
 
 
     goToProfile = () => {
-
-        debugger;
         return (
             this.props.history.push({
                                         pathname: '/profile',

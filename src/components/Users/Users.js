@@ -21,16 +21,18 @@ class Users extends Component {
             )})
     }
 
-    componentDidUpdate() {
-        fetch('http://localhost:5000/users')
-            .then(response => response.json())
-            .then(res => {
-                this.setState(
-                    {
-                        users: res.data
-                    }
-                )
-            })
+    componentDidUpdate(prevProps) {
+        if (this.props!=prevProps) {
+            fetch('http://localhost:5000/users')
+                .then(response => response.json())
+                .then(res => {
+                    this.setState(
+                        {
+                            users: res.data
+                        }
+                    )
+                })
+        }
     }
 
     makeAdmin = (username) => {

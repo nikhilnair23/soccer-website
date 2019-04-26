@@ -35,6 +35,10 @@ export default class CommentBox extends Component {
     addComment = (commentData) => {
         debugger;
             if (this.state.loggedIn !== false) {
+                if (this.state.user.ban_status===1){
+                    alert('You cannot comment as you have been banned. Please contact an admin');
+                    return;
+                }
                 var timeStamp = (new Date()).getTime();
                 let newComment = {
                     "body": commentData.commentBody,
