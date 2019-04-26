@@ -42,7 +42,7 @@ export default class SearchResults extends Component {
 
     navigate = (title, description, content, url, urlToImage, date, author ) =>
         this.props.history.push({
-            pathname:'/searchItem',
+            pathname:'/details/:'+title,
             state: {
                 title: title,
                 description: description,
@@ -64,12 +64,12 @@ export default class SearchResults extends Component {
                                 user={this.state.user}/>
                 </div>
                 <div className="row">
-                    <div className="col-3">
+                    <div className="col-lg-2 col-md-1 col-sm-1">
                     </div>
-                    <div className="col-6">
-                        {this.state.articles.size === 0
+                    <div className="col-lg-8 col-md-10 col-sm-10">
+                        {this.state.articles.length === 0
                             ?
-                            <h2>Sorry no results were found. Please try a different search query</h2>
+                            <h2 className="mt-3 text-white text-center font-weight-bolder bg-black-90">Sorry no results were found. Please try a different search query</h2>
                             :
                             <ul className="list-group p-2">
                                 {
@@ -93,7 +93,7 @@ export default class SearchResults extends Component {
                             </ul>
                         }
                     </div>
-                    <div className="col-3">
+                    <div className="col-lg-2 col-md-1 col-sm-1">
                     </div>
                 </div>
                 </div>

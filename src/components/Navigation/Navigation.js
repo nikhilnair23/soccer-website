@@ -92,7 +92,6 @@ class Navigation extends React.Component {
     }
 
     signOut = () => {
-        debugger;
         this.userService.sign_out().then((response) => {
                 debugger;
                 return (this.props.history.push({
@@ -107,7 +106,6 @@ class Navigation extends React.Component {
 
     render() {
         if (this.state.navigate === true) {
-            debugger;
             return (
                 <Redirect to={{
                     pathname: '/search/' + this.state.searchText,
@@ -173,8 +171,12 @@ class Navigation extends React.Component {
                             <ul className="dropdown-menu" aria-labelledby="dropdown03">
                                 {this.props.loggedIn === true &&
                                 <div>
-                                    <li className="dropdown-item text-center">Welcome
-                                        back {this.props.user.username}</li>
+                                    <li className="dropdown-item text-center">Signed in
+                                        as
+                                        <div className="font-weight-bolder">
+                                        {this.props.user.username}
+                                        </div>
+                                        </li>
                                     <li className="dropdown-item text-center" href="#">
                                         <button onClick={this.goToProfile}
                                                 className="btn btn-success">Profile

@@ -84,6 +84,20 @@ class MainPage extends Component {
         }
     }
 
+    navigate = (title, description, content, url, urlToImage, date, author ) =>
+        this.props.history.push({
+            pathname:'/details/'+title,
+            state: {
+                title: title,
+                description: description,
+                content: content,
+                url: url,
+                urlToImage: urlToImage,
+                date: date,
+                author: author
+            }
+        })
+
     goToLogin = () =>
         this.props.history.push('/login')
 
@@ -104,6 +118,7 @@ class MainPage extends Component {
                         <div className="row socc-height-inherit">
                             <div className="col-3 d-none d-lg-block">
                                 <div className="card fav-team-card bg-black">
+                                    <div className="team-information">
                                     <div className="fav-team-text">
                                         <h4 className="text-center text-white font-weight-bold pt-2 pb-2">Your Favourite Team</h4>
                                     </div>
@@ -119,28 +134,32 @@ class MainPage extends Component {
                                             <p className="team-text-prompt ">Login to select your favourite team</p>
                                             </a>
                                             :
-                                            <h4 className="text-white rounded">{this.state.user.favorite_team}</h4>
+                                            <h4 className="fav-team-name">{this.state.user.favorite_team}</h4>
                                         }
+                                    </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-6 col-md-7 ">
+                            <div className="col-lg-6 col-md-7 carousel-column">
                                 <NewsCarousel
                                     articles={this.state.articles}
                                 />
                             </div>
                             <div className="col-lg-3 col-md-5">
-                                <div className="card news-articles-card mb-3">
+                                <div className="card news-articles-card mb-3 bg-black-90">
                                     <div className="card-header mt-3">
-                                        <h4>News Articles</h4>
+                                        <h4 className="text-white font-weight-bolder">News Articles</h4>
                                     </div>
-                                    <div className="card-body">
+                                    <div className="card-body article-card-body">
                                         <ul className="list-group">
                                             {this.state.articles.slice(0,5).map((article)=>{
                                                 return(
-                                                <li className="list-group-item">
-                                                    <a  className="text-black-50"
-                                                        href={article.url} target="_blank">
+                                                <li className="list-group-item border-danger bg-black-90 news-links-right"
+                                                    onClick={() => this.navigate(article.title, article.description, article.content,
+                                                        article.url, article.urlToImage, article.publishedAt, article.author
+                                                    )}
+                                                >
+                                                    <a  className="text-white font-weight-bold">
                                                     {article.title}
                                                     </a>
                                                     </li>

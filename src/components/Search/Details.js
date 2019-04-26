@@ -4,7 +4,8 @@ import Navigation from "../Navigation/Navigation";
 import CommentBox from "../Comments/CommentBox"
 import comments from '../../data/comments'
 import UserService from "../../services/UserService";
-export default class SearchResultItem extends Component{
+import './search.css'
+export default class Details extends Component{
 
     constructor(props) {
         super(props);
@@ -14,6 +15,7 @@ export default class SearchResultItem extends Component{
             loggedIn: false
         }
         this.userService = new UserService();
+
         this.userService.is_logged_in().then(response => {
             console.log(response.data);
             if (response.data !== "NOT_LOGGED_IN") {
@@ -57,24 +59,20 @@ export default class SearchResultItem extends Component{
                     <Navigation loggedIn ={this.state.loggedIn}
                                 user={this.state.user}/>
                 </div>
-                <div className="row socc-height-inherit">
-                    <div className="col-3">
-                        <h2 className="text-white text-wrap">Placeholder</h2>
-                    </div>
-
-                    <div className="col-6">
+                <div className="row socc-height-inherit result-card-container">
+                    <div className="result-card">
                         {this.props.location.state.title !== undefined && <div className="card mt-2">
                             <div className="card-header socc-card-header">
                                 <img className="socc-card-img"
                                      height="300px"
                                      width="300px"
                                      src={this.props.location.state.urlToImage}/>
-                                <a href={this.props.location.state.url}>
-                                <h3 className="font-weight-bold">{this.props.location.state.title}</h3>
+                                <a href={this.props.location.state.url} target="_blank">
+                                <div className="font-weight-bold details-title">{this.props.location.state.title}</div>
                                 </a>
                             </div>
                             <div className="card-body">
-                                <p className="font-italic">{this.props.location.state.content}</p>
+                                <p className="font-italic card-content">{this.props.location.state.content}</p>
                             </div>
                         </div>
                         }
@@ -84,9 +82,6 @@ export default class SearchResultItem extends Component{
                             />
                         </div>
                     </div>
-                    <div className="col-3">
-                        <h2 className="text-white">sample</h2>
-                    </div>
                 </div>
             </div>
         );
@@ -94,4 +89,4 @@ export default class SearchResultItem extends Component{
 
 }
 
-// export default withRouter(SearchResultItem)
+// export default withRouter(Details)

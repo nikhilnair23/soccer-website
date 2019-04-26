@@ -1,0 +1,44 @@
+.card-content{
+    font-weight: normal;
+    font-family: "Apple Symbols";
+    color: black;
+    font-size: 20px;
+}
+
+.result-card{
+    margin: 0 auto;
+    width: 60%;
+}
+
+.details-title{
+    font-size: 24px;
+    font-family: "American Typewriter";
+    color: darkred;
+}
+
+.result-card-container{
+
+}
+
+@media screen and (max-width: 855px) {
+    .result-card{
+        width: 50%;
+        margin-left: 130px
+    }
+}
+
+
+
+@media screen and (max-width: 703px) {
+    .result-card{
+        width: 40%;
+        margin-left: 130px
+    }
+}
+
+@media screen and (max-width: 564px) {
+    .result-card{
+        width: 35%;
+        margin-left: 120px
+    }
+}

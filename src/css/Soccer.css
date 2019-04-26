@@ -94,7 +94,7 @@ h5 {
 
 .carousel{
     width:100%;
-    height:auto;
+    max-height: 700px;
     padding-right: 0px;
     margin-right: 0px;
 }
@@ -115,9 +115,9 @@ h5 {
     background-color: #000000;
     border: 1px solid rgba(230, 2, 0, 0.02);
     border-radius: 0.30rem;
-    max-height: 350px;
+    max-height: 700px;
     width: auto;
-    height: auto;
+
 }
 
 .socc-link:hover{
@@ -128,16 +128,27 @@ h5 {
     font-family: "avenir next";
     font-weight: bold;
     padding: 5px;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .fav-team-card{
+    height: 500px;
     margin-top: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
     border: 10px black;
     border-radius: 25px;
+    overflow-y: hidden;
+}
+
+.team-information{
+    margin-top:35%;
+    margin-bottom:50%
+}
+
+.fav-team-logo{
+    margin-top: 18px;
 }
 
 .fav-team-logo-img{
@@ -149,13 +160,25 @@ h5 {
     height: auto;
 }
 
+.fav-team-name{
+    color: white;
+    font-family: "avenir next";
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
 .news-articles-card{
     margin-top: 20px;
+    height: 500px;
     display: flex;
     flex-direction: row;
     align-items: center;
     border: 10px black;
-    border-radius: 25px;
+    border-radius: 1.25rem;
+}
+
+.article-card-body{
+    overflow-y: scroll;
 }
 
 .team-text-prompt{
@@ -165,6 +188,27 @@ h5 {
 
 .team-text-prompt:hover{
     cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+    .carousel-column{
+        width:100%;
+        max-height: 700px;
+        margin-left: 200px;
+        margin-right: 200px;
+    }
+
+    .news-articles-card{
+        width: 35%;
+        margin-top: 20px;
+        height: 350px;
+        display: flex;
+        margin-left: 9%;
+        flex-direction: row;
+        align-items: center;
+        border: 10px black;
+        border-radius: 1.25rem;
+    }
 }
 
 /*.socc-car-item-div{

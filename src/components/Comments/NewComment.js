@@ -10,14 +10,14 @@ const NewComment = (props) => {
                         <img src={"https://robohash.org/"+props.details.user} className="comment-avatar" alt="" />
                     </a>
                 </div>
-                <div className="comment-user-text">
-                    <a href="#" data-username="cathbailh" className="comment-username">
+                <div className="comment-user-text text-white">
+                    <a onClick={()=>props.goToProfile(props.details.user)} data-username="cathbailh" className="comment-username">
                 <span className="username">
                   {props.details.user}
                 </span>
                     </a>
                     <span className="on"> on </span>
-                    <a href="#">
+                    <a>
                         <span className="on">
                             {new Date(props.details.date).toLocaleString()}
                         </span>
