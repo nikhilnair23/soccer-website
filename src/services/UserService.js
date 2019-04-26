@@ -50,5 +50,5 @@ export default class UserService{
     }
 
     getListOfUsers = () =>
-        fetch('http://localhost:5000/users').then(response => response.json())
+        fetch(this.url+'/users').then(response => response.json())
 }

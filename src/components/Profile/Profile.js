@@ -8,8 +8,7 @@ import admin from './admin.jpg';
 import './Profile.css';
 import UserService from "../../services/UserService";
 
-class Profile extends Component {
-
+class Profile extends Component{
     constructor(props) {
         super(props);
         this.state = {

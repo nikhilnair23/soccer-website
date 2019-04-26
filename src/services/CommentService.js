@@ -1,7 +1,12 @@
 export default class CommentService{
 
+    constructor(props) {
+        this.url="http://localhost:5000"
+    }
+
+
     get_news_comments = (url) => {
-        let source= "http://localhost:5000/api/get_comment_news/";
+        let source= this.url + "/api/get_comment_news/";
         return(fetch(source,{
             method:"post",
             headers: {'Content-Type': 'application/json'},
@@ -17,7 +22,7 @@ export default class CommentService{
 
     add_news_comment = (comment,url) => {
         debugger;
-        let dest = "http://localhost:5000/api/comment_news"
+        let dest = this.url+"/api/comment_news"
         return(fetch(dest,{
             method: "post",
             headers: {'Content-Type': 'application/json'},
@@ -32,7 +37,7 @@ export default class CommentService{
 
     delete_news_comment = (url,comment) => {
         debugger;
-        let dest = "http://localhost:5000/api/comment_news"
+        let dest = this.url+"/api/comment_news"
         return(fetch(dest,{
             method: "delete",
             headers: {'Content-Type': 'application/json'},

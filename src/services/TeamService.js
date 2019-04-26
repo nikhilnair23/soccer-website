@@ -3,6 +3,7 @@ import teams from "../services/teams.json"
 export default class TeamService {
     constructor(props) {
         this.url = "https://api-football-v1.p.rapidapi.com/teams/league/"
+        this.url2= "http://localhost:5000"
     }
 
     get_teams = () => {
@@ -14,7 +15,7 @@ export default class TeamService {
     };
 
     getAllTeams = () =>
-        fetch('http://localhost:5000/teams/all')
+        fetch(this.url2+'/teams/all')
             .then(response => response.json())
 
     findTeams = (leagueId) =>
@@ -60,14 +61,14 @@ export default class TeamService {
 
     getTeamCrests = (team_id) => {
         return(
-            fetch('http://localhost:5000/teams/team/' + team_id)
+            fetch(this.url2+'/teams/team/' + team_id)
                 .then(response => response.json())
         );
     }
 
     getTeamCrest = (name) => {
         return(
-            fetch('http://localhost:5000/api/team_logo',{
+            fetch(this.url2+'/api/team_logo',{
                 method:'post',
                 headers: {'Content-Type': 'application/json'},
                 body:JSON.stringify({
