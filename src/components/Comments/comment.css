@@ -66,6 +66,10 @@
     font-size: 1.75vw;
 }
 
+.comment-username:hover{
+    cursor: pointer;
+}
+
 .comment-text-display{
     font-size: 1.75vw;
 }

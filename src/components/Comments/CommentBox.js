@@ -4,8 +4,9 @@ import AddCommentForm from "./AddCommentForm";
 import CommentService from '../../services/CommentService'
 import UserService from '../../services/UserService'
 import './comment.css'
+import {withRouter} from 'react-router';
 
-export default class CommentBox extends Component {
+class CommentBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -29,8 +30,10 @@ export default class CommentBox extends Component {
                 })
             }
         })
-
     }
+
+    goToProfile = (username) =>
+        this.props.history.push('/profile/'+username)
 
     addComment = (commentData) => {
         debugger;
@@ -80,6 +83,7 @@ export default class CommentBox extends Component {
                     index={key.time}
                     details={key}
                     deleteComment = {this.deleteComment}
+                    goToProfile = {this.goToProfile}
                     user={this.state.user}/>
             </li>
         )
@@ -108,3 +112,4 @@ export default class CommentBox extends Component {
     }
 
 }
+export default withRouter(CommentBox)
