@@ -173,8 +173,12 @@ class Navigation extends React.Component {
                             <ul className="dropdown-menu" aria-labelledby="dropdown03">
                                 {this.props.loggedIn === true &&
                                 <div>
-                                    <li className="dropdown-item text-center">Welcome
-                                        back {this.props.user.username}</li>
+                                    <li className="dropdown-item text-center">Signed in
+                                        as
+                                        <div className="font-weight-bolder">
+                                        {this.props.user.username}
+                                        </div>
+                                        </li>
                                     <li className="dropdown-item text-center" href="#">
                                         <button onClick={this.goToProfile}
                                                 className="btn btn-success">Profile
