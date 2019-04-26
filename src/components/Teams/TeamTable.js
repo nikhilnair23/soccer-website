@@ -2,7 +2,8 @@ import React from "react";
 
 const TeamTable = ({standings,teamId}) => {
     return(
-        <table className="table table-striped team-table">
+        <table align="center"
+            className="table table-striped team-table">
             <thead>
             <tr>
                 <th scope="col">Rank</th>

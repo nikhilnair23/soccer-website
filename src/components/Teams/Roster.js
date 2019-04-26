@@ -2,7 +2,8 @@ import React from "react";
 
 const Roster = ({players}) => {
     return(
-        <table className="table table-responsive-xs text-center table-light text-left">
+        <table align="center"
+            className="table table-responsive-xs text-justify table-light text-left">
             <tbody>
             {players
                 .map((player)=>
