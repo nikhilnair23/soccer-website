@@ -122,7 +122,7 @@ class Profile extends Component{
                         </button>
                     </div>
                     <div className='row'>
-                        <div className='dp tc col-md-9'>
+                        <div className='dp tc col-9'>
                             <img
                                 className='ma2'
                                 src={this.state.profile_pic}
@@ -130,7 +130,7 @@ class Profile extends Component{
                                 height={180}
                                 width={180}/>
                         </div>
-                        <div className='col-md-3 fr'>
+                        <div className='col-3 fr'>
                             {
 
                                 this.state.user['isAdmin'] === 1
@@ -173,7 +173,7 @@ class Profile extends Component{
                         <div className="col-4">
                             <div className="card bg-washed-blue club-follow-card">
                                 <div className="card-header">
-                                    List of Clubs Followed:
+                                    <h6 className='font-weight-bold'>Clubs Followed:</h6>
                                 </div>
                                 <div className="card-body">
                                     <ul className="list-group">
@@ -239,7 +239,7 @@ class Profile extends Component{
 
                                     </div>
                                     <div>
-                                        <h3 className="font-weight-bold">
+                                        <h3 className="font-weight-bold profile_text">
                                             First Name
                                         </h3>
                                         <input type='text'
@@ -248,7 +248,7 @@ class Profile extends Component{
                                                defaultValue={this.state.user['first_name']}/>
                                     </div>
                                     <div>
-                                        <h3 className="font-weight-bold">
+                                        <h3 className="font-weight-bold profile_text">
                                             Last Name
                                         </h3>
                                         <input type='text'
@@ -260,7 +260,7 @@ class Profile extends Component{
                             }
 
                             <div>
-                                <h3 className="font-weight-bold">
+                                <h3 className="font-weight-bold profile_text">
                                     Favorite Team
                                 </h3>
                                 <h4>
@@ -305,7 +305,7 @@ class Profile extends Component{
                         <div className="col-4">
                             <div className="card bg-washed-blue user-follow-card">
                                 <div className="card-header">
-                                    List of Users Followed:
+                                    <h6 className='font-weight-bold'>Users Followed:</h6>
                                 </div>
                                 <div className="card-body">
                                     <ul className="list-group">

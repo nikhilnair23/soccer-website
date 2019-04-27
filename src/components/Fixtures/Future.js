@@ -1,4 +1,5 @@
 import React from "react";
+import './Fixtures.css';
 
 const Future = ({fixtures, matchDetails}) =>
     <div className='tc'
@@ -19,18 +20,18 @@ const Future = ({fixtures, matchDetails}) =>
                             <ul className="list-group list-group-flush bg-black border-dark">
                                 <li className="list-group-item hover-bg-black-80 fixture_card shadow-hover ma2">
                                     <div className="row">
-                                        <div className="col-md-4 tc">
-                                            <h3>
+                                        <div className="col-4 tc">
+                                            <h3 className='fixture_text'>
                                                 {match.homeTeam}
                                             </h3>
                                         </div>
-                                        <div className="col-md-4 tc">
-                                            <h3>
+                                        <div className="col-4 tc ">
+                                            <h3 className='goal_text'>
                                                 {match.event_date.split("T")[0]}
                                             </h3>
                                         </div>
-                                        <div className="col-md-4 tc">
-                                            <h3>
+                                        <div className="col-4 tc">
+                                            <h3 className='fixture_text'>
                                                 {match.awayTeam}
                                             </h3>
                                         </div>

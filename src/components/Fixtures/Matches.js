@@ -53,8 +53,8 @@ const Matches = ({fixtures, matchDetails}) =>
                                     <li className="list-group-item hover-bg-dark-green fixture_card shadow-hover ma2">
                                         <div className="row">
 
-                                            <div className="col-md-4 tc">
-                                                <h3>
+                                            <div className="col-4 tc">
+                                                <h3 className='fixture_text'>
                                                 {match.homeTeam}
 
                                                 </h3>
@@ -64,23 +64,23 @@ const Matches = ({fixtures, matchDetails}) =>
                                                      {/*height={120}*/}
                                                      {/*width={120}/>*/}
                                             </div>
-                                            <div className="col-md-1 tc">
-                                                <h3>
+                                            <div className="col-1 tc">
+                                                <h3 className='goal_text'>
                                                     {match.goalsHomeTeam}
                                                 </h3>
                                             </div>
-                                            <div className="col-md-2 tc blue">
+                                            <div className="col-2 tc blue">
                                                 <h3 className="live_time blue">
                                                     {match.elapsed}'
                                                 </h3>
                                             </div>
-                                            <div className="col-md-1 tc">
-                                                <h3>
+                                            <div className="col-1 tc">
+                                                <h3 className='goal_text'>
                                                     {match.goalsAwayTeam}
                                                 </h3>
                                             </div>
-                                            <div className="col-md-4 tc">
-                                                <h3>
+                                            <div className="col-4 tc">
+                                                <h3 className='fixture_text'>
                                                     {match.awayTeam}
                                                 </h3>
                                             </div>
