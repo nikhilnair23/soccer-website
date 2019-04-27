@@ -77,12 +77,14 @@ export default class Teams extends Component {
 
     changeLeague = (league) => {
         this.teamService.findTeams(league.league_id).then((api) => {
-                                                              self.setState({
-                                                                                teams: api.api.teams,
-                                                                                league: league.name,
-                                                                                league_id: league.league_id
-                                                                            })
-                                                          }
+                console.log(league.league_id)
+                let teams = this.sortObjects(api.api.teams)
+                self.setState({
+                    teams: teams,
+                    league: league.name,
+                    league_id: league.league_id
+                })
+            }
         )
     }
 
