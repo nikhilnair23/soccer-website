@@ -2,11 +2,11 @@ export default class StandingsService {
 
     constructor() {
         this.url =
-            "http://localhost:5000/standings/";
+            "https://soccer-website-server-sp19.herokuapp.com/standings/";
     }
 
     findStandingsByLeagueId = (league_id) => {
-        return (fetch('http://localhost:5000/standings/'+league_id)
+        return (fetch('https://soccer-website-server-sp19.herokuapp.com/standings/'+league_id)
             .then(response => response.json()));
     }
 

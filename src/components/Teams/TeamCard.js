@@ -89,7 +89,7 @@ export default class TeamCard extends Component {
             })
         /*this.state.teams.map(
             team => {
-                fetch('http://localhost:5000/team_registry', {
+                fetch('https://soccer-website-server-sp19.herokuapp.com/team_registry', {
                     method: 'POST',
                     credentials: 'include',
                     headers: {'Content-Type': 'application/json'},

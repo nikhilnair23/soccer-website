@@ -34,7 +34,7 @@ const Matches = ({fixtures, matchDetails}) =>
             :
             fixtures.map(
                 match => {
-                    // let x = (fetch('http://localhost:5000/teams/team/'
+                    // let x = (fetch('https://soccer-website-server-sp19.herokuapp.com/teams/team/'
                     //                       + match.homeTeam_id)
                     //     .then(response => response.json())
                     //     .then(x => x['api']['teams'][match.homeTeam_id]['logo']));

@@ -2,11 +2,11 @@ export default class ProfileService {
 
     constructor() {
         this.url =
-            "http://localhost:5000/fixtures/";
+            "https://soccer-website-server-sp19.herokuapp.com/fixtures/";
     }
 
     updateProfile = (un, pw, fn, ln) => {
-        return (fetch('http://localhost:5000/profile/' + un, {
+        return (fetch('https://soccer-website-server-sp19.herokuapp.com/profile/' + un, {
                           method: 'PUT',
                           headers: {'Content-Type': 'application/json'},
                           body: JSON.stringify({
@@ -19,7 +19,7 @@ export default class ProfileService {
     };
 
     follow = (un_following, un_followed) => {
-        return (fetch('http://localhost:5000/follow_user', {
+        return (fetch('https://soccer-website-server-sp19.herokuapp.com/follow_user', {
                           method: 'POST',
                           headers: {'Content-Type': 'application/json'},
                           body: JSON.stringify({
@@ -32,7 +32,7 @@ export default class ProfileService {
 
     deleteProfile = (username) => {
         return (
-            fetch('http://localhost:5000/profile/' + username, {
+            fetch('https://soccer-website-server-sp19.herokuapp.com/profile/' + username, {
                 method: 'delete',
                 credentials:'include',
                 headers: {
@@ -44,7 +44,7 @@ export default class ProfileService {
 
     getProfile = (username) => {
         return (
-            fetch('http://localhost:5000/profile/' + username, {
+            fetch('https://soccer-website-server-sp19.herokuapp.com/profile/' + username, {
                 method: 'get',
                 headers: {
                     'content-type': 'application/json'
@@ -55,7 +55,7 @@ export default class ProfileService {
 
     getUsersFollowed = (username) => {
         return (
-            fetch('http://localhost:5000/profile/follow/' + username, {
+            fetch('https://soccer-website-server-sp19.herokuapp.com/profile/follow/' + username, {
                 method: 'get',
                 headers: {
                     'content-type': 'application/json'
