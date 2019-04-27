@@ -11,8 +11,9 @@ export default class TeamService {
     };
 
     get_team = (teamId) => {
-
-    };
+        return(fetch(this.url2 + '/api/team/' + teamId)
+            .then(response => response.json()))
+    }
 
     getAllTeams = () =>
         fetch(this.url2+'/teams/all')
