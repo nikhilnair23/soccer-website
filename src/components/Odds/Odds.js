@@ -16,7 +16,7 @@ class Odds extends Component {
 
     //
     // componentDidMount() {
-    //     fetch('http://localhost:5000/odds/' + this.state.fixtureById[0]['fixture_id'])
+    //     fetch('https://soccer-website-server-sp19.herokuapp.com/odds/' + this.state.fixtureById[0]['fixture_id'])
     //         .then(response => response.json())
     //         .then(
     //             console.log

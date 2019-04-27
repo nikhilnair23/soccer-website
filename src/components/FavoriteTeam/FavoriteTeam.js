@@ -50,7 +50,7 @@ class FavoriteTeam extends Component {
     teamSelect = (team_name) => {
         debugger;
         //console.log(this.props.user);
-        fetch('http://localhost:5000/favorite_team/' + this.state.user['username'], {
+        fetch('https://soccer-website-server-sp19.herokuapp.com/favorite_team/' + this.state.user['username'], {
                   method: 'PUT',
                   headers: {'Content-Type': 'application/json'},
                   body: JSON.stringify({

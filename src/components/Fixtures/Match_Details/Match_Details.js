@@ -24,7 +24,7 @@ class Match_Details extends Component {
     }
 
     getTeamCrests() {
-        // fetch('http://localhost:5000/teams/team/' + this.state.fixtureById[0]['homeTeam_id'])
+        // fetch('https://soccer-website-server-sp19.herokuapp.com/teams/team/' + this.state.fixtureById[0]['homeTeam_id'])
         //     .then(response => response.json())
         this.teamService.getTeamCrests(this.state.fixtureById[0]['homeTeam_id'])
             .then(x => this.setState(
@@ -33,7 +33,7 @@ class Match_Details extends Component {
                 }
             ));
 
-        // fetch('http://localhost:5000/teams/team/' + this.state.fixtureById[0]['awayTeam_id'])
+        // fetch('https://soccer-website-server-sp19.herokuapp.com/teams/team/' + this.state.fixtureById[0]['awayTeam_id'])
         //     .then(response => response.json())
         this.teamService.getTeamCrests(this.state.fixtureById[0]['awayTeam_id'])
             .then(x => this.setState(

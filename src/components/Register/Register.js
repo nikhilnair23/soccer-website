@@ -78,7 +78,7 @@ class Register extends Component {
         };
 
 
-        fetch('http://localhost:5000/register', {
+        fetch('https://soccer-website-server-sp19.herokuapp.com/register', {
             method: 'POST',
             credentials: 'include',
             headers: {'Content-Type': 'application/json'},

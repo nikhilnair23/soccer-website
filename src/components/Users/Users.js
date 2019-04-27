@@ -15,7 +15,7 @@ class Users extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:5000/users')
+        fetch('https://soccer-website-server-sp19.herokuapp.com/users')
             .then(response => response.json())
             .then(res => {
                 this.setState(
@@ -27,7 +27,7 @@ class Users extends Component {
 
     /*componentDidUpdate(prevProps) {
         if (this.props!==prevProps) {
-            fetch('http://localhost:5000/users')
+            fetch('https://soccer-website-server-sp19.herokuapp.com/users')
                 .then(response => response.json())
                 .then(res => {
                     this.setState(
@@ -40,7 +40,7 @@ class Users extends Component {
     }*/
 
     makeAdmin = (username) => {
-        fetch('http://localhost:5000/admin/' + username, {
+        fetch('https://soccer-website-server-sp19.herokuapp.com/admin/' + username, {
                   method: 'PUT',
                   headers: {'Content-Type': 'application/json'}
               }
@@ -54,7 +54,7 @@ class Users extends Component {
     };
 
     banUser = (username) =>
-        fetch('http://localhost:5000/ban/' + username, {
+        fetch('https://soccer-website-server-sp19.herokuapp.com/ban/' + username, {
                   method: 'PUT',
                   headers: {'Content-Type': 'application/json'}
               }
@@ -68,7 +68,7 @@ class Users extends Component {
         )
 
     unBanUser = (username) =>
-        fetch('http://localhost:5000/unban/' + username, {
+        fetch('https://soccer-website-server-sp19.herokuapp.com/unban/' + username, {
                   method: 'PUT',
                   headers: {'Content-Type': 'application/json'}
               }
