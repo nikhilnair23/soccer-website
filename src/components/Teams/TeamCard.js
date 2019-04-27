@@ -16,7 +16,9 @@ export default class TeamCard extends Component {
         super(props);
         console.log(players)
         this.state = {
-            team: props.location.state.team,
+            team: '',
+            league_id:'',
+            team_id:this.props.match.params.teamId,
             news: news,
             standings: PlTable,
             coach: players.coachs[0],
@@ -27,6 +29,26 @@ export default class TeamCard extends Component {
         }
         this.newsService = new NewsService();
         this.teamService = new TeamService();
+        this.teamService.get_team(this.props.match.params.teamId)
+            .then(response => {
+                    let team = response.data
+                    let league_id = response.data.league_id
+                    this.teamService.getLeagueStanding(this.props.location.state.league_id).then((api) => {
+                            let standings = api.api.standings[0]
+                            this.newsService.get_news_for_team(team.name).then(
+                                (news => {
+                                        this.setState({
+                                            news: news.articles,
+                                            standings: standings,
+                                            team: team,
+                                            league_id: league_id
+                                        })
+                                    }
+                                ))
+                        }
+                    )
+                }
+            )
         this.userService = new UserService();
         let userData = ''
         this.userService.is_logged_in().then(response => {
@@ -39,17 +61,12 @@ export default class TeamCard extends Component {
                         followedTeams: response.data
                     })
                 })
-
-                /*this.setState({
-                    loggedIn:true,
-                    user:response.data
-                })*/
             }
         })
     }
 
     componentDidMount() {
-        this.teamService.getTeamPlayers(this.state.team.team_id).then(
+        this.teamService.getTeamPlayers(this.state.team_id).then(
             api => {
                 this.setState({
                     coach: api.api.coachs[0],
@@ -58,18 +75,8 @@ export default class TeamCard extends Component {
             }
         )
 
-        this.teamService.getLeagueStanding(this.props.location.state.league_id).then((api) =>
-            this.setState({
-                standings: api.api.standings[0]
-            })
-        )
-        this.newsService.get_news_for_team(this.state.team.name).then(
-            (news => {
-                    this.setState({
-                        news: news.articles
-                    })
-                }
-            ))
+
+
     }
 
     followTeam = () => {
@@ -89,7 +96,7 @@ export default class TeamCard extends Component {
             })
         /*this.state.teams.map(
             team => {
-                fetch('https://soccer-website-server-sp19.herokuapp.com/team_registry', {
+                fetch('http://localhost:5000/team_registry', {
                     method: 'POST',
                     credentials: 'include',
                     headers: {'Content-Type': 'application/json'},
