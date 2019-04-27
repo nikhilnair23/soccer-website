@@ -8,7 +8,14 @@
     top: 0;
     left: 0;
     padding-top: 0;
+    display: flex;
 }
+
+.scroll_table {
+    display: flex;
+    width: 90%;
+}
+
 
 .right_col {
     display: flex;
@@ -35,3 +42,17 @@
 .caret {
     float: right;
 }
+
+@media only screen and (max-width: 900px) {
+    .scroll_table {
+    }
+    .hide_small {
+        display: none;
+    }
+}
+@media only screen and (max-width: 1700px) {
+    .hide_small2 {
+        display: none;
+    }
+}
+

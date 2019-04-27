@@ -111,7 +111,7 @@ class AnonProfile extends Component {
                         <div className="col-4">
                             <div className="card bg-washed-blue club-follow-card">
                                 <div className="card-header">
-                                    List of Clubs Followed:
+                                    <h6 className='font-weight-bold'>Clubs Followed:</h6>
                                 </div>
                                 <div className="card-body">
                                     <ul className="list-group">
@@ -137,7 +137,7 @@ class AnonProfile extends Component {
                             </div>
 
                             <div>
-                                <h3 className="font-weight-bold">
+                                <h3 className="font-weight-bold profile_text">
                                     Favorite Team
                                 </h3>
                                 <h4>
@@ -148,7 +148,7 @@ class AnonProfile extends Component {
                         <div className="col-4">
                             <div className="card bg-washed-blue user-follow-card">
                                 <div className="card-header">
-                                    List of Users Followed:
+                                    <h6 className='font-weight-bold'>Users Followed:</h6>
                                 </div>
                                 <div className="card-body">
                                     <ul className="list-group">
