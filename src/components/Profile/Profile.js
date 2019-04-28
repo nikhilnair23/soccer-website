@@ -112,6 +112,9 @@ class Profile extends Component{
     goToUsers = () =>
         this.props.history.push('/users')
 
+    goToProfile = (user) =>
+        this.props.history.push('/profile/'+user)
+
     render() {
         return (
             <div className='container-fluid tc socc-background'>
@@ -315,8 +318,9 @@ class Profile extends Component{
                                     <ul className="list-group">
                                         {
                                             this.state.users_followed.map((user) =>
-                                                <li className="list-group-item p-1">
-                                                    <h4>{user.user_followed}</h4>
+                                                <li onClick={()=> this.goToProfile(user.user_followed)}
+                                                    className="list-group-item p-1">
+                                                    <h4 className="clubs-followed">{user.user_followed}</h4>
                                                 </li>
                                             )
                                         }
