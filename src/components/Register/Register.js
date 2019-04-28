@@ -179,14 +179,16 @@ class Register extends Component {
                         <input type="text"
                                placeholder="last name"
                                onChange={this.onLastNameChange}/>
-                        <label htmlFor="user_type">Are you a Pro user?
-                        <input id="user_type"
-                               type="checkbox"
-                               name="user_type"
-                               value="#"
-                               onClick={this.onProChange}
-                        />
-                        </label>
+                        <div className="pro-checkbox">
+                            <div><label htmlFor="user_type">Are you a Pro user?</label></div>
+                            <div><input className="ml-2"
+                                id="user_type"
+                                        type="checkbox"
+                                        name="user_type"
+                                        value="#"
+                                        onClick={this.onProChange}
+                            /></div>
+                        </div>
                         <button
                             type="button"
                             onClick={this.onRegister}>
