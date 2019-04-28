@@ -16,6 +16,14 @@
     color: black;
 }
 
+.clubs-followed{
+    color: black;
+    font-weight: bold;
+}
+
+.clubs-followed:hover{
+    cursor: pointer;
+}
 
 
 

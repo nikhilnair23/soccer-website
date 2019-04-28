@@ -184,7 +184,7 @@ class Profile extends Component{
                                             this.state.clubs_followed.map((club) =>
                                                 <li onClick={() => this.goToTeam(club.TEAM_ID)}
                                                     className="list-group-item p-1">
-                                                    <h4>{club.TEAM}</h4>
+                                                    <h4 className="clubs-followed">{club.TEAM}</h4>
                                                 </li>
                                             )
                                         }
