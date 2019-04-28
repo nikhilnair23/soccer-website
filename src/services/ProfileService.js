@@ -27,8 +27,21 @@ export default class ProfileService {
                                                    username_followed: un_followed
                                                })
                       }
-        ));
+        ).then(response => response)
+        );
     };
+
+    unfollow = (un_following, un_followed) => {
+        return (fetch('https://soccer-website-server-sp19.herokuapp.com/unfollow_user', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    username_following: un_following,
+                    username_followed: un_followed
+                })
+            }
+        ));
+    }
 
     deleteProfile = (username) => {
         return (
@@ -54,6 +67,7 @@ export default class ProfileService {
     }
 
     getUsersFollowed = (username) => {
+        debugger;
         return (
             fetch('https://soccer-website-server-sp19.herokuapp.com/profile/follow/' + username, {
                 method: 'get',

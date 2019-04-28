@@ -80,13 +80,31 @@ class AnonProfile extends Component {
         }
         else {
             this.profileService.follow(this.state.loggedInUser.username, this.state.user.username)
-                .then(
-                    document.getElementById("follow_button").innerText = "Following",
-                    document.getElementById("follow_button").classList.remove("btn-primary"),
-                    document.getElementById("follow_button").classList.add("btn-success")
-                )
+                .then(response => {
+                    debugger;
+                    this.profileService.getUsersFollowed(this.state.loggedInUser.username)
+                        .then((response) => {
+                            debugger;
+                            this.setState({
+                                logged_in_followed: response
+                            })
+                        })
+                })
         }
     };
+
+    unfollowUser = () =>{
+        this.profileService.unfollow(this.state.loggedInUser.username, this.state.user.username)
+            .then(response =>
+                this.profileService.getUsersFollowed(this.props.match.params.username)
+                    .then((response) => {
+                        debugger;
+                        this.setState({
+                            logged_in_followed: response
+                        })
+                    })
+            )
+    }
 
     checkIfUserIsFollowed = (arr, user) => {
         for (let i = 0; i < arr.length; i++) {
@@ -118,7 +136,7 @@ class AnonProfile extends Component {
                                     id='follow_button'
                                     className="btn btn-success pd5 ma2 follow_button"
                                     type="button"
-                                    onClick={() => this.followUser()}>Following
+                                    onClick={() => this.unfollowUser()}>Following
                                 </button>
                             </div>
                             :
