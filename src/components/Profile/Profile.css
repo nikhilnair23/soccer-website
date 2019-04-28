@@ -19,6 +19,7 @@
 .clubs-followed{
     color: black;
     font-weight: bold;
+    font-size: 19px;
 }
 
 .clubs-followed:hover{

@@ -114,7 +114,7 @@ export default class TeamCard extends Component {
 
     checkIfTeamIsFollowed = (arr,team) => {
         for (let i =0;i<arr.length;i++){
-            if (arr[0].TEAM===team){
+            if (arr[i].TEAM===team){
                 return true;
             }
         }

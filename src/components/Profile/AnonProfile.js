@@ -22,35 +22,41 @@ class AnonProfile extends Component {
             profile_pic: '',
             loggedIn: false,
             clubs_followed: [],
-            users_followed: []
+            users_followed: [],
+            logged_in_followed: []
         };
         this.profileService = new ProfileService();
         this.userService = new UserService();
         this.userService.is_logged_in().then(response => {
             if (response.data !== "NOT_LOGGED_IN") {
-                this.setState({
-                                  loggedIn: true,
-                                  loggedInUser: response.data,
-                                  profile_pic: 'https://robohash.org/' + response.data.username
-                              })
+                let loggedInUser = response.data
+                this.profileService.getUsersFollowed(response.data.username)
+                    .then((response) => {
+                        this.setState({
+                            logged_in_followed: response,
+                            loggedIn: true,
+                            loggedInUser: loggedInUser,
+                            profile_pic: 'https://robohash.org/' + loggedInUser.username
+                        })
+                    })
             }
         });
         this.profileService.getProfile(this.props.match.params.username).then((response) => {
             this.setState({
-                              user: response,
-                              profile_pic: 'https://robohash.org/' + response.username
-                          })
+                user: response,
+                profile_pic: 'https://robohash.org/' + response.username
+            })
         });
         this.profileService.getUsersFollowed(this.props.match.params.username)
             .then((response) => {
                 this.setState({
-                                  users_followed: response
-                              })
+                    users_followed: response
+                })
             });
         this.userService.getTeamsFollowed(this.props.match.params.username)
             .then((response) => {
                 this.setState({
-                    clubs_followed:response.data
+                    clubs_followed: response.data
                 })
             })
     }
@@ -63,10 +69,10 @@ class AnonProfile extends Component {
         this.props.history.push('/users');
 
     goToTeam = (teamId) =>
-        this.props.history.push('/teams/'+teamId)
+        this.props.history.push('/teams/' + teamId)
 
     goToProfile = (user) =>
-        this.props.history.push('/profile/'+user)
+        this.props.history.push('/profile/' + user)
 
     followUser = () => {
         if (this.state.loggedIn === false) {
@@ -82,6 +88,15 @@ class AnonProfile extends Component {
         }
     };
 
+    checkIfUserIsFollowed = (arr, user) => {
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i].user_followed === user) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     render() {
         console.log(this.state);
         return (
@@ -95,14 +110,27 @@ class AnonProfile extends Component {
                             onClick={() => this.goHome()}>Home Page
                         </button>
                     </div>
-                    <div className='fr'>
-                        <button
-                            id='follow_button'
-                            className="btn btn-primary pd5 ma2 follow_button"
-                            type="button"
-                            onClick={() => this.followUser()}>Follow
-                        </button>
-                    </div>
+                    {
+                        this.checkIfUserIsFollowed(this.state.logged_in_followed, this.props.match.params.username)
+                            ?
+                            <div className='fr'>
+                                <button
+                                    id='follow_button'
+                                    className="btn btn-success pd5 ma2 follow_button"
+                                    type="button"
+                                    onClick={() => this.followUser()}>Following
+                                </button>
+                            </div>
+                            :
+                            <div className='fr'>
+                                <button
+                                    id='follow_button'
+                                    className="btn btn-primary pd5 ma2 follow_button"
+                                    type="button"
+                                    onClick={() => this.followUser()}>Follow
+                                </button>
+                            </div>
+                    }
                     <div className='row'>
                         <div className='dp tc col-md-9'>
                             <img
@@ -122,7 +150,7 @@ class AnonProfile extends Component {
                                 <div className="card-body">
                                     <ul className="list-group">
                                         {
-                                            this.state.clubs_followed.map((club)=>
+                                            this.state.clubs_followed.map((club) =>
                                                 <li onClick={() => this.goToTeam(club.TEAM_ID)}
                                                     className="list-group-item p-1">
                                                     <h4 className="clubs-followed">{club.TEAM}</h4>
@@ -161,7 +189,7 @@ class AnonProfile extends Component {
                                     <ul className="list-group">
                                         {
                                             this.state.users_followed.map((user) =>
-                                                <li onClick={()=> this.goToProfile(user.user_followed)}
+                                                <li onClick={() => this.goToProfile(user.user_followed)}
                                                     className="list-group-item p-1">
                                                     <h4 className="clubs-followed">{user.user_followed}</h4>
                                                 </li>
