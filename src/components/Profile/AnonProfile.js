@@ -62,6 +62,9 @@ class AnonProfile extends Component {
     goToUsers = () =>
         this.props.history.push('/users');
 
+    goToTeam = (teamId) =>
+        this.props.history.push('/teams/'+teamId)
+
     followUser = () => {
         if (this.state.loggedIn === false) {
             alert("You must be signed in to follow.")
@@ -117,8 +120,9 @@ class AnonProfile extends Component {
                                     <ul className="list-group">
                                         {
                                             this.state.clubs_followed.map((club)=>
-                                                <li className="list-group-item p-1">
-                                                    <h4>{club.TEAM}</h4>
+                                                <li onClick={() => this.goToTeam(club.TEAM_ID)}
+                                                    className="list-group-item p-1">
+                                                    <h4 className="clubs-followed">{club.TEAM}</h4>
                                                 </li>
                                             )
                                         }
