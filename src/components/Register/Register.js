@@ -77,7 +77,6 @@ class Register extends Component {
             isPro: this.state.isPro
         };
 
-
         fetch('https://soccer-website-server-sp19.herokuapp.com/register', {
             method: 'POST',
             credentials: 'include',
@@ -180,12 +179,14 @@ class Register extends Component {
                         <input type="text"
                                placeholder="last name"
                                onChange={this.onLastNameChange}/>
+                        <label htmlFor="user_type">Are you a Pro user?
                         <input id="user_type"
                                type="checkbox"
                                name="user_type"
                                value="#"
                                onClick={this.onProChange}
-                        />Are you a Pro user?
+                        />
+                        </label>
                         <button
                             type="button"
                             onClick={this.onRegister}>
