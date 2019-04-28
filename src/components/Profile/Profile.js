@@ -315,7 +315,7 @@ class Profile extends Component{
                                     <ul className="list-group">
                                         {
                                             this.state.users_followed.map((user) =>
-                                                <li className="list-group-item-info">
+                                                <li className="list-group-item p-1">
                                                     <h4>{user.user_followed}</h4>
                                                 </li>
                                             )
