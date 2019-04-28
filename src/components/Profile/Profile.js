@@ -26,8 +26,8 @@ class Profile extends Component{
         this.profileService.getUsersFollowed(this.state.user['username'])
             .then((response) => {
                 this.setState({
-                                  users_followed: response
-                              })
+                    users_followed: response
+                })
             });
         this.userService.getTeamsFollowed(this.state.user['username'])
             .then((response) => {
@@ -106,6 +106,9 @@ class Profile extends Component{
             }
         })
 
+    goToTeam = (teamId) =>
+        this.props.history.push('/teams/'+teamId)
+
     goToUsers = () =>
         this.props.history.push('/users')
 
@@ -134,35 +137,35 @@ class Profile extends Component{
                             {
 
                                 this.state.user['isAdmin'] === 1
-                                ?
-                                <button className='btn btn-primary ma2'
-                                        onClick={() => this.goToUsers()}>
-                                    User list
-                                </button>
-                                :
-                                <img
-                                    className='ma2'
-                                    src={admin}
-                                    alt="Not admin"
-                                    height={90}
-                                    width={90}/>
+                                    ?
+                                    <button className='btn btn-primary ma2'
+                                            onClick={() => this.goToUsers()}>
+                                        User list
+                                    </button>
+                                    :
+                                    <img
+                                        className='ma2'
+                                        src={admin}
+                                        alt="Not admin"
+                                        height={90}
+                                        width={90}/>
                             }
                             {
                                 this.state.user['isPro'] === 1
-                                ?
-                                <img
-                                    className='ma2'
-                                    src={pro}
-                                    alt="Pro user"
-                                    height={90}
-                                    width={90}/>
-                                :
-                                <img
-                                    className='ma2'
-                                    src={casual}
-                                    alt="Casual"
-                                    height={80}
-                                    width={150}/>
+                                    ?
+                                    <img
+                                        className='ma2'
+                                        src={pro}
+                                        alt="Pro user"
+                                        height={90}
+                                        width={90}/>
+                                    :
+                                    <img
+                                        className='ma2'
+                                        src={casual}
+                                        alt="Casual"
+                                        height={80}
+                                        width={150}/>
                             }
                         </div>
                     </div>
@@ -179,9 +182,10 @@ class Profile extends Component{
                                     <ul className="list-group">
                                         {
                                             this.state.clubs_followed.map((club) =>
-                                                                              <li className="list-group-item p-1">
-                                                                                  <h4>{club.TEAM}</h4>
-                                                                              </li>
+                                                <li onClick={() => this.goToTeam(club.TEAM_ID)}
+                                                    className="list-group-item p-1">
+                                                    <h4>{club.TEAM}</h4>
+                                                </li>
                                             )
                                         }
                                     </ul>
@@ -199,64 +203,64 @@ class Profile extends Component{
                             </div>
                             {
                                 this.state.edit_mode === false
-                                ?
-                                <div>
-                                    {/*<div>*/}
-                                    {/*<h3 className="font-weight-bold">*/}
-                                    {/*Password*/}
-                                    {/*</h3>*/}
-                                    {/*<h4>*/}
-                                    {/*{this.state.password}*/}
-                                    {/*</h4>*/}
-                                    {/*</div>*/}
+                                    ?
                                     <div>
-                                        <h3 className="font-weight-bold">
-                                            First Name
-                                        </h3>
-                                        <h4>
-                                            {this.state.first_name}
-                                        </h4>
+                                        {/*<div>*/}
+                                        {/*<h3 className="font-weight-bold">*/}
+                                        {/*Password*/}
+                                        {/*</h3>*/}
+                                        {/*<h4>*/}
+                                        {/*{this.state.password}*/}
+                                        {/*</h4>*/}
+                                        {/*</div>*/}
+                                        <div>
+                                            <h3 className="font-weight-bold">
+                                                First Name
+                                            </h3>
+                                            <h4>
+                                                {this.state.first_name}
+                                            </h4>
+                                        </div>
+                                        <div>
+                                            <h3 className="font-weight-bold">
+                                                Last Name
+                                            </h3>
+                                            <h4>
+                                                {this.state.last_name}
+                                            </h4>
+                                        </div>
                                     </div>
+                                    :
                                     <div>
-                                        <h3 className="font-weight-bold">
-                                            Last Name
-                                        </h3>
-                                        <h4>
-                                            {this.state.last_name}
-                                        </h4>
-                                    </div>
-                                </div>
-                                :
-                                <div>
-                                    <div>
-                                        <h3 className="font-weight-bold">
-                                            Password
-                                        </h3>
-                                        <input type='password'
-                                               onChange={this.onPasswordChange}
-                                               id='password'
-                                               defaultValue={this.state.user['password']}/>
+                                        <div>
+                                            <h3 className="font-weight-bold">
+                                                Password
+                                            </h3>
+                                            <input type='password'
+                                                   onChange={this.onPasswordChange}
+                                                   id='password'
+                                                   defaultValue={this.state.user['password']}/>
 
+                                        </div>
+                                        <div>
+                                            <h3 className="font-weight-bold profile_text">
+                                                First Name
+                                            </h3>
+                                            <input type='text'
+                                                   onChange={this.onFirstNameChange}
+                                                   id='first_name'
+                                                   defaultValue={this.state.user['first_name']}/>
+                                        </div>
+                                        <div>
+                                            <h3 className="font-weight-bold profile_text">
+                                                Last Name
+                                            </h3>
+                                            <input type='text'
+                                                   onChange={this.onLastNameChange}
+                                                   id='last_name'
+                                                   defaultValue={this.state.user['last_name']}/>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h3 className="font-weight-bold profile_text">
-                                            First Name
-                                        </h3>
-                                        <input type='text'
-                                               onChange={this.onFirstNameChange}
-                                               id='first_name'
-                                               defaultValue={this.state.user['first_name']}/>
-                                    </div>
-                                    <div>
-                                        <h3 className="font-weight-bold profile_text">
-                                            Last Name
-                                        </h3>
-                                        <input type='text'
-                                               onChange={this.onLastNameChange}
-                                               id='last_name'
-                                               defaultValue={this.state.user['last_name']}/>
-                                    </div>
-                                </div>
                             }
 
                             <div>
@@ -270,34 +274,34 @@ class Profile extends Component{
 
                             {
                                 this.state.edit_mode === false
-                                ?
-                                <div className='tc'>
-                                    <button className='btn button btn-warning ma2'
-                                            onClick={() => this.setState(
-                                                {
-                                                    edit_mode: true
-                                                }
-                                            )}>
-                                        Edit
-                                    </button>
-                                    <button className='btn button btn-danger ma2'
-                                            onClick={this.deleteUser}>
-                                        Delete User
-                                    </button>
-                                </div>
+                                    ?
+                                    <div className='tc'>
+                                        <button className='btn button btn-warning ma2'
+                                                onClick={() => this.setState(
+                                                    {
+                                                        edit_mode: true
+                                                    }
+                                                )}>
+                                            Edit
+                                        </button>
+                                        <button className='btn button btn-danger ma2'
+                                                onClick={this.deleteUser}>
+                                            Delete User
+                                        </button>
+                                    </div>
 
-                                :
-                                <div className='tc'>
-                                    <button className='btn button btn-success ma2'
-                                            onClick={this.updateUser}>
-                                        Save
-                                    </button>
-                                    <button className='btn button btn-secondary ma2'
-                                            onClick={this.cancelUpdate}>
-                                        Cancel
-                                    </button>
+                                    :
+                                    <div className='tc'>
+                                        <button className='btn button btn-success ma2'
+                                                onClick={this.updateUser}>
+                                            Save
+                                        </button>
+                                        <button className='btn button btn-secondary ma2'
+                                                onClick={this.cancelUpdate}>
+                                            Cancel
+                                        </button>
 
-                                </div>
+                                    </div>
 
                             }
                         </div>
@@ -311,9 +315,9 @@ class Profile extends Component{
                                     <ul className="list-group">
                                         {
                                             this.state.users_followed.map((user) =>
-                                                                              <li className="list-group-item-info">
-                                                                                  <h4>{user.user_followed}</h4>
-                                                                              </li>
+                                                <li className="list-group-item-info">
+                                                    <h4>{user.user_followed}</h4>
+                                                </li>
                                             )
                                         }
                                     </ul>
