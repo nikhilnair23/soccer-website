@@ -33,7 +33,7 @@ export default class TeamCard extends Component {
             .then(response => {
                     let team = response.data
                     let league_id = response.data.league_id
-                    this.teamService.getLeagueStanding(this.props.location.state.league_id).then((api) => {
+                    this.teamService.getLeagueStanding(league_id).then((api) => {
                             let standings = api.api.standings[0]
                             this.newsService.get_news_for_team(team.name).then(
                                 (news => {
