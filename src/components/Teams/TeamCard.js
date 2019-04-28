@@ -94,22 +94,23 @@ export default class TeamCard extends Component {
 
                 })
             })
-        /*this.state.teams.map(
-            team => {
-                fetch('http://localhost:5000/team_registry', {
-                    method: 'POST',
-                    credentials: 'include',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({
-                        team_id: team.team_id,
-                        name: team.name,
-                        logo: team.logo
+    }
+
+    unfollowTeam = () => {
+        this.userService.unfollowTeam(this.state.user.username, this.state.team.team_id)
+            .then(response => {
+                debugger;
+                this.userService.getTeamsFollowed(this.state.user.username).then(response => {
+                    debugger;
+                    this.setState({
+                        followedTeams: response.data
                     })
+
                 })
-                    .then(console.log)
-            }
-        )*/
-    };
+            })
+    }
+
+
 
     checkIfTeamIsFollowed = (arr,team) => {
         for (let i =0;i<arr.length;i++){
@@ -141,7 +142,7 @@ export default class TeamCard extends Component {
                                 <h1 className="font-weight-bolder">{this.state.team.name}</h1>
                                 {   this.checkIfTeamIsFollowed(this.state.followedTeams,this.state.team.name)
                                     ?
-                                    <button
+                                    <button onClick={this.unfollowTeam}
                                         className="btn btn-success">Following</button>
                                     :
                                     <button

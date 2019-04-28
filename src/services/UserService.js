@@ -1,6 +1,8 @@
 export default class UserService{
     constructor(props) {
         this.url = "https://soccer-website-server-sp19.herokuapp.com/"
+        // this.url = "https://localhost:5000/"
+
     }
 
 
@@ -38,6 +40,18 @@ export default class UserService{
                 username: username,
                 team_id: teamId,
                 team: team
+            })
+        })).then(response => response)
+    }
+
+    unfollowTeam = (username, teamId) => {
+        let url2 = this.url + 'profile/team/unfollow'
+        return(fetch(url2,{
+            method:'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                username: username,
+                team_id: teamId,
             })
         })).then(response => response)
     }
