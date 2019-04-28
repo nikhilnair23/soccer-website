@@ -66,7 +66,7 @@ class Navigation extends React.Component {
 
     goToSearch = () =>{
         if(this.state.searchText===""){
-            return(this.props.history.push('/search/soccer'))
+            return(this.props.history.push('/search'))
         }
         else{
             return(this.props.history.push('/search/' + this.state.searchText))

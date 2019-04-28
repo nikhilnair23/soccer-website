@@ -15,6 +15,7 @@ import Profile from "./Profile/Profile";
 import Users from "./Users/Users";
 import FavoriteTeam from "./FavoriteTeam/FavoriteTeam";
 import AnonProfile from "./Profile/AnonProfile";
+import NoSearchResults from "./Search/NoSearchResults";
 
 const Routes = () => {
     return (
@@ -29,6 +30,7 @@ const Routes = () => {
                     <Route path={"/fixtures"} exact component={Fixtures}/>
                     <Route path={"/leagues"} exact component={Standings}/>
                     <Route path={"/search/:searchTerm"} exact component={SearchResults}/>
+                    <Route path={"/search"} exact component={NoSearchResults}/>
                     <Route path={"/details/:title"} exact component={Details}/>
                     <Route path={"/highlights"} exact component={Highlights}/>
                     <Route path={"/teams"} exact component={Teams}/>
