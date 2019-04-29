@@ -3,7 +3,7 @@ import React from "react";
 const TeamTable = ({standings,teamId}) => {
     return(
         <table align="center"
-            className="table table-striped team-table">
+            className="table table-striped table-dark team-table">
             <thead>
             <tr>
                 <th scope="col">Rank</th>
@@ -19,7 +19,7 @@ const TeamTable = ({standings,teamId}) => {
                     team =>{
                         if(team.team_id==teamId){
                             return(
-                                <tr className="table-primary">
+                                <tr className="table-info">
                                     <th scope="row">{team.rank}</th>
                                     <td>{team.teamName}</td>
                                     <td>{team.matchsPlayed}</td>

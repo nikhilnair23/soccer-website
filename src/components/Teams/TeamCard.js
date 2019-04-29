@@ -130,16 +130,16 @@ export default class TeamCard extends Component {
                     <Navigation loggedIn={this.state.loggedIn}
                                 user={this.state.user}/>
                 </div>
-                <div className="card mt-2 ml-2 mr-2">
+                <div className="card mt-2 ml-2 mr-2 bg-black">
                     <div className="card-header ml-2">
                         <div className="row m-3">
                             <div className="col-3 club-logo-container">
                                 <img src={this.state.team.logo}
                                      height="110px"
-                                     className="m-2 club-logo"/>
+                                     className="m-2 club-logo bg-white-90"/>
                             </div>
                             <div className="col-9 justify-content-center team-card-name">
-                                <h1 className="font-weight-bolder">{this.state.team.name}</h1>
+                                <h1 className="font-weight-bolder text-white">{this.state.team.name}</h1>
                                 {   this.checkIfTeamIsFollowed(this.state.followedTeams,this.state.team.name)
                                     ?
                                     <button onClick={this.unfollowTeam}
@@ -155,9 +155,9 @@ export default class TeamCard extends Component {
                 </div>
                 <div className="row">
                     <div className="col-2 d-none d-lg-block mt-3 pl-4 pr-0">
-                        <div className="card">
+                        <div className="card bg-black">
                             <div className="card-header">
-                                <h5 className="text-center">Roster</h5>
+                                <h5 className="text-center text-white font-weight-bold">Roster</h5>
                             </div>
                             <div className="ml-2">
                                 <Roster
@@ -169,15 +169,15 @@ export default class TeamCard extends Component {
                     <div className="col-lg-7 col-md-8 col-sm-12">
                         <ul className="list-group p-2">
                             {this.state.news.map((article =>
-                                    <li className="list-group-item mt-2">
-                                        <div className="card">
+                                    <li className="list-group-item mt-2 bg-black">
+                                        <div className="card bg-white-10">
                                             <div className="card-header">
                                                 <img className="d-block p-2 rounded socc-news-img"
                                                      src={article.urlToImage}
                                                 />
                                             </div>
                                             <div className="card-body card-article-text">
-                                                <h4 className="font-weight-bolder text-center">{article.title}</h4>
+                                                <h4 className="font-weight-bolder text-center text-white">{article.title}</h4>
                                             </div>
                                         </div>
                                     </li>
@@ -185,9 +185,9 @@ export default class TeamCard extends Component {
                         </ul>
                     </div>
                     <div className="col-lg-3 col-md-4 d-none d-md-block mt-2 pr-4 pt-2 pl-0">
-                        <div className="card">
+                        <div className="card bg-black">
                             <div className="card-header">
-                                <h5 className="text-center">League Table</h5>
+                                <h5 className="text-center text-white font-weight-bold">League Table</h5>
                             </div>
                             <div className="card-body">
                                 <TeamTable standings={this.state.standings}

@@ -30,6 +30,8 @@
 .club-logo{
     height: 120px;
     width: auto;
+    border: 2px black;
+    border-radius: 5px;
 }
 
 .team-card-name{
@@ -56,6 +58,8 @@
 .roster-names{
     font-weight: normal;
     font-size: 15px;
+    color: white;
+    font-weight: bold;
 }
 
 .card-article-text{

@@ -141,7 +141,7 @@ export default class Teams extends Component {
                             </div>
                             <div className="row no-gutters">
                                 <div className="col-6 ">
-                                    <ul id="double" className="list-group-flush pl-3"><span
+                                    <ul id="double" className="list-group pl-3"><span
                                         className="code-comment"></span>
                                         {
                                             Object.values(this.state.teams)
@@ -165,7 +165,7 @@ export default class Teams extends Component {
                                     </ul>
                                 </div>
                                 <div className="col-6">
-                                    <ul id="double" className="list-group-flush "><span
+                                    <ul id="double" className="list-group pl-3 "><span
                                         className="code-comment"></span>
                                         {
                                             Object.values(this.state.teams)
