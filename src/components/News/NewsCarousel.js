@@ -1,8 +1,10 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
-import {Redirect} from 'react-router';
+import { Redirect } from 'react-router';
 import './news.css'
-import {withRouter} from 'react-router';
+import { withRouter } from 'react-router';
+import right from '../../img/right.png';
+import left from '../../img/left.png';
 
 class NewsCarousel extends React.Component {
     constructor(props, context) {
@@ -13,6 +15,8 @@ class NewsCarousel extends React.Component {
         this.state = {
             index: 0,
             direction: null,
+            nextIcon: <img className="nextprev" src={right}></img>,
+            prevIcon: <img className="nextprev" src={left}></img>
         };
     }
 
@@ -23,9 +27,9 @@ class NewsCarousel extends React.Component {
         });
     }
 
-    navigate = (title, description, content, url, urlToImage, date, author ) =>
+    navigate = (title, description, content, url, urlToImage, date, author) =>
         this.props.history.push({
-            pathname:'/details/'+title,
+            pathname: '/details/' + title,
             state: {
                 title: title,
                 description: description,
@@ -38,35 +42,38 @@ class NewsCarousel extends React.Component {
         })
 
     render() {
-        const {index, direction} = this.state;
+        const { index, direction, nextIcon, prevIcon } = this.state;
         return (
             <div className="card-cont">
                 <Carousel
+                    nextIcon={nextIcon}
+                    prevIcon={prevIcon}
                     activeIndex={index}
                     direction={direction}
                     onSelect={this.handleSelect}
-                    interval = {4000}
+                    interval={4000}
                     fade={true}
                 >
-                        {
-                            this.props.articles.map((article) =>
-                                <Carousel.Item>
-                                    <img className="d-block rounded socc-news-img"
-                                         src={article.urlToImage}
-                                    />
-                                    <Carousel.Caption>
-                                        <a  className="article-link"
-                                            onClick={() => this.navigate(article.title,article.description,article.content,
+                    {
+                        this.props.articles.map((article) =>
+                            <Carousel.Item>
+                                <img className="d-block rounded socc-news-img"
+                                    src={article.urlToImage}
+                                />
+                                <Carousel.Caption>
+                                    <a className="article-link"
+                                        onClick={() => this.navigate(article.title, article.description, article.content,
                                             article.url, article.urlToImage, article.publishedAt, article.author
                                         )}
-                                            >
-                                            <p className="article-text">{article.title}</p>
-                                        </a>
-                                    </Carousel.Caption>
-                                </Carousel.Item>
-                            )
-                        }
+                                    >
+                                        <p className="article-text">{article.title}</p>
+                                    </a>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                        )
+                    }
                 </Carousel>
+
             </div>
         );
     }

@@ -4,7 +4,10 @@
     margin-top: 20px;
     width: 100%;
     height: 500px;
-    background:  url("https://www.xmple.com/wallpaper/highlight-black-red-gradient-linear-1920x1080-c2-000000-8b0000-l-67-a-345-f-21.svg");
+    /*background:  
+    url("https://www.xmple.com/wallpaper/highlight-black-red-gradient-linear-1920x1080-c2-000000-8b0000-l-67-a-345-f-21.svg");
+    */
+    background: #000;
     -webkit-background-size: contain;
     background-size: cover;
     border: 1px solid #000;
@@ -40,6 +43,8 @@
 }
 
 .socc-news-img{
+    -webkit-mask-image: linear-gradient(to top, transparent 25%, black 75%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
     position: relative;
     width: 94%;
     margin-left: 19px;
@@ -65,16 +70,12 @@
 }
 
 .article-text{
-    font-family: "avenir next";
+    font-family: 'font-variant';
     font-synthesis: small-caps;
-    font-size: 16px;
+    font-size: 25px;
+    -webkit-justify-content: center;
     justify-content: center;
-    font-weight: bold;
     color: white;
-    opacity: 0.9;
-    background: black;
-    border: 1px darkred;
-    border-radius: 10px;
     text-transform: uppercase;
 }
 
@@ -84,6 +85,11 @@
 
 .carousel-indicators li{
     background-color: red;
+}
+
+.nextprev {
+    height: 20%;
+    width: 30%;
 }
 
 @media screen and (max-width: 767px) {
@@ -99,6 +105,8 @@
     }
 
     .socc-news-img{
+        -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+        mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
         position: relative;
         width: 94%;
         margin-left: 13px;
