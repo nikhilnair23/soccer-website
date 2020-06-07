@@ -8,7 +8,7 @@ const Roster = ({players}) => {
             {players
                 .map((player)=>
                     <tr>
-                        <td className="roster-names">{player.player}</td>
+                        <td className="roster-names">{player.player_name}</td>
                     </tr>
                 )}
             </tbody>

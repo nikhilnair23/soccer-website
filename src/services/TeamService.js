@@ -33,8 +33,9 @@ export default class TeamService {
         );
 
     getLeagueStanding = (leagueId) => {
+        console.log("League ID" + leagueId);
         return (
-            fetch(this.url1 + "/leagueTable/" + leagueId, {
+            fetch(this.url + "/leagueTable/" + leagueId, {
                 method: 'get',
                 headers: {
                     'X-RapidAPI-Key': API_KEY
@@ -47,9 +48,8 @@ export default class TeamService {
     }
 
     getTeamPlayers = (teamId) => {
-        let url2 = "https://api-football-v1.p.rapidapi.com/players/2018/"
         return (
-            fetch(url2 + teamId, {
+            fetch(this.url + "/players/squad/" + teamId + "/2019", {
                 method: 'get',
                 headers: {
                     'X-RapidAPI-Key': API_KEY

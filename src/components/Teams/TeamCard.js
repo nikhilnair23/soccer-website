@@ -21,7 +21,6 @@ export default class TeamCard extends Component {
             team_id:this.props.match.params.teamId,
             news: news,
             standings: PlTable,
-            coach: players.coachs[0],
             players: players.players,
             user: '',
             loggedIn: false,
@@ -31,9 +30,11 @@ export default class TeamCard extends Component {
         this.teamService = new TeamService();
         this.teamService.get_team(this.props.match.params.teamId)
             .then(response => {
+                debugger;
+                console.log(team);
                     let team = response.data
                     let league_id = response.data.league_id
-                    this.teamService.getLeagueStanding(league_id).then((api) => {
+                    this.teamService.getLeagueStanding(league_id).then((api) => { 
                             let standings = api.api.standings[0]
                             this.newsService.get_news_for_team(team.name).then(
                                 (news => {
@@ -66,17 +67,14 @@ export default class TeamCard extends Component {
     }
 
     componentDidMount() {
-        this.teamService.getTeamPlayers(this.state.team_id).then(
-            api => {
+        debugger;
+        this.teamService.getTeamPlayers(this.state.team_id).then(api => {
+            debugger;
                 this.setState({
-                    coach: api.api.coachs[0],
                     players: api.api.players
                 })
             }
         )
-
-
-
     }
 
     followTeam = () => {
