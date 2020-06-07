@@ -1,8 +1,10 @@
 import teams from "../services/teams.json"
 
+const API_KEY = "b83be741d1mshbbc318cf68d0e9fp139528jsn0cddc0e04919"
+
 export default class TeamService {
     constructor(props) {
-        this.url = "https://api-football-v1.p.rapidapi.com/teams/league/"
+        this.url = "https://api-football-v1.p.rapidapi.com/v2"
         this.url2= "https://soccer-website-server-sp19.herokuapp.com"
     }
 
@@ -20,10 +22,10 @@ export default class TeamService {
             .then(response => response.json())
 
     findTeams = (leagueId) =>
-        fetch(this.url + leagueId, {
+        fetch(this.url + "/teams/league/" + leagueId, {
             method: 'get',
             headers: {
-                'X-RapidAPI-Key': 'b83be741d1mshbbc318cf68d0e9fp139528jsn0cddc0e04919'
+                'X-RapidAPI-Key': API_KEY
             }
         }).then((response) => {
                     return response.json()
@@ -31,12 +33,11 @@ export default class TeamService {
         );
 
     getLeagueStanding = (leagueId) => {
-        let url2 = "https://api-football-v1.p.rapidapi.com/leagueTable/"
         return (
-            fetch(url2 + leagueId, {
+            fetch(this.url1 + "/leagueTable/" + leagueId, {
                 method: 'get',
                 headers: {
-                    'X-RapidAPI-Key': 'b83be741d1mshbbc318cf68d0e9fp139528jsn0cddc0e04919'
+                    'X-RapidAPI-Key': API_KEY
                 }
             }).then((response) => {
                         return response.json()
@@ -51,7 +52,7 @@ export default class TeamService {
             fetch(url2 + teamId, {
                 method: 'get',
                 headers: {
-                    'X-RapidAPI-Key': 'b83be741d1mshbbc318cf68d0e9fp139528jsn0cddc0e04919'
+                    'X-RapidAPI-Key': API_KEY
                 }
             }).then((response) => {
                         return response.json()
