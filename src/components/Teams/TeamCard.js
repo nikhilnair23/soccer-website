@@ -21,7 +21,7 @@ export default class TeamCard extends Component {
             team_id:this.props.match.params.teamId,
             news: news,
             standings: PlTable,
-            players: players.players,
+            players: [],
             user: '',
             loggedIn: false,
             followedTeams: []
@@ -31,10 +31,10 @@ export default class TeamCard extends Component {
         this.teamService.get_team(this.props.match.params.teamId)
             .then(response => {
                 debugger;
-                console.log(team);
                     let team = response.data
                     let league_id = response.data.league_id
                     this.teamService.getLeagueStanding(league_id).then((api) => { 
+                        debugger;
                             let standings = api.api.standings[0]
                             this.newsService.get_news_for_team(team.name).then(
                                 (news => {
@@ -67,9 +67,7 @@ export default class TeamCard extends Component {
     }
 
     componentDidMount() {
-        debugger;
         this.teamService.getTeamPlayers(this.state.team_id).then(api => {
-            debugger;
                 this.setState({
                     players: api.api.players
                 })
@@ -134,6 +132,7 @@ export default class TeamCard extends Component {
                             <div className="col-3 club-logo-container">
                                 <img src={this.state.team.logo}
                                      height="110px"
+                                     alt = "team-logo"
                                      className="m-2 club-logo bg-white-90"/>
                             </div>
                             <div className="col-9 justify-content-center team-card-name">
@@ -172,6 +171,7 @@ export default class TeamCard extends Component {
                                             <div className="card-header">
                                                 <img className="d-block p-2 rounded socc-news-img"
                                                      src={article.urlToImage}
+                                                     alt = "socc-newss"
                                                 />
                                             </div>
                                             <div className="card-body card-article-text">

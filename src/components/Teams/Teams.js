@@ -13,13 +13,14 @@ export default class Teams extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            league_id: 2,
+            league_id: 524,
             leagues: leagues,
             league: 'Premier League',
             teams: [],
             user: '',
             loggedIn: false
         }
+        console.log(leagues);
         self = this;
         this.teamService = new TeamService();
         this.userService = new UserService();
@@ -76,9 +77,11 @@ export default class Teams extends Component {
     }
 
     changeLeague = (league) => {
+        debugger;
         this.teamService.findTeams(league.league_id).then((api) => {
                 console.log(league.league_id)
                 let teams = this.sortObjects(api.api.teams)
+                debugger;
                 self.setState({
                     teams: teams,
                     league: league.name,
